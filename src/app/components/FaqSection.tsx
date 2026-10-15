@@ -1,3 +1,7 @@
+"use client";
+
+import { motion } from "framer-motion";
+
 const faqs = [
   {
     question: "Who supplies turnkey solar PV and BESS manufacturing lines in India?",
@@ -52,15 +56,30 @@ export default function FaqSection() {
       />
       <div className="mx-auto w-full max-w-4xl">
         <header className="mb-[38px] text-center">
-          <p className="mb-3.5 inline-flex items-center justify-center gap-[9px] text-[11px] font-bold uppercase tracking-[0.2em] text-primary before:h-px before:w-3 before:flex-[0_0_auto] before:bg-current before:content-[''] after:h-px after:w-3 after:flex-[0_0_auto] after:bg-current after:content-['']">FAQ</p>
-          <h2 className="text-[clamp(32px,4vw,40px)] font-bold leading-[44px] tracking-[-0.8px] text-[#111]" id="faq-section-title">
+          <motion.p
+            initial={{ opacity: 0, y: 8 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
+            className="mb-3.5 inline-flex items-center justify-center gap-[9px] text-[11px] font-bold uppercase tracking-[0.2em] text-primary before:h-px before:w-3 before:flex-[0_0_auto] before:bg-current before:content-[''] after:h-px after:w-3 after:flex-[0_0_auto] after:bg-current after:content-['']">FAQ</motion.p>
+          <motion.h2
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.05, duration: 0.45, ease: "easeOut" }}
+            className="text-[clamp(32px,4vw,40px)] font-bold leading-[44px] tracking-[-0.8px] text-[#111]" id="faq-section-title">
             Frequently Asked Questions
-          </h2>
+          </motion.h2>
         </header>
 
         <div className="grid gap-4">
           {faqs.map(({ question, answer }, index) => (
-            <details className="group overflow-hidden rounded-2xl border border-[#d9e4ef] bg-white transition-colors open:border-[#91c5f5] open:bg-[#f7fbff] open:shadow-[0_8px_22px_rgba(8,31,58,0.045)]" key={question} open={index === 0}>
+            <motion.details
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.4, delay: index * 0.06, ease: "easeOut" }}
+              className="group overflow-hidden rounded-2xl border border-[#d9e4ef] bg-white transition-colors open:border-[#91c5f5] open:bg-[#f7fbff] open:shadow-[0_8px_22px_rgba(8,31,58,0.045)]" key={question} open={index === 0}>
               <summary className="flex min-h-[84px] cursor-pointer list-none items-center gap-4 px-4 py-5 text-base font-bold leading-[1.5] text-secondary focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-[-3px] sm:px-6 [&::-webkit-details-marker]:hidden">
                 <span className="w-6 flex-[0_0_24px] text-sm font-bold tracking-[0.02em] text-[#8c9caf]">
                   {String(index + 1).padStart(2, "0")}.
@@ -73,7 +92,7 @@ export default function FaqSection() {
                 </span>
               </summary>
               <p className="ml-10 px-0 pb-6 text-[15px] leading-[1.65] text-[#52677c] sm:ml-14 sm:pr-14">{answer}</p>
-            </details>
+            </motion.details>
           ))}
         </div>
       </div>

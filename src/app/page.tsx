@@ -7,19 +7,38 @@ import SolarHero from "./components/SolarHero";
 import TrustedByManufacturers from "./components/TrustedByManufacturers";
 import WhyNow from "./components/WhyNow";
 import WhyManufacturersChooseNovus from "./components/WhyManufacturersChooseNovus";
+import ScrollReveal from "./components/ScrollReveal";
 
 export default function Home() {
   return (
     <>
-      <SolarHero />
-      <TrustedByManufacturers />
-      <ProductionLines />
-      <WhyNow />
-      <WhyManufacturersChooseNovus />
-      <RoboticsHeritage />
-      <FaqSection />
-      {/* <EventBanner /> */}
-      {/* <BottomCta /> */}
+      <ScrollReveal>
+        <SolarHero />
+      </ScrollReveal>
+      <ScrollReveal>
+        <TrustedByManufacturers />
+      </ScrollReveal>
+      <ScrollReveal>
+        <ProductionLines />
+      </ScrollReveal>
+      <ScrollReveal>
+        <WhyNow />
+      </ScrollReveal>
+      <ScrollReveal>
+        <WhyManufacturersChooseNovus />
+      </ScrollReveal>
+      <ScrollReveal>
+        <RoboticsHeritage />
+      </ScrollReveal>
+      <ScrollReveal>
+        <FaqSection />
+      </ScrollReveal>
+      <ScrollReveal>
+        <EventBanner />
+      </ScrollReveal>
+      <ScrollReveal>
+      <BottomCta />
+      </ScrollReveal>
     </>
   );
 }

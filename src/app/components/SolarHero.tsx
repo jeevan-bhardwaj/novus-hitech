@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import EnquiryModal from "./EnquiryModal";
 
 const siteUrl = "https://solar.novushitech.com";
@@ -80,26 +81,41 @@ export default function SolarHero() {
               "radial-gradient(circle at 85% 45%, rgba(33,126,190,0.35), transparent 50%)",
           }}
         />
-        <div className="relative z-10 mx-auto grid max-w-[1440px] items-center gap-12 px-6 pb-16 pt-28 sm:px-8 sm:pt-36 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16 lg:px-12 lg:pb-24 lg:pt-40">
-          <div className="max-w-[680px]">
+        <div className="relative z-10 mx-auto grid w-full min-w-0 max-w-[1440px] items-center gap-12 px-6 pb-16 pt-28 sm:px-8 sm:pt-36 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16 lg:px-12 lg:pb-24 lg:pt-40">
+          <div className="min-w-0 max-w-[680px]">
             {/* <p className="inline-flex items-center gap-2.5 text-[11px] font-bold uppercase tracking-[0.16em] text-[#c8e7fb] sm:text-xs sm:tracking-[0.2em]">
               <span className="h-1.5 w-1.5 rounded-full bg-[#8cc63f] shadow-[0_0_14px_rgba(140,198,63,0.8)]" />
               Turnkey solar PV and BESS lines, engineered and serviced in India
             </p> */}
 
-            <h1 className="mt-4 max-w-[680px] text-[34px] font-bold leading-[1.1] tracking-[-0.035em] text-white sm:text-[40px] lg:text-[40px]">
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
+              className="mt-4 max-w-[680px] text-[34px] font-bold leading-[1.1] tracking-[-0.035em] text-white sm:text-[40px] lg:text-[40px]"
+            >
               Turnkey solar PV &amp; BESS manufacturing lines. engineered and
               serviced in India.
-            </h1>
+            </motion.h1>
 
-            <p className="mt-5 max-w-[590px] text-[16px] leading-[26px] text-white/80">
+            <motion.p
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.25 }}
+              className="mt-5 max-w-[590px] text-[16px] leading-[26px] text-white/80"
+            >
               Built by roboticists, not equipment traders. 20+ years of
               autonomous systems engineering behind every line. World-leading
               process equipment, integrated with Novus robotics and Novus MES,
               delivered under one contract.
-            </p>
+            </motion.p>
 
-            <div className="mt-8 flex flex-wrap items-center gap-4">
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.4 }}
+              className="mt-8 flex flex-wrap items-center gap-4"
+            >
               <button
                 type="button"
                 onClick={() => setModalOpen(true)}
@@ -143,11 +159,44 @@ export default function SolarHero() {
                   />
                 </svg>
               </button>
-            </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.55 }}
+              className="mt-8 max-w-full py-2"
+            >
+              <span className="mb-1.5 block text-sm font-bold uppercase tracking-[0.14em] text-[#9fd4f5]">
+                Event details
+              </span>
+              <span className="flex w-full max-w-full flex-wrap items-center gap-x-1.5 gap-y-1 text-sm sm:gap-x-2 sm:text-[13px] lg:text-[14px]">
+                <span className="inline-flex items-center gap-1 font-bold text-white sm:gap-2.5">
+                  {/* <span className="h-2.5 w-2.5 rounded-full bg-[#55b4ed] shadow-[0_0_14px_rgba(85,180,237,0.9)] animate-pulse" aria-hidden="true" /> */}
+                  Meet us at REI Expo 2026
+                </span>
+                <span className="text-white/60">·</span>
+                <span className="font-semibold text-white/90">
+                  Booth A01, Hall 16
+                </span>
+                <span className="text-white/60">·</span>
+                <a
+                  className="inline-flex max-w-full items-center gap-1.5 font-semibold text-[#9fd4f5] [overflow-wrap:anywhere] transition-colors hover:text-white hover:underline"
+                  href="https://renewableenergyindiaexpo.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  www.renewableenergyindiaexpo.com
+                </a>
+              </span>
+            </motion.div>
           </div>
 
-          <div
-            className="relative mx-auto w-full max-w-[600px] lg:ml-auto"
+          <motion.div
+            initial={{ opacity: 0, scale: 0.96 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.3 }}
+            className="relative mx-auto w-full min-w-0 max-w-[600px] lg:ml-auto"
             role="region"
             aria-label="Solar and BESS manufacturing photography"
             aria-roledescription="carousel"
@@ -199,7 +248,7 @@ export default function SolarHero() {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -208,18 +257,22 @@ export default function SolarHero() {
         aria-label="Novus deployment experience"
       >
         <dl className="mx-auto grid max-w-[1120px] grid-cols-1 divide-y divide-[#dce7ee] sm:grid-cols-3 sm:divide-x sm:divide-y-0">
-          {proofPoints.map((point) => (
-            <div
+          {proofPoints.map((point, index) => (
+            <motion.div
+              initial={{ opacity: 0, y: 14 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.4 }}
+              transition={{ duration: 0.45, delay: index * 0.1, ease: "easeOut" }}
               className="flex min-h-[84px] flex-col items-center justify-center gap-2 px-2 py-4 text-center sm:min-h-0 sm:gap-2.5 sm:py-0"
               key={point.label}
             >
               <dt className="text-[32px] font-bold leading-none tracking-[-0.045em] text-secondary sm:text-[40px] lg:text-5xl">
                 {point.value}
               </dt>
-              <dd className="text-[10px] font-semibold uppercase leading-[1.4] tracking-[0.08em] text-[#5b6875] sm:text-xs lg:text-sm lg:tracking-[0.06em]">
+              <dd className="text-[15px] font-semibold uppercase leading-[1.4] tracking-[0.08em] text-[#5b6875]">
                 {point.label}
               </dd>
-            </div>
+            </motion.div>
           ))}
         </dl>
       </section>
@@ -230,7 +283,7 @@ export default function SolarHero() {
           onClose={() => setBrochureModalOpen(false)}
           title="Download the Solar & BESS Brochure"
           description="Enter your details to download the brochure on Solar PV manufacturing or BESS assembly lines."
-          submitLabel="Continue to Brochure"
+          submitLabel="Download Brochure"
           subject="Solar PV & BESS brochure request"
           eventSource="Solar_Hero_Brochure_Gate"
           brochureUrl={brochureUrl}

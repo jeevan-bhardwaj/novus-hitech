@@ -1,3 +1,7 @@
+"use client";
+
+import { motion } from "framer-motion";
+
 const partnerRows = [
   [
     { name: "John Deere", logo: "john-deere.svg" },
@@ -24,15 +28,25 @@ export default function TrustedByManufacturers() {
       aria-labelledby="trusted-manufacturers-title"
     >
       <div className="mx-auto w-full max-w-[1440px]">
-        <h2 className="mb-7 flex items-center justify-center gap-2.5 px-5 text-center text-[10px] font-semibold uppercase leading-relaxed tracking-[0.16em] text-primary sm:mb-9 sm:text-xs sm:tracking-[0.22em]" id="trusted-manufacturers-title">
+        <motion.h2
+          initial={{ opacity: 0, y: 8 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4, ease: "easeOut" }}
+          className="mb-7 flex items-center justify-center gap-2.5 px-5 text-center text-[10px] font-semibold uppercase leading-relaxed tracking-[0.16em] text-primary sm:mb-9 sm:text-xs sm:tracking-[0.22em]" id="trusted-manufacturers-title">
           <span className="h-px w-3 shrink-0 bg-primary" aria-hidden="true" />
           Trusted by manufacturers across industries
           <span className="h-px w-3 shrink-0 bg-primary" aria-hidden="true" />
-        </h2>
+        </motion.h2>
 
         <div className="grid gap-3.5 sm:gap-5">
           {partnerRows.map((row, rowIndex) => (
-            <div className="overflow-hidden [mask-image:linear-gradient(90deg,transparent,#000_3%,#000_97%,transparent)]" key={rowIndex}>
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.45, delay: rowIndex * 0.1, ease: "easeOut" }}
+              className="overflow-hidden [mask-image:linear-gradient(90deg,transparent,#000_3%,#000_97%,transparent)]" key={rowIndex}>
               <div
                 className="flex w-max animate-[partner-marquee_40s_linear_infinite] motion-reduce:animate-none hover:[animation-play-state:paused] sm:animate-[partner-marquee_34s_linear_infinite]"
                 style={{ animationDirection: rowIndex === 0 ? "reverse" : "normal" }}
@@ -55,13 +69,18 @@ export default function TrustedByManufacturers() {
                   </div>
                 ))}
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
 
-        <p className="mx-auto mt-[22px] max-w-[900px] px-6 text-center text-[11px] leading-relaxed text-[#5d6b77] sm:mt-7 sm:text-sm">
+        <motion.p
+          initial={{ opacity: 0, y: 8 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4, delay: 0.15, ease: "easeOut" }}
+          className="mx-auto mt-[22px] max-w-[900px] px-6 text-center text-[11px] leading-relaxed text-[#5d6b77] sm:mt-7 sm:text-sm">
           100+ industrial customers across automotive, FMCG, pharma, paints & chemicals, e-commerce, 3PL, electronics, semiconductor, and petrochemicals.
-        </p>
+        </motion.p>
       </div>
     </section>
   );

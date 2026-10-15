@@ -1,3 +1,6 @@
+"use client";
+
+import { motion } from "framer-motion";
 import {
   BadgeCheck,
   BrainCircuit,
@@ -54,15 +57,30 @@ export default function WhyManufacturersChooseNovus() {
     >
       <div className="mx-auto w-full max-w-[1240px]">
         <header className="mb-[42px] text-center">
-          <p className="mb-3.5 inline-flex items-center justify-center gap-[9px] text-[11px] font-bold uppercase tracking-[0.2em] text-primary before:h-px before:w-3 before:flex-[0_0_auto] before:bg-current before:content-[''] after:h-px after:w-3 after:flex-[0_0_auto] after:bg-current after:content-['']">Why Manufacturers Choose Novus</p>
-          <h2 className="text-[clamp(32px,4vw,40px)] font-bold leading-[44px] tracking-[-0.8px] text-[#111]" id="why-choose-novus-title">
+          <motion.p
+            initial={{ opacity: 0, y: 8 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
+            className="mb-3.5 inline-flex items-center justify-center gap-[9px] text-[11px] font-bold uppercase tracking-[0.2em] text-primary before:h-px before:w-3 before:flex-[0_0_auto] before:bg-current before:content-[''] after:h-px after:w-3 after:flex-[0_0_auto] after:bg-current after:content-['']">Why Manufacturers Choose Novus</motion.p>
+          <motion.h2
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.05, duration: 0.45, ease: "easeOut" }}
+            className="text-[clamp(32px,4vw,40px)] font-bold leading-[44px] tracking-[-0.8px] text-[#111]" id="why-choose-novus-title">
             Choose risk we own.
-          </h2>
+          </motion.h2>
         </header>
 
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {pillars.map(({ title, description, Icon }, index) => (
-            <article className="min-h-[250px] rounded-xl border border-border bg-white p-[26px] shadow-[0_8px_24px_rgba(8,31,58,0.045)] transition-all duration-200 hover:-translate-y-[3px] hover:border-primary/40 hover:shadow-[0_14px_30px_rgba(8,31,58,0.09)]" key={title}>
+            <motion.article
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.4, delay: index * 0.08, ease: "easeOut" }}
+              className="min-h-[250px] rounded-xl border border-border bg-white p-[26px] shadow-[0_8px_24px_rgba(8,31,58,0.045)] transition-all duration-200 hover:-translate-y-[3px] hover:border-primary/40 hover:shadow-[0_14px_30px_rgba(8,31,58,0.09)]" key={title}>
               <div className="mb-6 flex items-center justify-between">
                 <span className="text-[11px] font-bold tracking-[0.12em] text-[#8594a1]">
                   {String(index + 1).padStart(2, "0")}
@@ -73,7 +91,7 @@ export default function WhyManufacturersChooseNovus() {
               </div>
               <h3 className="text-[19px] font-bold leading-[1.35] tracking-[-0.02em] text-secondary">{title}</h3>
               <p className="mt-[11px] text-sm leading-[1.7] text-[#5a6875]">{description}</p>
-            </article>
+            </motion.article>
           ))}
         </div>
       </div>

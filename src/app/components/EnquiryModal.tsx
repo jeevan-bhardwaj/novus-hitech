@@ -1,6 +1,8 @@
 "use client";
 
 import type { FormEvent } from "react";
+import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 
 const enquiryEmail = "solar@novushitech.com";
 
@@ -30,6 +32,52 @@ export default function EnquiryModal({
   subject = "Solar PV & BESS manufacturing line enquiry",
   brochureUrl,
 }: EnquiryModalProps) {
+  const [mounted, setMounted] = useState(false);
+  const scrollPositionRef = useRef<{ x: number; y: number } | null>(null);
+  const restoreFrameRef = useRef<number | null>(null);
+
+  useEffect(() => {
+    if (restoreFrameRef.current !== null) {
+      window.cancelAnimationFrame(restoreFrameRef.current);
+      restoreFrameRef.current = null;
+    }
+
+    scrollPositionRef.current ??= { x: window.scrollX, y: window.scrollY };
+    const scrollPosition = scrollPositionRef.current;
+    const bodyStyle = document.body.style;
+    const htmlStyle = document.documentElement.style;
+    const previousBodyStyles = {
+      position: bodyStyle.position,
+      top: bodyStyle.top,
+      width: bodyStyle.width,
+      overflow: bodyStyle.overflow,
+    };
+    const previousHtmlOverflow = htmlStyle.overflow;
+
+    htmlStyle.overflow = "hidden";
+    bodyStyle.position = "fixed";
+    bodyStyle.top = `-${scrollPosition.y}px`;
+    bodyStyle.width = "100%";
+    bodyStyle.overflow = "hidden";
+    setMounted(true);
+
+    return () => {
+      htmlStyle.overflow = previousHtmlOverflow;
+      bodyStyle.position = previousBodyStyles.position;
+      bodyStyle.top = previousBodyStyles.top;
+      bodyStyle.width = previousBodyStyles.width;
+      bodyStyle.overflow = previousBodyStyles.overflow;
+      restoreFrameRef.current = window.requestAnimationFrame(() => {
+        window.scrollTo({
+          left: scrollPosition.x,
+          top: scrollPosition.y,
+          behavior: "instant",
+        });
+        restoreFrameRef.current = null;
+      });
+    };
+  }, []);
+
   const handleEnquirySubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -51,23 +99,25 @@ export default function EnquiryModal({
     onClose();
   };
 
-  return (
+  if (!mounted) return null;
+
+  return createPortal(
     <div
-      className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/50 px-4"
+      className="fixed inset-0 z-[10000] flex items-center justify-center overflow-y-auto overscroll-contain bg-black/60 px-4 py-6 backdrop-blur-sm"
       role="dialog"
       aria-modal="true"
       aria-labelledby="enquiry-modal-title"
       onClick={onClose}
     >
       <div
-        className="w-full max-w-md rounded-2xl bg-white p-6 shadow-2xl sm:p-8"
+        className="relative my-auto max-h-[calc(100dvh-3rem)] w-full max-w-md overflow-y-auto rounded-2xl bg-white p-6 shadow-2xl sm:p-8"
         onClick={(event) => event.stopPropagation()}
       >
         <div className="flex items-start justify-between gap-4">
           <div>
             <h2
               id="enquiry-modal-title"
-              className="text-[22px] font-bold text-[#081F3A]"
+              className="text-[22px] font-bold leading-[1.2] text-[#081F3A]"
             >
               {title}
             </h2>
@@ -111,6 +161,7 @@ export default function EnquiryModal({
           </button>
         </form>
       </div>
-    </div>
+    </div>,
+    document.body,
   );
 }

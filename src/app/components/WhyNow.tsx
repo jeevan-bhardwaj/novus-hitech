@@ -1,18 +1,28 @@
+"use client";
+
+import { motion } from "framer-motion";
+
 const marketMetrics = [
   {
     value: "132.85 GW",
     description:
       "Solar installed capacity, India, Nov 2025. Up 41% year on year. India is now third globally.",
+    image: "/images/why-now/solar-installed-capacity.jpg",
+    imageAlt: "Solar panels contributing to India's installed capacity",
   },
   {
     value: "500 GW",
     description:
       "Renewable target by 2030. MNRE national target, with solar at the core.",
+    image: "/images/why-now/renewable-energy-target.jpg",
+    imageAlt: "Renewable energy infrastructure behind India's 2030 target",
   },
   {
     value: "236 GWh",
     description:
       "BESS capacity required by 2032. Against 8.6 GW today. Source: CEA, 2023.",
+    image: "/images/why-now/battery-energy-storage.jpg",
+    imageAlt: "Battery energy storage systems for grid-scale capacity",
   },
 ];
 
@@ -28,24 +38,54 @@ export default function WhyNow() {
         }}
       />
       <div className="relative mx-auto w-full max-w-[1240px]">
-        <header className="mx-auto mb-[42px] max-w-[850px] text-center">
-          <p className="mb-3.5 inline-flex items-center justify-center gap-[9px] text-[11px] font-bold uppercase tracking-[0.2em] text-primary before:h-px before:w-3 before:flex-[0_0_auto] before:bg-current before:content-[''] after:h-px after:w-3 after:flex-[0_0_auto] after:bg-current after:content-['']">Why Now</p>
-          <h2 className="text-[clamp(32px,4vw,40px)] font-bold leading-[44px] tracking-[-0.8px] text-white" id="why-now-title">
+        <header className="mx-auto mb-[42px] max-w-[750px] text-center">
+          <motion.p
+            initial={{ opacity: 0, y: 8 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
+            className="mb-3.5 inline-flex items-center justify-center gap-[9px] text-[11px] font-bold uppercase tracking-[0.2em] text-primary before:h-px before:w-3 before:flex-[0_0_auto] before:bg-current before:content-[''] after:h-px after:w-3 after:flex-[0_0_auto] after:bg-current after:content-['']">Why Now</motion.p>
+          <motion.h2
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.05, duration: 0.45, ease: "easeOut" }}
+            className="text-[clamp(32px,4vw,40px)] font-bold leading-[44px] tracking-[-0.8px] text-white" id="why-now-title">
             The window is open. commissioning takes 12 to 18 months.
-          </h2>
-          <p className="mx-auto mt-[18px] max-w-[760px] text-base leading-[1.75] text-white/80">
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 8 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1, duration: 0.45, ease: "easeOut" }}
+            className="mx-auto mt-[18px] max-w-[760px] text-base leading-[1.75] text-white/80">
             PLI incentives are time-bound. Manufacturers who secure their line
             partner and begin engineering now are the ones producing when the
             incentives pay out. Those who wait miss the window.
-          </p>
+          </motion.p>
         </header>
 
         <div className="grid grid-cols-1 gap-[18px] md:grid-cols-3">
-          {marketMetrics.map((metric) => (
-            <article className="min-h-[190px] rounded-xl border border-white/15 bg-white/[0.06] p-7 shadow-[0_12px_30px_rgba(0,0,0,0.12)]" key={metric.value}>
-              <p className="text-[clamp(34px,4.2vw,52px)] font-bold leading-none tracking-[-0.045em] text-white">{metric.value}</p>
-              <p className="mt-5 max-w-[320px] text-sm leading-[1.7] text-white/75">{metric.description}</p>
-            </article>
+          {marketMetrics.map((metric, index) => (
+            <motion.article
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.4, delay: index * 0.08, ease: "easeOut" }}
+              className="group overflow-hidden rounded-2xl bg-white p-3 shadow-[0_18px_40px_rgba(0,0,0,0.28)]" key={metric.value}>
+              <div className="overflow-hidden rounded-xl bg-[#0b2d4c]">
+                <img
+                  className="aspect-[16/10] w-full object-cover transition-transform duration-500 group-hover:scale-[1.05]"
+                  src={metric.image}
+                  alt={metric.imageAlt}
+                  loading="lazy"
+                />
+              </div>
+              <div className="px-3 pb-4 pt-5 sm:px-4">
+                <p className="text-[clamp(28px,3vw,38px)] font-bold leading-none tracking-[-0.045em] text-secondary">{metric.value}</p>
+                <p className="mt-3.5 text-sm leading-[1.7] text-[#5a6875]">{metric.description}</p>
+              </div>
+            </motion.article>
           ))}
         </div>
       </div>
