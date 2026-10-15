@@ -6,7 +6,7 @@ const solutionLinks = [
   { label: "Module Production", href: `${siteUrl}/module-production-lines/` },
   {
     label: "Battery Energy Storage",
-    href: `${siteUrl}/battery-energy-storage-systems/`,
+    href: "/bess",
   },
 ];
 

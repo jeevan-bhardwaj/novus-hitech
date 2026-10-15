@@ -16,9 +16,6 @@ export default function Home() {
         <SolarHero />
       </ScrollReveal>
       <ScrollReveal>
-        <TrustedByManufacturers />
-      </ScrollReveal>
-      <ScrollReveal>
         <ProductionLines />
       </ScrollReveal>
       <ScrollReveal>
@@ -29,6 +26,9 @@ export default function Home() {
       </ScrollReveal>
       <ScrollReveal>
         <RoboticsHeritage />
+      </ScrollReveal>
+            <ScrollReveal>
+        <TrustedByManufacturers />
       </ScrollReveal>
       <ScrollReveal>
         <FaqSection />

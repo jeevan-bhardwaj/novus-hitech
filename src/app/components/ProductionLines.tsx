@@ -22,7 +22,7 @@ const productionLines = [
       "Six stages across two halls. Purpose-built for grid-scale, C&I, residential, and EV pack assembly. Not adapted from EV manufacturing. Delivered in 16 to 20 weeks.",
     image: "/images/production/battery-energy-storage.jpg",
     imageAlt: "Battery packs assembled along an energy storage production line",
-    href: "/solar/bess",
+    href: "/bess",
     linkText: "Explore BESS Manufacturing",
   },
 ];

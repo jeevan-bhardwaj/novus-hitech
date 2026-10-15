@@ -81,6 +81,39 @@ export default function SolarHero() {
               "radial-gradient(circle at 85% 45%, rgba(33,126,190,0.35), transparent 50%)",
           }}
         />
+        <div
+          className="absolute inset-x-0 top-16 z-10 h-9 overflow-hidden border-y border-white/15 bg-[#081F3A]/65 backdrop-blur-sm lg:top-[82px]"
+          aria-label="REI Expo 2026 event details"
+          role="region"
+        >
+          <div className="flex h-full w-max animate-[partner-marquee_32s_linear_infinite] items-center hover:[animation-play-state:paused] motion-reduce:animate-none">
+            {[false, true].map((isDuplicate) => (
+              <div
+                className="flex shrink-0 items-center gap-3 py-0 pl-6 pr-20 text-xs font-semibold text-white sm:gap-5 sm:pr-32 sm:text-sm"
+                key={isDuplicate ? "duplicate" : "original"}
+                aria-hidden={isDuplicate}
+              >
+                <span>Meet us at REI Expo 2026</span>
+                <span className="text-white/60" aria-hidden="true">
+                  ·
+                </span>
+                <span>Booth A01, Hall 16</span>
+                <span className="text-white/60" aria-hidden="true">
+                  ·
+                </span>
+                <a
+                  className="text-[#9fd4f5] transition-colors hover:text-white hover:underline"
+                  href="https://renewableenergyindiaexpo.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  tabIndex={isDuplicate ? -1 : undefined}
+                >
+                  www.renewableenergyindiaexpo.com
+                </a>
+              </div>
+            ))}
+          </div>
+        </div>
         <div className="relative z-10 mx-auto grid w-full min-w-0 max-w-[1440px] items-center gap-12 px-6 pb-16 pt-28 sm:px-8 sm:pt-36 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16 lg:px-12 lg:pb-24 lg:pt-40">
           <div className="min-w-0 max-w-[680px]">
             {/* <p className="inline-flex items-center gap-2.5 text-[11px] font-bold uppercase tracking-[0.16em] text-[#c8e7fb] sm:text-xs sm:tracking-[0.2em]">
@@ -192,18 +225,19 @@ export default function SolarHero() {
             </motion.div>
           </div>
 
-          <motion.div
-            initial={{ opacity: 0, scale: 0.96 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.3 }}
-            className="relative mx-auto w-full min-w-0 max-w-[600px] lg:ml-auto"
-            role="region"
-            aria-label="Solar and BESS manufacturing photography"
-            aria-roledescription="carousel"
-            onMouseEnter={() => setCarouselPaused(true)}
-            onMouseLeave={() => setCarouselPaused(false)}
-            onFocus={() => setCarouselPaused(true)}
-          >
+          <div className="relative mx-auto w-full min-w-0 max-w-[600px] lg:ml-auto">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.96 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.3 }}
+              className="relative w-full min-w-0"
+              role="region"
+              aria-label="Solar and BESS manufacturing photography"
+              aria-roledescription="carousel"
+              onMouseEnter={() => setCarouselPaused(true)}
+              onMouseLeave={() => setCarouselPaused(false)}
+              onFocus={() => setCarouselPaused(true)}
+            >
             <div className="relative overflow-hidden rounded-[24px] border border-white/15 bg-[#f5f9fc] p-1 shadow-[0_20px_45px_rgba(0,0,0,0.25)]">
               <div className="relative aspect-[4/3] overflow-hidden rounded-[15px] bg-[#0a2d4a] sm:aspect-[3/2] sm:rounded-[18px]">
                 {heroSlides.map((slide, index) => (
@@ -248,7 +282,8 @@ export default function SolarHero() {
                 </div>
               </div>
             </div>
-          </motion.div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
