@@ -97,6 +97,10 @@ export default function SolarHero() {
                 <span className="text-white/60" aria-hidden="true">
                   ·
                 </span>
+                <span>22nd–24th October 2026</span>
+                <span className="text-white/60" aria-hidden="true">
+                  ·
+                </span>
                 <span>Booth A01, Hall 16</span>
                 <span className="text-white/60" aria-hidden="true">
                   ·
@@ -207,6 +211,10 @@ export default function SolarHero() {
                 <span className="inline-flex items-center gap-1 font-bold text-white sm:gap-2.5">
                   {/* <span className="h-2.5 w-2.5 rounded-full bg-[#55b4ed] shadow-[0_0_14px_rgba(85,180,237,0.9)] animate-pulse" aria-hidden="true" /> */}
                   Meet us at REI Expo 2026
+                </span>
+                <span className="text-white/60">·</span>
+                <span className="font-semibold text-white/90">
+                  22nd–24th October 2026
                 </span>
                 <span className="text-white/60">·</span>
                 <span className="font-semibold text-white/90">

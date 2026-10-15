@@ -20,6 +20,7 @@ export default function EventBanner() {
             </p>
             <p className="mt-1.5 text-[13px] font-semibold leading-[1.7] text-white/90 sm:text-sm">
               Meet us at REI Expo 2026 <span className="px-1 text-white/55">·</span>{" "}
+              22nd–24th October 2026 <span className="px-1 text-white/55">·</span>{" "}
               Booth A01, Hall 16 <span className="px-1 text-white/55">·</span>{" "}
               <a
                 className="font-semibold text-[#9fd4f5] underline decoration-white/40 underline-offset-4 transition-colors hover:text-white"
