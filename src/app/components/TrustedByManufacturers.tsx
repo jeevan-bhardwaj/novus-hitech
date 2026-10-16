@@ -29,7 +29,7 @@ export default function TrustedByManufacturers() {
     >
       <div className="mx-auto w-full max-w-[1440px]">
         <motion.h2
-          initial={{ opacity: 0, y: 8 }}
+          initial={false}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.4, ease: "easeOut" }}
@@ -42,7 +42,7 @@ export default function TrustedByManufacturers() {
         <div className="grid gap-3.5 sm:gap-5">
           {partnerRows.map((row, rowIndex) => (
             <motion.div
-              initial={{ opacity: 0, y: 12 }}
+              initial={false}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.45, delay: rowIndex * 0.1, ease: "easeOut" }}
@@ -74,7 +74,7 @@ export default function TrustedByManufacturers() {
         </div>
 
         <motion.p
-          initial={{ opacity: 0, y: 8 }}
+          initial={false}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.4, delay: 0.15, ease: "easeOut" }}

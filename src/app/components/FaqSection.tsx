@@ -57,13 +57,13 @@ export default function FaqSection() {
       <div className="mx-auto w-full max-w-4xl">
         <header className="mb-[38px] text-center">
           <motion.p
-            initial={{ opacity: 0, y: 8 }}
+            initial={false}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4, ease: "easeOut" }}
             className="mb-3.5 inline-flex items-center justify-center gap-[9px] text-[11px] font-bold uppercase tracking-[0.2em] text-primary before:h-px before:w-3 before:flex-[0_0_auto] before:bg-current before:content-[''] after:h-px after:w-3 after:flex-[0_0_auto] after:bg-current after:content-['']">FAQ</motion.p>
           <motion.h2
-            initial={{ opacity: 0, y: 10 }}
+            initial={false}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.05, duration: 0.45, ease: "easeOut" }}
@@ -75,7 +75,7 @@ export default function FaqSection() {
         <div className="grid gap-4">
           {faqs.map(({ question, answer }, index) => (
             <motion.details
-              initial={{ opacity: 0, y: 12 }}
+              initial={false}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.4, delay: index * 0.06, ease: "easeOut" }}

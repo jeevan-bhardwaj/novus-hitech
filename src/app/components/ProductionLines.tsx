@@ -33,7 +33,7 @@ export default function ProductionLines() {
       <div className="mx-auto w-full max-w-[1240px]">
         <header className="mx-auto mb-10 max-w-[820px] text-center sm:mb-12">
           <motion.p
-            initial={{ opacity: 0, y: 8 }}
+            initial={false}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4 }}
@@ -42,7 +42,7 @@ export default function ProductionLines() {
             What We Deliver
           </motion.p>
           <motion.h2
-            initial={{ opacity: 0, y: 10 }}
+            initial={false}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.05, duration: 0.45 }}
@@ -52,7 +52,7 @@ export default function ProductionLines() {
             Two production lines. One contract.
           </motion.h2>
           <motion.p
-            initial={{ opacity: 0, y: 8 }}
+            initial={false}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1, duration: 0.45 }}
@@ -69,7 +69,7 @@ export default function ProductionLines() {
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-7">
           {productionLines.map((line, index) => (
             <motion.article
-              initial={{ opacity: 0, y: 16 }}
+              initial={false}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.4, delay: index * 0.08, ease: "easeOut" }}
@@ -96,7 +96,7 @@ export default function ProductionLines() {
         </div>
 
         <motion.aside
-          initial={{ opacity: 0, y: 12 }}
+          initial={false}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.4, delay: 0.1, ease: "easeOut" }}

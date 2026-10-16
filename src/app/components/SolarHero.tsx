@@ -126,7 +126,7 @@ export default function SolarHero() {
             </p> */}
 
             <motion.h1
-              initial={{ opacity: 0, y: 20 }}
+              initial={false}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
               className="mt-4 max-w-[680px] text-[34px] font-bold leading-[1.1] tracking-[-0.035em] text-white sm:text-[40px] lg:text-[40px]"
@@ -136,7 +136,7 @@ export default function SolarHero() {
             </motion.h1>
 
             <motion.p
-              initial={{ opacity: 0, y: 16 }}
+              initial={false}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.25 }}
               className="mt-5 max-w-[590px] text-[16px] leading-[26px] text-white/80"
@@ -148,7 +148,7 @@ export default function SolarHero() {
             </motion.p>
 
             <motion.div
-              initial={{ opacity: 0, y: 16 }}
+              initial={false}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.4 }}
               className="mt-8 flex flex-wrap items-center gap-4"
@@ -199,7 +199,7 @@ export default function SolarHero() {
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, y: 16 }}
+              initial={false}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.55 }}
               className="mt-8 max-w-full py-2"
@@ -235,7 +235,7 @@ export default function SolarHero() {
 
           <div className="relative mx-auto w-full min-w-0 max-w-[600px] lg:ml-auto">
             <motion.div
-              initial={{ opacity: 0, scale: 0.96 }}
+              initial={false}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.3 }}
               className="relative w-full min-w-0"
@@ -302,7 +302,7 @@ export default function SolarHero() {
         <dl className="mx-auto grid max-w-[1120px] grid-cols-1 divide-y divide-[#dce7ee] sm:grid-cols-3 sm:divide-x sm:divide-y-0">
           {proofPoints.map((point, index) => (
             <motion.div
-              initial={{ opacity: 0, y: 14 }}
+              initial={false}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.4 }}
               transition={{ duration: 0.45, delay: index * 0.1, ease: "easeOut" }}

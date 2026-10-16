@@ -28,13 +28,13 @@ export default function RoboticsHeritage() {
       <div className="mx-auto w-full max-w-[1240px]">
         <div className="mx-auto max-w-[850px] text-center">
           <motion.p
-            initial={{ opacity: 0, y: 8 }}
+            initial={false}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4, ease: "easeOut" }}
             className="mb-3.5 inline-flex items-center justify-center gap-[9px] text-[11px] font-bold uppercase tracking-[0.2em] text-[#55b4ed] before:h-px before:w-3 before:flex-[0_0_auto] before:bg-current before:content-[''] after:h-px after:w-3 after:flex-[0_0_auto] after:bg-current after:content-['']">Your Partner for the Build-Out</motion.p>
           <motion.h2
-            initial={{ opacity: 0, y: 10 }}
+            initial={false}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.05, duration: 0.45, ease: "easeOut" }}
@@ -44,7 +44,7 @@ export default function RoboticsHeritage() {
             We came from robotics.
           </motion.h2>
           <motion.div
-            initial={{ opacity: 0, y: 10 }}
+            initial={false}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1, duration: 0.45, ease: "easeOut" }}
@@ -67,7 +67,7 @@ export default function RoboticsHeritage() {
         <dl className="mt-12 grid grid-cols-2 border-y border-white/20 sm:grid-cols-3 lg:grid-cols-5">
           {researchStats.map((stat, index) => (
             <motion.div
-              initial={{ opacity: 0, y: 14 }}
+              initial={false}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.4, delay: index * 0.08, ease: "easeOut" }}

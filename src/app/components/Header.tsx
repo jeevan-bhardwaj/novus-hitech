@@ -52,7 +52,7 @@ function NavigationLinks({ mobile = false }: { mobile?: boolean }) {
           </div>
         </div>
       )}
-      <a className={linkClass} href={`${siteUrl}/about-us/`}>
+      <a className={linkClass} href="/about-us">
         About Us
       </a>
       <a className={linkClass} href={`${siteUrl}/resources/`}>

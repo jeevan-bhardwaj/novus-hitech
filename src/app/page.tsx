@@ -27,7 +27,7 @@ export default function Home() {
       <ScrollReveal>
         <RoboticsHeritage />
       </ScrollReveal>
-            <ScrollReveal>
+        <ScrollReveal>
         <TrustedByManufacturers />
       </ScrollReveal>
       <ScrollReveal>
