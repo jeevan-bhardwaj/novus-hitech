@@ -1,6 +1,7 @@
 const siteUrl = "https://solar.novushitech.com";
 
 const solutions = [
+  { label: "Solar PV Manufacturing", href: "/solar/solar-pv-manufacturing" },
   { label: "Ingot & Wafer", href: `${siteUrl}/ingot-wafer/` },
   { label: "Cell Production", href: `${siteUrl}/cell-production-lines/` },
   { label: "Module Production", href: `${siteUrl}/module-production-lines/` },
@@ -79,9 +80,9 @@ export default function Header() {
           />
         </a>
 
-        <nav className="hidden h-full items-center gap-1 min-[1024px]:flex" aria-label="Main navigation">
+        {/* <nav className="hidden h-full items-center gap-1 min-[1024px]:flex" aria-label="Main navigation">
           <NavigationLinks />
-        </nav>
+        </nav> */}
 
         <div className="hidden flex-[0_0_auto] items-center gap-5 min-[1024px]:flex">
           <a className="inline-flex items-center justify-center whitespace-nowrap rounded-[6px] bg-primary px-5 py-2.5 text-[12px] font-bold uppercase tracking-wider text-white shadow-md transition-all duration-200 hover:bg-[#1a689e] hover:shadow-lg active:scale-95" href={`${siteUrl}/contact/`}>

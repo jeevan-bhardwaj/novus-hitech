@@ -31,14 +31,15 @@ export default function Home() {
         <TrustedByManufacturers />
       </ScrollReveal>
       <ScrollReveal>
-        <FaqSection />
-      </ScrollReveal>
-      <ScrollReveal>
         <EventBanner />
       </ScrollReveal>
       <ScrollReveal>
-      <BottomCta />
+        <FaqSection />
       </ScrollReveal>
+
+      {/* <ScrollReveal>
+      <BottomCta />
+      </ScrollReveal> */}
     </>
   );
 }

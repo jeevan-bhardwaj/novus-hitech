@@ -3,6 +3,7 @@ import { Mail, MapPin, Phone } from "lucide-react";
 const siteUrl = "https://solar.novushitech.com";
 
 const solutionLinks = [
+  { label: "Solar PV Manufacturing", href: "/solar/solar-pv-manufacturing" },
   { label: "Ingot & Wafer", href: `${siteUrl}/ingot-wafer/` },
   { label: "Cell Production", href: `${siteUrl}/cell-production-lines/` },
   { label: "Module Production", href: `${siteUrl}/module-production-lines/` },

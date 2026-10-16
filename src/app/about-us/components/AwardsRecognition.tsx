@@ -7,63 +7,63 @@ const awards = [
     org: "Aegis Graham Bell Awards",
     title: "Manufacturing Innovation",
     tag: "2026",
-    logo: "/images/awards/aegis-logo.png", // Replace with actual path
+    logo: "/images/about/awards/aegis-graham-bell-awards.webp",
     isLatest: true,
   },
   {
     org: "Ministry of MSME, Govt...",
     title: "National Award for Innovation",
     tag: "Govt Honor",
-    logo: "/images/awards/msme-logo.png",
+    logo: "/images/about/awards/ministry-of-msme.png",
     isLatest: false,
   },
   {
     org: "AWS",
     title: "Generative AI Excellence Award",
     tag: "2023",
-    logo: "/images/awards/aws-logo.png",
+    logo: "/images/about/awards/aws.png",
     isLatest: false,
   },
   {
     org: "Frost & Sullivan",
     title: "Most Innovative Product Award",
     tag: "Global Honor",
-    logo: "/images/awards/frost-sullivan-logo.png",
+    logo: "/images/about/awards/frost-sullivan.png",
     isLatest: false,
   },
   {
     org: "Entrepreneur",
     title: "Entrepreneur of the Year Award",
     tag: "2023",
-    logo: "/images/awards/entrepreneur-logo.png",
+    logo: "/images/about/awards/entrepreneur.png",
     isLatest: false,
   },
   {
     org: "Daimler",
     title: "Excellence in Innovation Award",
     tag: "2018",
-    logo: "/images/awards/daimler-logo.png",
+    logo: "/images/about/awards/daimler.png",
     isLatest: false,
   },
   {
     org: "CII Industrial Innovation...",
     title: "Most Innovative Company",
     tag: "2017",
-    logo: "/images/awards/cii-logo.png",
+    logo: "/images/about/awards/CII-industrial-innovation.png",
     isLatest: false,
   },
   {
     org: "APAC Insider",
     title: "Best Self Driving Technology",
     tag: "2017",
-    logo: "/images/awards/apac-insider-logo.png",
+    logo: "/images/about/awards/apac-insider.png",
     isLatest: false,
   },
   {
     org: "NASSCOM",
     title: "Most Promising Emerging Company",
     tag: "2016",
-    logo: "/images/awards/nasscom-logo.png",
+    logo: "/images/about/awards/nasscom.png",
     isLatest: false,
   },
 ];
@@ -136,7 +136,7 @@ export default function AwardsRecognition() {
                   </span>
                 </div>
                 
-                <h3 className="mb-6 text-[17px] font-bold leading-[1.3] text-[#081F3A]">
+                <h3 className="mb-6 text-[15px] font-bold leading-[1.3] text-[#081F3A]">
                   {award.title}
                 </h3>
                 
