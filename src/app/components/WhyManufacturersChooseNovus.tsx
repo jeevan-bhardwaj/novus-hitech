@@ -1,58 +1,33 @@
 "use client";
 
 import { motion } from "framer-motion";
-import {
-  BadgeCheck,
-  BrainCircuit,
-  Cpu,
-  Handshake,
-  MapPinned,
-  Network,
-} from "lucide-react";
+import { BrainCircuit, Handshake, MapPinned } from "lucide-react";
 
 const pillars = [
   {
-    title: "Robotics-Native Engineering",
+    title: "Robotics-native",
     description:
-      "20+ years of robotics, AI, and autonomous systems engineering powering smarter, more reliable manufacturing from day one.",
+      "Founded by a Carnegie Mellon roboticist. 20+ years of autonomous systems and 150+ patents, built into every line.",
     Icon: BrainCircuit,
   },
   {
-    title: "Pan-India Support",
+    title: "One contract owner",
     description:
-      "When something goes wrong, your engineering partner is already here. Local experts, stocked spares, and faster response across India.",
-    Icon: MapPinned,
-  },
-  {
-    title: "World-Class Technology",
-    description:
-      "We integrate proven global process equipment under one turnkey contract. You get leading technology while we manage integration and commissioning.",
-    Icon: Cpu,
-  },
-  {
-    title: "One Contract Owner",
-    description:
-      "One partner responsible for engineering, automation, software, commissioning, and performance. No vendor coordination. No finger-pointing.",
+      "Equipment, robotics, software, commissioning and performance. One partner. No finger-pointing.",
     Icon: Handshake,
   },
   {
-    title: "Intelligence Built In",
+    title: "Serviced in India",
     description:
-      "Novus MES connects equipment, materials, and production data into one intelligent platform with complete traceability and predictive insights.",
-    Icon: Network,
-  },
-  {
-    title: "Proven At Scale",
-    description:
-      "Two decades of industrial automation. 1,400+ deployed systems. 100+ enterprise customers. 150+ patents behind every solution.",
-    Icon: BadgeCheck,
+      "India-based engineers, stocked spares and 24x7 support for the life of the line.",
+    Icon: MapPinned,
   },
 ];
 
 export default function WhyManufacturersChooseNovus() {
   return (
     <section
-      className="bg-[#f5f9fc] px-5 py-16 sm:px-6 sm:py-[clamp(64px,8vw,104px)]"
+      className="bg-[#fff] px-5 py-16 sm:px-6 sm:py-[clamp(64px,8vw,104px)]"
       aria-labelledby="why-choose-novus-title"
     >
       <div className="mx-auto w-full max-w-[1240px]">
@@ -62,18 +37,18 @@ export default function WhyManufacturersChooseNovus() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4, ease: "easeOut" }}
-            className="mb-3.5 inline-flex items-center justify-center gap-[9px] text-[11px] font-bold uppercase tracking-[0.2em] text-primary before:h-px before:w-3 before:flex-[0_0_auto] before:bg-current before:content-[''] after:h-px after:w-3 after:flex-[0_0_auto] after:bg-current after:content-['']">Why Manufacturers Choose Novus</motion.p>
+            className="mb-3.5 inline-flex items-center justify-center gap-[9px] text-[11px] font-bold uppercase tracking-[0.2em] text-primary before:h-px before:w-3 before:flex-[0_0_auto] before:bg-current before:content-[''] after:h-px after:w-3 after:flex-[0_0_auto] after:bg-current after:content-['']">Why Novus</motion.p>
           <motion.h2
             initial={false}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.05, duration: 0.45, ease: "easeOut" }}
             className="text-[clamp(32px,4vw,40px)] font-bold leading-[44px] tracking-[-0.8px] text-[#111]" id="why-choose-novus-title">
-            Choose risk we own.
+            Why manufacturers choose Novus
           </motion.h2>
         </header>
 
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
           {pillars.map(({ title, description, Icon }, index) => (
             <motion.article
               initial={false}

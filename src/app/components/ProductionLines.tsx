@@ -8,10 +8,10 @@ const productionLines = [
     title: "Solar PV Manufacturing",
     tagline: "Ingot to module. One line. One partner.",
     description:
-      "Full TOPCon-ready cell line. 15-machine fully automatic robotic module line. Novus Carry AMR inside the line. Novus MES on top. Delivered in 16 to 20 weeks.",
+      "TOPCon-ready cell lines, a 15-machine automatic module line, Novus Carry AMRs inside the line.",
     image: "/images/production/solar-pv-manufacturing.webp",
     imageAlt: "Robotic equipment on a solar PV module production line",
-    href: "/solar/solar-pv-manufacturing",
+    href: "/solar-pv-manufacturing",
     linkText: "Explore Solar PV Manufacturing",
   },
   {
@@ -19,7 +19,7 @@ const productionLines = [
     title: "Battery Energy Storage Systems",
     tagline: "Cell to shipped pack. One line. One partner.",
     description:
-      "Six stages across two halls. Purpose-built for grid-scale, C&I, residential, and EV pack assembly. Not adapted from EV manufacturing. Delivered in 16 to 20 weeks.",
+      "Six stages across two halls, built for 20-year grid storage, not adapted from EV.",
     image: "/images/production/battery-energy-storage.jpg",
     imageAlt: "Battery packs assembled along an energy storage production line",
     href: "/bess",
@@ -58,11 +58,7 @@ export default function ProductionLines() {
             transition={{ delay: 0.1, duration: 0.45 }}
             className="mx-auto mt-4 max-w-[760px] text-base leading-[1.75] text-[#5a6875]"
           >
-            Novus delivers the two most capital-intensive lines in India&apos;s
-            clean-energy build-out under a single accountable engagement.
-            Process equipment from global technology leaders. Material handling
-            and MES from Novus. Commissioned, trained, and supported by
-            India-based engineers.
+             Process equipment from global technology leaders. Robotics and MES from Novus. Commissioned and serviced by India-based engineers.
           </motion.p>
         </header>
 
@@ -102,10 +98,7 @@ export default function ProductionLines() {
           transition={{ duration: 0.4, delay: 0.1, ease: "easeOut" }}
           className="mt-7 rounded-2xl border border-[#dce7ee] bg-[#f5f9fc] p-6 shadow-[0_8px_24px_rgba(8,31,58,0.04)] sm:p-8">
           <p className="mx-auto max-w-[1050px] text-center text-sm leading-[1.75] text-[#526272] sm:text-base">
-            Every Novus line ships with a manufacturing execution system that
-            connects equipment, materials, and production data end-to-end.
-            Real-time visibility. Full traceability. PLI and ALMM compliance
-            documentation built in.
+            Every line ships with Novus MES. Real-time visibility, full traceability, PLI and ALMM documentation built in.
           </p>
         </motion.aside>
       </div>

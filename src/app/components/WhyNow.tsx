@@ -6,21 +6,21 @@ const marketMetrics = [
   {
     value: "132.85 GW",
     description:
-      "Solar installed capacity, India, Nov 2025. Up 41% year on year. India is now third globally.",
+      "Solar installed in India, Nov 2025. Source: MNRE",
     image: "/images/why-now/solar-installed-capacity.jpg",
     imageAlt: "Solar panels contributing to India's installed capacity",
   },
   {
     value: "500 GW",
     description:
-      "Renewable target by 2030. MNRE national target, with solar at the core.",
+      "Non-fossil capacity target by 2030. Source: MNRE",
     image: "/images/why-now/renewable-energy-target.jpg",
     imageAlt: "Renewable energy infrastructure behind India's 2030 target",
   },
   {
     value: "236 GWh",
     description:
-      "BESS capacity required by 2032. Against 8.6 GW today. Source: CEA, 2023.",
+      "Storage India needs by 2031-32. Source: CEA",
     image: "/images/why-now/battery-energy-storage.jpg",
     imageAlt: "Battery energy storage systems for grid-scale capacity",
   },
@@ -51,7 +51,7 @@ export default function WhyNow() {
             viewport={{ once: true }}
             transition={{ delay: 0.05, duration: 0.45, ease: "easeOut" }}
             className="text-[clamp(32px,4vw,40px)] font-bold leading-[44px] tracking-[-0.8px] text-white" id="why-now-title">
-            The window is open. commissioning takes 12 to 18 months.
+            Projects take 12 to 18 months. Your line takes 16 to 20 weeks.
           </motion.h2>
           <motion.p
             initial={false}
@@ -59,9 +59,7 @@ export default function WhyNow() {
             viewport={{ once: true }}
             transition={{ delay: 0.1, duration: 0.45, ease: "easeOut" }}
             className="mx-auto mt-[18px] max-w-[760px] text-base leading-[1.75] text-white/80">
-            PLI incentives are time-bound. Manufacturers who secure their line
-            partner and begin engineering now are the ones producing when the
-            incentives pay out. Those who wait miss the window.
+            PLI incentives are time-bound. Lock your line partner now and you are producing when demand peaks.
           </motion.p>
         </header>
 

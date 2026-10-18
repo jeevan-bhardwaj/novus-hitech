@@ -7,37 +7,37 @@ const stages = [
     number: "01",
     name: "Cell Receiving & Grading",
     description:
-      "Incoming LFP/NMC inspection. Capacity and IR sorting. Climate-controlled dry-zone storage.",
+      "Cell inspection, capacity and internal-resistance grading, and controlled storage.",
   },
   {
     number: "02",
     name: "Module Assembly",
     description:
-      "Cell stacking in fixtures. Laser and busbar welding. BMS slave board integration and test.",
+      "Prismatic LFP cell stacking, busbar welding, BMS integration and checks.",
   },
   {
     number: "03",
     name: "Pack & Rack Integration",
     description:
-      "Module-to-rack assembly. Thermal management fit-out. Rack-level BMS wiring.",
+      "Module-to-rack assembly, cooling plate fit-out and rack-level BMS wiring.",
   },
   {
     number: "04",
     name: "Container Integration",
     description:
-      "Container / cabinet fit-out. HVAC and liquid cooling loops. Fire suppression installation.",
+      "Integration of tested packs, cooling, HVAC and fire suppression into the container.",
   },
   {
     number: "05",
     name: "EOL Testing",
     description:
-      "Grid-tied charge / discharge cycling. Insulation and hipot. IEC 62619 / UL 9540 checks.",
+      "In-line cooling, leak, weld and electrical safety checks before dispatch.",
   },
   {
     number: "06",
     name: "Dispatch",
     description:
-      "Serial-level MES record closure. UN 38.3 compliance. Container staging and loading.",
+      "Serial-level traceability, compliance records, container staging and loading.",
   },
 ];
 
@@ -56,7 +56,7 @@ export default function BessLineCoverage() {
             transition={{ duration: 0.4, ease: "easeOut" }}
             className="mb-3.5 inline-flex items-center justify-center gap-[9px] text-[11px] font-bold uppercase tracking-[0.2em] text-primary before:h-px before:w-3 before:flex-[0_0_auto] before:bg-current before:content-[''] after:h-px after:w-3 after:flex-[0_0_auto] after:bg-current after:content-['']"
           >
-            What the BESS line covers
+            What the line covers
           </motion.p>
           <motion.h2
             initial={{ opacity: 0, y: 10 }}
@@ -66,7 +66,7 @@ export default function BessLineCoverage() {
             className="text-[clamp(32px,4vw,40px)] font-bold leading-[1.1] tracking-[-0.035em] text-secondary"
             id="bess-line-coverage-title"
           >
-            Cell to Container. One Continuous BESS Line.
+            Six stages. Two halls. One contract.
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 8 }}
@@ -75,9 +75,8 @@ export default function BessLineCoverage() {
             transition={{ delay: 0.1, duration: 0.45, ease: "easeOut" }}
             className="mx-auto mt-[18px] max-w-[820px] text-base leading-[1.75] text-[#526272]"
           >
-            Turnkey scope from incoming cell testing to finished container
-            dispatch. One partner. One contract. One data thread across six
-            stages and two connected halls.
+            From cell receiving and grading to finished container dispatch,
+            both halls operate under one accountable line partner.
           </motion.p>
         </header>
 
@@ -129,8 +128,12 @@ export default function BessLineCoverage() {
           <span className="font-semibold not-italic text-secondary">
             Architecture:
           </span>{" "}
-          Hall A: Module &amp; Pack Assembly <span aria-hidden="true">|</span>{" "}
-          Hall B: Container Integration
+          Hall A: Pack Assembly <span aria-hidden="true">|</span>{" "}
+          Hall B: Container Assembly
+        </p>
+        <p className="mt-2 text-sm leading-[1.7] text-[#526272]">
+          Most vendors deliver one hall. Novus delivers both. Scales from 50
+          MWh to 500+ MWh per year.
         </p>
       </div>
     </section>

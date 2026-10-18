@@ -1,121 +1,169 @@
 "use client";
 
+import type { FormEvent } from "react";
 import { useState } from "react";
-import EnquiryModal from "./EnquiryModal";
 
-const siteUrl = "https://solar.novushitech.com";
-const brochureUrl = `${siteUrl}/wp-content/uploads/2026/04/New-Solar-Brochure-Final-V4-for-Web.pdf`;
+const inputClass =
+  "mt-1 block w-full rounded-lg border border-[#dce5ec] bg-white px-3 py-2.5 text-sm text-[#081f3a] outline-none transition-colors placeholder:text-[#92a0ad] focus:border-[#217ebe] focus:ring-2 focus:ring-[#217ebe]/15";
 
-const proofPoints = [
-  { value: "1,400+", label: "Robots deployed" },
-  { value: "2,600+", label: "Professionals" },
-  { value: "100+", label: "Enterprise clients" },
+const stats = [
+  { value: "236 GWh", label: "Storage India needs by 2031-32 (CEA)" },
+  { value: "4.2 GWh", label: "Per year from one 12 PPM line" },
+  { value: "16 to 20 weeks", label: "Line delivery from confirmed PO" },
 ];
 
 export default function BessHero() {
-  const [expertModalOpen, setExpertModalOpen] = useState(false);
-  const [brochureModalOpen, setBrochureModalOpen] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+
+  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const form = new FormData(event.currentTarget);
+    const message = [
+      `Full name: ${String(form.get("name") ?? "")}`,
+      `Company: ${String(form.get("company") ?? "")}`,
+      `Work email: ${String(form.get("email") ?? "")}`,
+      `Phone: ${String(form.get("phone") ?? "")}`,
+      `Interested in: ${String(form.get("interest") ?? "")}`,
+      `Preferred day: ${String(form.get("preferred_day") ?? "")}`,
+      `Message: ${String(form.get("message") ?? "")}`,
+      "Event source: BESS_Hero_Meeting_Form",
+    ].join("\n");
+    window.location.href = `mailto:solar@novushitech.com?subject=${encodeURIComponent(
+      "Book a BESS meeting at REI Expo 2026"
+    )}&body=${encodeURIComponent(message)}`;
+    setSubmitted(true);
+  }
 
   return (
     <>
-      <section className="relative isolate overflow-hidden bg-[#081F3A] text-white">
+      <section className="relative isolate overflow-hidden bg-[#081f3a] text-white">
         <img
           className="absolute inset-0 -z-10 h-full w-full object-cover object-center"
           src="/images/hero/BESS-pack-assembly.webp"
-          alt=""
+          alt="Automated battery energy storage pack assembly line"
           fetchPriority="high"
         />
-        <div
-          className="absolute inset-0 -z-10 bg-gradient-to-r from-[#06172b]/95 via-[#081F3A]/85 to-[#081F3A]/50"
-          aria-hidden="true"
-        />
-        <div
-          className="absolute inset-0 -z-10 bg-gradient-to-b from-[#081F3A]/20 via-transparent to-[#081F3A]/75"
-          aria-hidden="true"
-        />
-
-        <div className="mx-auto flex min-h-[620px] w-full max-w-[1440px] items-center px-6 pb-16 pt-28 sm:min-h-[680px] sm:px-8 sm:pt-36 lg:min-h-[720px] lg:px-12 lg:pb-20 lg:pt-40">
-          <div className="max-w-[680px]">
-            <p className="text-[11px] font-bold uppercase leading-relaxed tracking-[0.16em] text-[#9fd4f5] sm:text-xs sm:tracking-[0.2em]">
-              Turnkey BESS manufacturing lines, engineered and
-              serviced in India
+        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-[#06172b]/95 via-[#081f3a]/85 to-[#081f3a]/60" aria-hidden="true" />
+        <div className="mx-auto grid w-full max-w-[1440px] gap-9 px-5 pb-14 pt-28 sm:px-8 sm:pt-32 lg:grid-cols-[minmax(0,1fr)_minmax(360px,0.78fr)] lg:items-center lg:gap-14 lg:px-12 lg:pb-16 lg:pt-36">
+          <div className="max-w-[690px]">
+            <p className="text-xs font-bold uppercase leading-relaxed tracking-[0.18em] text-[#9fd4f5]">
+              BESS Manufacturing · REI Expo 2026, Booth A01
             </p>
-            <h1 className="mt-4 text-[34px] font-bold leading-[1.1] tracking-[-0.035em] text-white sm:text-[40px] lg:text-[40px]">
-              Turnkey BESS Manufacturing Lines. Cell to Container.
+            <h1 className="mt-4 text-5xl font-bold leading-[1.08] tracking-[-0.035em]">
+              BESS Manufacturing Lines Built for 20-Year Grid Storage
             </h1>
-            <p className="mt-5 max-w-[590px] text-[16px] leading-[26px] text-white/80">
-              Six stages across two halls. Purpose-built for grid-scale energy
-              storage, not adapted from EV. 4.2 GWh per year at 12 PPM.
-              Delivered under one contract, engineered and serviced in India.
+            <p className="mt-5 max-w-[620px] text-base leading-7 text-white/85">
+              Cell to container across six stages and two halls. 4.2 GWh per
+              year at 12 PPM. Engineered and serviced in India.
             </p>
+            <ul className="mt-6 grid gap-3">
+              {[
+                "Built for prismatic LFP, not adapted from EV",
+                "Pack and container lines under one contract",
+                "Serial-level traceability for PLI and ALMM audits",
+              ].map((point) => (
+                <li
+                  className="flex items-start gap-3 text-sm font-medium text-white/90 sm:text-base"
+                  key={point}
+                >
+                  <span
+                    className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#2b93cf]/25 text-[#9fd4f5]"
+                    aria-hidden="true"
+                  >
+                    <svg viewBox="0 0 20 20" className="h-3.5 w-3.5 fill-none stroke-current"><path d="m4 10 4 4 8-8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                  </span>
+                  {point}
+                </li>
+              ))}
+            </ul>
+          </div>
 
-            <div className="mt-8 flex flex-wrap gap-3 max-[600px]:flex-col max-[600px]:items-stretch">
-              <button
-                className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-[6px] bg-primary px-6 py-0 text-[13px] font-bold text-white transition-all hover:bg-[#1a689e] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-                type="button"
-                onClick={() => setExpertModalOpen(true)}
-              >
-                Speak to a BESS Expert
-                <svg className="h-[17px] w-[17px] fill-none stroke-current" viewBox="0 0 20 20" aria-hidden="true">
-                  <path d="M4 10h11m-4-4 4 4-4 4" />
-                </svg>
-              </button>
-              <button
-                className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-[4px] border border-white/70 bg-transparent px-4 py-2 text-sm font-medium text-white transition-all hover:bg-white hover:text-secondary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-                type="button"
-                onClick={() => setBrochureModalOpen(true)}
-              >
-                Download BESS Brochure
-                <svg className="h-[17px] w-[17px] fill-none stroke-current" viewBox="0 0 20 20" aria-hidden="true">
-                  <path d="M4 10h11m-4-4 4 4-4 4" />
-                </svg>
-              </button>
-            </div>
+          <div className="rounded-2xl bg-white p-5 text-[#081f3a] shadow-[0_24px_70px_rgba(0,0,0,0.35)] sm:p-7" id="bess-meeting-form">
+            {submitted ? (
+              <div className="flex min-h-[470px] flex-col items-center justify-center text-center" role="status" aria-live="polite">
+                <span className="flex h-14 w-14 items-center justify-center rounded-full bg-green-100 text-green-700" aria-hidden="true">✓</span>
+                <h2 className="mt-5 text-2xl font-bold">Thank you.</h2>
+                <p className="mt-3 max-w-sm text-sm leading-relaxed text-[#526272]">
+                  Your email app should open with your meeting request. Send
+                  that message to complete your request; our solar team will
+                  confirm your slot within one business day.
+                </p>
+              </div>
+            ) : (
+              <>
+                <h2 className="text-xl font-bold sm:text-2xl">Book a BESS meeting at REI Expo 2026</h2>
+                <p className="mt-1.5 text-sm leading-relaxed text-[#637384]">
+                  Pick a day. Our solar team confirms your slot within one business day.
+                </p>
+                <form className="mt-5 grid gap-3.5" onSubmit={handleSubmit}>
+                  <div className="grid gap-3 sm:grid-cols-2">
+                    <label className="text-xs font-semibold text-[#354b60]">
+                      Full name*
+                      <input className={inputClass} name="name" autoComplete="name" placeholder="Your full name" required />
+                    </label>
+                    <label className="text-xs font-semibold text-[#354b60]">
+                      Company*
+                      <input className={inputClass} name="company" autoComplete="organization" placeholder="Company name" required />
+                    </label>
+                  </div>
+                  <div className="grid gap-3 sm:grid-cols-2">
+                    <label className="text-xs font-semibold text-[#354b60]">
+                      Work email*
+                      <input className={inputClass} name="email" type="email" autoComplete="email" placeholder="you@company.com" required />
+                    </label>
+                    <label className="text-xs font-semibold text-[#354b60]">
+                      Phone*
+                      <input className={inputClass} name="phone" type="tel" autoComplete="tel" placeholder="+91" required />
+                    </label>
+                  </div>
+                  <div className="grid gap-3 sm:grid-cols-2">
+                    <label className="text-xs font-semibold text-[#354b60]">
+                      Interested in*
+                      <select className={inputClass} name="interest" defaultValue="BESS line" required>
+                        <option>Solar PV line</option>
+                        <option>BESS line</option>
+                        <option>Both</option>
+                      </select>
+                    </label>
+                    <label className="text-xs font-semibold text-[#354b60]">
+                      Preferred day*
+                      <select className={inputClass} name="preferred_day" defaultValue="" required>
+                        <option value="" disabled>Choose a day</option>
+                        <option>22 Oct</option>
+                        <option>23 Oct</option>
+                        <option>24 Oct</option>
+                        <option>Virtual meeting</option>
+                      </select>
+                    </label>
+                  </div>
+                  <label className="text-xs font-semibold text-[#354b60]">
+                    Message
+                    <textarea className={`${inputClass} min-h-20 resize-y`} name="message" placeholder="Target capacity, site status, timeline" rows={2} />
+                  </label>
+                  <button className="mt-1 inline-flex min-h-12 items-center justify-center rounded-lg bg-primary px-6 text-sm font-bold text-white transition-colors hover:bg-[#1a689e]" type="submit">
+                    Book a Meeting
+                  </button>
+                  <p className="text-center text-xs leading-relaxed text-[#637384]">
+                    Can&apos;t make it to Greater Noida? Choose &quot;Virtual
+                    meeting&quot; and we&apos;ll call you.
+                  </p>
+                </form>
+              </>
+            )}
           </div>
         </div>
       </section>
 
-      <section
-        className="border-b border-[#dce7ee] bg-white px-6 py-8 sm:py-10 lg:py-12"
-        aria-label="Novus deployment experience"
-      >
-        <dl className="mx-auto grid max-w-[1120px] grid-cols-1 divide-y divide-[#dce7ee] sm:grid-cols-3 sm:divide-x sm:divide-y-0">
-          {proofPoints.map((point) => (
-            <div
-              className="flex min-h-[84px] flex-col items-center justify-center gap-2 px-2 py-4 text-center sm:min-h-0 sm:py-0"
-              key={point.label}
-            >
-              <dt className="text-[32px] font-bold leading-none tracking-[-0.045em] text-secondary sm:text-[40px] lg:text-5xl">
-                {point.value}
-              </dt>
-              <dd className="text-[15px] font-semibold uppercase leading-[1.4] tracking-[0.08em] text-[#5b6875]">
-                {point.label}
-              </dd>
+      <section className="border-b border-[#dce7ee] bg-white px-5 py-7 sm:px-6 sm:py-9" aria-label="BESS manufacturing line metrics">
+        <dl className="mx-auto grid max-w-[1120px] gap-5 divide-y divide-[#dce7ee] sm:grid-cols-3 sm:divide-x sm:divide-y-0">
+          {stats.map(({ value, label }) => (
+            <div className="flex flex-col items-center justify-center gap-2 px-3 py-3 text-center" key={value}>
+              <dt className="text-3xl font-bold leading-none tracking-[-0.04em] text-secondary sm:text-4xl">{value}</dt>
+              <dd className="text-sm leading-relaxed text-[#526272]">{label}</dd>
             </div>
           ))}
         </dl>
       </section>
-
-      {expertModalOpen && (
-        <EnquiryModal
-          onClose={() => setExpertModalOpen(false)}
-          title="Speak to a BESS Expert"
-          description="Share your details and our team will discuss your grid-scale BESS manufacturing requirements."
-          subject="BESS manufacturing line enquiry"
-          eventSource="BESS_Hero_Expert"
-        />
-      )}
-      {brochureModalOpen && (
-        <EnquiryModal
-          onClose={() => setBrochureModalOpen(false)}
-          title="Download the BESS Brochure"
-          description="Enter your details to download information about Novus BESS assembly lines."
-          submitLabel="Download BESS Brochure"
-          subject="BESS brochure request"
-          eventSource="BESS_Hero_Brochure"
-          brochureUrl={brochureUrl}
-        />
-      )}
     </>
   );
 }

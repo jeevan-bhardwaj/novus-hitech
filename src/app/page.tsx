@@ -1,13 +1,21 @@
+import type { Metadata } from "next";
 import FaqSection from "./components/FaqSection";
 import EventBanner from "./components/EventBanner";
-import BottomCta from "./components/BottomCta";
+// import BottomCta from "./components/BottomCta";
+import ClosingCta from "./components/ClosingCta";
 import ProductionLines from "./components/ProductionLines";
-import RoboticsHeritage from "./components/RoboticsHeritage";
+import ReiExpoVideo from "./components/ReiExpoVideo";
 import SolarHero from "./components/SolarHero";
 import TrustedByManufacturers from "./components/TrustedByManufacturers";
 import WhyNow from "./components/WhyNow";
 import WhyManufacturersChooseNovus from "./components/WhyManufacturersChooseNovus";
 import ScrollReveal from "./components/ScrollReveal";
+
+export const metadata: Metadata = {
+  title: "Turnkey Solar PV & BESS Lines: Proven Partner | REI 2026",
+  description:
+    "Turnkey solar PV (ingot to module) and BESS (cell to container) lines, delivered in 16 to 20 weeks. Meet Novus at REI Expo 2026, Hall 16, Booth A01.",
+};
 
 export default function Home() {
   return (
@@ -19,27 +27,26 @@ export default function Home() {
         <ProductionLines />
       </ScrollReveal>
       <ScrollReveal>
+        <EventBanner />
+      </ScrollReveal>
+      <ScrollReveal>
+        <ReiExpoVideo />
+      </ScrollReveal>
+      <ScrollReveal>
         <WhyNow />
       </ScrollReveal>
       <ScrollReveal>
         <WhyManufacturersChooseNovus />
       </ScrollReveal>
       <ScrollReveal>
-        <RoboticsHeritage />
-      </ScrollReveal>
-        <ScrollReveal>
         <TrustedByManufacturers />
-      </ScrollReveal>
-      <ScrollReveal>
-        <EventBanner />
       </ScrollReveal>
       <ScrollReveal>
         <FaqSection />
       </ScrollReveal>
-
-      {/* <ScrollReveal>
-      <BottomCta />
-      </ScrollReveal> */}
+      <ScrollReveal>
+        <ClosingCta />
+      </ScrollReveal>
     </>
   );
 }

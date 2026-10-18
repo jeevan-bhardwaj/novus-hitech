@@ -3,8 +3,7 @@
 import { useState } from "react";
 import EnquiryModal from "./EnquiryModal";
 
-const siteUrl = "https://solar.novushitech.com";
-const brochureUrl = `${siteUrl}/wp-content/uploads/2026/04/New-Solar-Brochure-Final-V4-for-Web.pdf`;
+const brochureUrl = "/files/New-Solar-Brochure-Final-V4-for-Web.pdf";
 
 type ModalMode = "milestone-plan" | "brochure" | null;
 
@@ -75,7 +74,7 @@ export default function BottomCta() {
         <EnquiryModal
           onClose={() => setModalMode(null)}
           title="Get the Solar & BESS Brochure"
-          description="Enter your contact details to open the Novus solar and BESS brochure."
+          description="Enter your contact details to download the Novus solar and BESS brochure."
           submitLabel="Download Brochure"
           subject="Solar & BESS brochure request"
           eventSource="Solar_Brochure_Gate"

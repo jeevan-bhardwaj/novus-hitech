@@ -107,7 +107,7 @@ export default function AboutUsPage() {
               <span className="h-px w-3 bg-current" aria-hidden="true" />
             </p>
             <h1
-              className="text-[34px] font-bold leading-[1.1] tracking-[-0.035em] text-white sm:text-[40px] lg:text-[40px]"
+              className="text-5xl font-bold leading-[1.1] tracking-[-0.035em] text-white"
               id="about-hero-title"
             >
               Elevate solar manufacturing to new heights with Novus Hi-Tech.

@@ -1,7 +1,7 @@
 const siteUrl = "https://solar.novushitech.com";
 
 const solutions = [
-  { label: "Solar PV Manufacturing", href: "/solar/solar-pv-manufacturing" },
+  { label: "Solar PV Manufacturing", href: "/solar-pv-manufacturing" },
   { label: "Ingot & Wafer", href: `${siteUrl}/ingot-wafer/` },
   { label: "Cell Production", href: `${siteUrl}/cell-production-lines/` },
   { label: "Module Production", href: `${siteUrl}/module-production-lines/` },
@@ -59,7 +59,7 @@ function NavigationLinks({ mobile = false }: { mobile?: boolean }) {
       <a className={linkClass} href={`${siteUrl}/resources/`}>
         Resources
       </a>
-      <a className={linkClass} href={`${siteUrl}/contact/`}>
+      <a className={linkClass} href="/contact">
         Contact
       </a>
     </>
@@ -85,7 +85,7 @@ export default function Header() {
         </nav> */}
 
         <div className="hidden flex-[0_0_auto] items-center gap-5 min-[1024px]:flex">
-          <a className="inline-flex items-center justify-center whitespace-nowrap rounded-[6px] bg-primary px-5 py-2.5 text-[12px] font-bold uppercase tracking-wider text-white shadow-md transition-all duration-200 hover:bg-[#1a689e] hover:shadow-lg active:scale-95" href={`${siteUrl}/contact/`}>
+          <a className="inline-flex items-center justify-center whitespace-nowrap rounded-[6px] bg-primary px-5 py-2.5 text-[12px] font-bold uppercase tracking-wider text-white shadow-md transition-all duration-200 hover:bg-[#1a689e] hover:shadow-lg active:scale-95" href="/contact">
             TALK TO AN EXPERT
           </a>
         </div>
@@ -98,7 +98,7 @@ export default function Header() {
           </summary>
           <nav id="mobile-navigation" className="fixed inset-x-0 top-16 hidden max-h-[calc(100dvh-4rem)] gap-1 overflow-y-auto border-t border-[#edf0f2] bg-white px-5 pb-[22px] pt-3.5 shadow-[0_18px_25px_rgba(8,31,58,0.13)] group-open:grid min-[1024px]:hidden" aria-label="Mobile navigation">
             <NavigationLinks mobile />
-            <a className="mt-2.5 inline-flex min-h-[39px] items-center justify-center justify-self-start whitespace-nowrap rounded-[6px] bg-primary px-5 py-2.5 text-[12px] font-bold uppercase tracking-wider text-white shadow-md transition-all duration-200 hover:bg-[#1a689e] hover:shadow-lg active:scale-95" href={`${siteUrl}/contact/`}>
+            <a className="mt-2.5 inline-flex min-h-[39px] items-center justify-center justify-self-start whitespace-nowrap rounded-[6px] bg-primary px-5 py-2.5 text-[12px] font-bold uppercase tracking-wider text-white shadow-md transition-all duration-200 hover:bg-[#1a689e] hover:shadow-lg active:scale-95" href="/contact">
               TALK TO AN EXPERT
             </a>
           </nav>

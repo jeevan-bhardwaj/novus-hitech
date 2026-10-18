@@ -4,31 +4,31 @@ import { motion } from "framer-motion";
 
 const faqs = [
   {
+    question: " Where is Novus Hi-Tech at REI Expo 2026?",
+    answer:
+      "Novus Hi-Tech is at Hall 16, Booth A01 at Renewable Energy India Expo 2026, India Expo Mart, Greater Noida, from 22 to 24 October 2026. Our solar and BESS engineers walk visitors through turnkey ingot-to-module and cell-to-container lines. Book a slot in advance to meet a line specialist.",
+  },
+  {
+    question:
+      "How do I book a meeting with Novus at REI Expo 2026?",
+    answer:
+      "Use the Book a Meeting form at the top of this page. Choose 22, 23 or 24 October, add your project details in the message field, and our solar team confirms your slot within one business day. Visitors who cannot attend can choose a virtual meeting instead.",
+  },
+  {
     question: "Who supplies turnkey solar PV and BESS manufacturing lines in India?",
     answer:
-      "Novus Hi-Tech supplies turnkey solar PV manufacturing lines (Ingot to Module, TOPCon-ready) and BESS assembly lines (Cell to Container, six stages across two halls). Process equipment is integrated with Novus robotics and Novus MES under one contract. Commissioning takes 16 to 20 weeks. Pan-India 24x7 support is included for the life of the line.",
+      "Novus Hi-Tech supplies turnkey solar PV lines, from ingot to module, and BESS assembly lines, from cell to container. Global process equipment is integrated with Novus robotics and Novus MES under one contract, commissioned on your floor and serviced pan-India for the life of the line.",
   },
   {
     question:
-      "What is the difference between buying equipment from a Chinese vendor directly and using a turnkey Indian partner?",
+      "How long does Novus take to deliver a solar or BESS line?",
     answer:
-      "A direct Chinese purchase leaves integration, layout, robotics, software, PLI documentation, and after-sales on the buyer's team. When a machine fails 18 months in, the engineer is in Shenzhen and one week of lost production erases the saving. Novus supplies the same or equivalent process equipment under one turnkey contract, integrates it with Novus robotics and MES, commissions on the buyer's floor, and provides pan-India on-ground service for the life of the line.",
+      "Novus delivers a solar PV or BESS line in approximately 16 to 20 weeks from confirmed PO and advance payment. Installation, commissioning, site acceptance testing and a 4-day training programme are included in the commercial offer, so your team runs the line independently from day one.",
   },
   {
-    question: "Are Novus lines PLI-compliant?",
+    question: "Are Novus lines designed for PLI and ALMM compliance?",
     answer:
-      "Yes. Novus solar PV and BESS lines are designed to meet Production Linked Incentive scheme requirements. Novus MES generates the compliance documentation trail (batch records, equipment parameters, QC gates, pack-level serialisation) that MNRE and ALMM auditors expect, from first cell to shipped module or pack.",
-  },
-  {
-    question:
-      "How long does it take to commission a Novus solar or BESS manufacturing line?",
-    answer:
-      "Approximately 16 to 20 weeks from confirmed PO and advance payment. Installation, commissioning, and site acceptance testing are included in the commercial offer.",
-  },
-  {
-    question: "What after-sales support does Novus provide?",
-    answer:
-      "Pan-India 24x7 support through India-based engineers, stocked spare parts from local inventory, and O&M and AMC programmes on paid basis. Novus service team is India-based for the life of the line. No dependence on international fly-in engineers or time-zone alignment.",
+      "Yes. Novus solar PV and BESS lines are designed to meet Production Linked Incentive scheme requirements. Novus MES records batch data, equipment parameters, QC gates and serial-level traceability, creating the documentation trail MNRE and ALMM audits expect from first cell to shipped module or pack.",
   },
 ];
 

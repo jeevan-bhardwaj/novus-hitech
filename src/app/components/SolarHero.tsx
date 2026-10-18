@@ -1,360 +1,236 @@
 "use client";
 
-import { useState } from "react";
-import { motion } from "framer-motion";
-import EnquiryModal from "./EnquiryModal";
+import { useState, type FormEvent } from "react";
 
-const siteUrl = "https://solar.novushitech.com";
-const brochureUrl = `${siteUrl}/wp-content/uploads/2026/04/New-Solar-Brochure-Final-V4-for-Web.pdf`;
+const enquiryEmail = "solar@novushitech.com";
+const brochureUrl = "/files/New-Solar-Brochure-Final-V4-for-Web.pdf";
 
 const proofPoints = [
   { value: "1,400+", label: "Robots deployed" },
-  { value: "2600+", label: "Professionals" },
+  { value: "150+", label: "Patents" },
+  { value: "20+", label: "Years in autonomous systems" },
   { value: "100+", label: "Enterprise clients" },
 ];
 
+const inputClass =
+  "mt-1 block w-full rounded-lg border border-[#dce5ec] bg-white px-3 py-2.5 text-sm text-[#081f3a] outline-none transition-colors placeholder:text-[#92a0ad] focus:border-[#217ebe] focus:ring-2 focus:ring-[#217ebe]/15";
+
 export default function SolarHero() {
-  const [brochureModalOpen, setBrochureModalOpen] = useState(false);
-  
-  // Form States
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "+91",
-    company: "",
-    projectType: "",
-    message: "",
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
+  const handleFormSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const formData = new FormData(event.currentTarget);
+    const fields = [
+      ["Name", "name"],
+      ["Company", "company"],
+      ["Work email", "email"],
+      ["Phone", "phone"],
+      ["Interested in", "interest"],
+      ["Preferred day", "preferredDay"],
+      ["Message", "message"],
+    ] as const;
+    const body = fields
+      .map(([label, name]) => `${label}: ${String(formData.get(name) ?? "")}`)
+      .join("\n");
+    const mailto = `mailto:${enquiryEmail}?subject=${encodeURIComponent(
+      "REI Expo 2026 meeting request",
+    )}&body=${encodeURIComponent(body)}`;
 
-  const handleFormSubmit = (e) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    
-    // Simulate API call
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setIsSubmitted(true);
-    }, 1000);
+    window.location.href = mailto;
+    setSubmitted(true);
   };
 
   return (
     <>
       <section
-        className="relative isolate overflow-hidden bg-[#081F3A] text-white"
+        className="relative isolate overflow-hidden bg-[#081f3a] text-white"
         id="home"
       >
-        <div className="pointer-events-none absolute inset-0 z-0" aria-hidden="true">
+        <div className="pointer-events-none absolute inset-0 -z-10" aria-hidden="true">
           <img
-            className="h-full w-full object-cover object-center scale-105 transform transition-transform duration-1000"
+            className="h-full w-full object-cover object-center"
             src="/images/hero/solar-banner.webp"
             alt=""
             fetchPriority="high"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#081F3A]/95 via-[#081F3A]/75 to-[#081F3A]/40" />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#081F3A]/50 via-transparent to-[#081F3A]/90" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#081f3a]/95 via-[#081f3a]/80 to-[#081f3a]/55" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#081f3a]/35 via-transparent to-[#081f3a]/80" />
         </div>
-        <div
-          className="pointer-events-none absolute inset-0 z-0 opacity-50"
-          aria-hidden="true"
-          style={{
-            background:
-              "radial-gradient(circle at 85% 45%, rgba(33,126,190,0.35), transparent 50%)",
-          }}
-        />
-        
-        {/* Banner */}
-        <div
-          className="absolute inset-x-0 top-16 z-10 h-9 overflow-hidden border-y border-white/15 bg-[#081F3A]/65 backdrop-blur-sm lg:top-[82px]"
-          aria-label="REI Expo 2026 event details"
-          role="region"
-        >
-          <div className="flex h-full w-max animate-[partner-marquee_32s_linear_infinite] items-center hover:[animation-play-state:paused] motion-reduce:animate-none">
-            {[false, true].map((isDuplicate) => (
-              <div
-                className="flex shrink-0 items-center gap-3 py-0 pl-6 pr-20 text-xs font-semibold text-white sm:gap-5 sm:pr-32 sm:text-sm"
-                key={isDuplicate ? "duplicate" : "original"}
-                aria-hidden={isDuplicate}
-              >
-                <span>Meet us at REI Expo 2026</span>
-                <span className="text-white/60" aria-hidden="true">·</span>
-                <span>22nd–24th October 2026</span>
-                <span className="text-white/60" aria-hidden="true">·</span>
-                <span>Booth A01, Hall 16</span>
-                <span className="text-white/60" aria-hidden="true">·</span>
-                <a
-                  className="text-[#9fd4f5] transition-colors hover:text-white hover:underline"
-                  href="https://renewableenergyindiaexpo.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  tabIndex={isDuplicate ? -1 : undefined}
-                >
-                  www.renewableenergyindiaexpo.com
-                </a>
-              </div>
-            ))}
+
+        <div className="absolute inset-x-0 top-16 z-10 border-y border-white/15 bg-[#081f3a]/75 px-4 py-2.5 backdrop-blur-sm lg:top-[82px]">
+          <div className="mx-auto flex max-w-[1240px] flex-wrap items-center justify-center gap-x-2 gap-y-1 text-center text-[11px] font-semibold text-white/90 sm:text-sm">
+            <span>Meet Novus at REI Expo 2026</span>
+            <span aria-hidden="true">·</span>
+            <span>22 to 24 October</span>
+            <span aria-hidden="true">·</span>
+            <span>Hall 16, Booth A01</span>
+            <span aria-hidden="true">·</span>
+            <span>India Expo Mart, Greater Noida</span>
+            <a
+              className="ml-1 font-bold text-[#9fd4f5] underline underline-offset-4 transition-colors hover:text-white"
+              href="#meeting-form"
+            >
+              Book a Meeting
+            </a>
           </div>
         </div>
 
-        {/* Main Content Grid */}
-        <div className="relative z-10 mx-auto grid min-h-[100vh] w-full min-w-0 max-w-[1440px] items-center gap-12 px-6 pb-16 pt-36 sm:px-8 sm:pt-44 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16 lg:px-12 lg:pb-24 lg:pt-48">
-          
-          {/* Left Side Content */}
-          <div className="min-w-0 max-w-[680px]">
-            <motion.h1
-              initial={false}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
-              className="max-w-[680px] text-[34px] font-bold leading-[1.1] tracking-[-0.035em] text-white sm:text-[44px] lg:text-[48px]"
-            >
-              Turnkey Solar PV & BESS Manufacturing Lines
-            </motion.h1>
-
-            <motion.p
-              initial={false}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.25 }}
-              className="mt-6 max-w-[590px] text-[17px] leading-[28px] text-white/80"
-            >
-              Built by roboticists, not equipment traders. 20+ years of
-              autonomous systems engineering behind every line. World-leading
-              process equipment, integrated with Novus robotics and Novus MES,
-              delivered under one contract.
-            </motion.p>
-
-            <motion.div
-              initial={false}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.4 }}
-              className="mt-8 flex flex-wrap items-center gap-4"
-            >
-              <button
-                type="button"
-                onClick={() => setBrochureModalOpen(true)}
-                className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-[4px] border border-white/70 bg-white/10 px-6 py-2 text-[15px] font-medium text-white backdrop-blur-sm transition-all hover:bg-white hover:text-[#081F3A]"
-              >
-                Download Brochure
-                <svg
-                  className="h-4 w-4"
-                  viewBox="0 0 20 20"
-                  fill="none"
-                  aria-hidden="true"
-                >
-                  <path
-                    d="M4 10h11m-4-4 4 4-4 4"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </button>
-            </motion.div>
-
-            {/* Event Details Restored */}
-            <motion.div
-              initial={false}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.55 }}
-              className="mt-8 max-w-full py-2"
-            >
-              <span className="mb-1.5 block text-sm font-bold uppercase tracking-[0.14em] text-[#9fd4f5]">
-                Event details
-              </span>
-              <span className="flex w-full max-w-full flex-wrap items-center gap-x-1.5 gap-y-1 text-sm sm:gap-x-2 sm:text-[13px] lg:text-[14px]">
-                <span className="inline-flex items-center gap-1 font-bold text-white sm:gap-2.5">
-                  Meet us at REI Expo 2026
-                </span>
-                <span className="text-white/60">·</span>
-                <span className="font-semibold text-white/90">
-                  22nd–24th October 2026
-                </span>
-                <span className="text-white/60">·</span>
-                <span className="font-semibold text-white/90">
-                  Booth A01, Hall 16
-                </span>
-                <span className="text-white/60">·</span>
-                <span className="font-semibold text-white/90">
-                  Visit this website to register:
-                  <a
-                    className="ml-1 inline-flex max-w-full items-center gap-1.5 font-semibold text-[#9fd4f5] [overflow-wrap:anywhere] transition-colors hover:text-white hover:underline"
-                    href="https://renewableenergyindiaexpo.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
+        <div className="mx-auto grid min-h-[780px] w-full max-w-[1440px] items-center gap-10 px-5 pb-14 pt-36 sm:px-8 sm:pt-40 lg:min-h-[790px] lg:grid-cols-[minmax(0,1.05fr)_minmax(370px,0.75fr)] lg:gap-16 lg:px-12 lg:pb-20 lg:pt-44">
+          <div className="max-w-[680px] py-4">
+            <p className="mb-5 text-xs font-bold uppercase tracking-[0.18em] text-[#9fd4f5] sm:text-sm">
+              REI Expo 2026 · Hall 16, Booth A01
+            </p>
+            <h1 className="text-5xl font-bold leading-[1.08] tracking-[-0.035em] text-white">
+              Solar PV and BESS Manufacturing Lines, Built by Roboticists
+            </h1>
+            <p className="mt-6 max-w-[610px] text-base leading-[1.75] text-white/80 sm:text-lg">
+              Engineered and serviced in India. Ingot to module, cell to
+              container, delivered under one contract.
+            </p>
+            <ul className="mt-7 grid gap-3 text-sm font-medium text-white/90 sm:text-base">
+              {[
+                "Line delivery in 16 to 20 weeks",
+                "PLI and ALMM documentation from Novus MES",
+                "Novus robotics and MES built into every line",
+              ].map((point) => (
+                <li className="flex items-start gap-3" key={point}>
+                  <span
+                    className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#2b93cf]/25 text-[#9fd4f5]"
+                    aria-hidden="true"
                   >
-                    www.renewableenergyindiaexpo.com
-                  </a>
-                </span>
-              </span>
-            </motion.div>
+                    <svg viewBox="0 0 20 20" className="h-3.5 w-3.5 fill-none stroke-current">
+                      <path d="m4 10 4 4 8-8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </span>
+                  {point}
+                </li>
+              ))}
+            </ul>
           </div>
 
-          {/* Right Side Lead Generation Form */}
-          <div className="relative mx-auto w-full min-w-0 max-w-[500px] lg:ml-auto lg:mt-0 mt-8">
-            <motion.div
-              initial={false}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.3 }}
-              className="relative w-full rounded-[16px] bg-white p-5 shadow-[0_20px_45px_rgba(0,0,0,0.35)] sm:p-6"
-            >
-              {isSubmitted ? (
-                <div className="flex h-full min-h-[260px] flex-col items-center justify-center text-center">
-                  <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-green-100">
-                    <svg className="h-7 w-7 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-                    </svg>
+          <div
+            className="w-full rounded-2xl bg-white p-5 text-[#081f3a] shadow-[0_24px_70px_rgba(0,0,0,0.35)] sm:p-7"
+            id="meeting-form"
+          >
+            {submitted ? (
+              <div className="flex min-h-[500px] flex-col items-center justify-center text-center">
+                <span className="flex h-14 w-14 items-center justify-center rounded-full bg-green-100 text-green-700" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" className="h-7 w-7 fill-none stroke-current">
+                    <path d="m5 12 4 4L19 6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </span>
+                <h2 className="mt-5 text-2xl font-bold">Thank you.</h2>
+                <p className="mt-3 max-w-sm text-sm leading-relaxed text-[#5a6875]">
+                  Our solar team will confirm your slot within one business day.
+                  If your email app did not open, contact us at{" "}
+                  <a className="font-semibold text-primary underline" href={`mailto:${enquiryEmail}`}>
+                    {enquiryEmail}
+                  </a>
+                  .
+                </p>
+              </div>
+            ) : (
+              <>
+                <h2 className="text-xl font-bold tracking-[-0.02em] sm:text-2xl">
+                  Book a meeting at REI Expo 2026
+                </h2>
+                <p className="mt-1.5 text-sm leading-relaxed text-[#637384]">
+                  Pick a day. Our solar team confirms your slot within one
+                  business day.
+                </p>
+                <form className="mt-5 grid gap-3.5" onSubmit={handleFormSubmit}>
+                  <div className="grid gap-3 sm:grid-cols-2">
+                    <label className="text-xs font-semibold text-[#354b60]">
+                      Full name*
+                      <input className={inputClass} name="name" type="text" autoComplete="name" placeholder="Your full name" required />
+                    </label>
+                    <label className="text-xs font-semibold text-[#354b60]">
+                      Company*
+                      <input className={inputClass} name="company" type="text" autoComplete="organization" placeholder="Company name" required />
+                    </label>
                   </div>
-                  <h3 className="mb-2 text-xl font-bold text-gray-900">Thank you!</h3>
-                  <p className="text-[14px] text-gray-600">
-                    A member of the Novus solar team will be in touch within one business day.
-                  </p>
-                </div>
-              ) : (
-                <>
-                  <h3 className="mb-4 text-xl font-bold text-[#081F3A]">Speak to a Solar Expert</h3>
-                  <form onSubmit={handleFormSubmit} className="space-y-3">
-                    <div>
-                      <label htmlFor="name" className="mb-1 block text-[13px] font-medium text-gray-700">Name *</label>
-                      <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        required
-                        value={formData.name}
-                        onChange={handleInputChange}
-                        className="w-full rounded-md border border-gray-300 px-3 py-1.5 text-sm text-gray-900 focus:border-[#1684c7] focus:outline-none focus:ring-1 focus:ring-[#1684c7]"
-                      />
-                    </div>
-                    
-                    <div>
-                      <label htmlFor="email" className="mb-1 block text-[13px] font-medium text-gray-700">Email *</label>
-                      <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        required
-                        value={formData.email}
-                        onChange={handleInputChange}
-                        className="w-full rounded-md border border-gray-300 px-3 py-1.5 text-sm text-gray-900 focus:border-[#1684c7] focus:outline-none focus:ring-1 focus:ring-[#1684c7]"
-                      />
-                    </div>
-
-                    <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-                      <div>
-                        <label htmlFor="phone" className="mb-1 block text-[13px] font-medium text-gray-700">Contact Number *</label>
-                        <input
-                          type="tel"
-                          id="phone"
-                          name="phone"
-                          required
-                          value={formData.phone}
-                          onChange={handleInputChange}
-                          className="w-full rounded-md border border-gray-300 px-3 py-1.5 text-sm text-gray-900 focus:border-[#1684c7] focus:outline-none focus:ring-1 focus:ring-[#1684c7]"
-                        />
-                      </div>
-                      <div>
-                        <label htmlFor="company" className="mb-1 block text-[13px] font-medium text-gray-700">Company *</label>
-                        <input
-                          type="text"
-                          id="company"
-                          name="company"
-                          required
-                          value={formData.company}
-                          onChange={handleInputChange}
-                          className="w-full rounded-md border border-gray-300 px-3 py-1.5 text-sm text-gray-900 focus:border-[#1684c7] focus:outline-none focus:ring-1 focus:ring-[#1684c7]"
-                        />
-                      </div>
-                    </div>
-
-                    <div>
-                      <label htmlFor="projectType" className="mb-1 block text-[13px] font-medium text-gray-700">Project type *</label>
-                      <select
-                        id="projectType"
-                        name="projectType"
-                        required
-                        value={formData.projectType}
-                        onChange={handleInputChange}
-                        className="w-full rounded-md border border-gray-300 px-3 py-1.5 text-sm text-gray-900 focus:border-[#1684c7] focus:outline-none focus:ring-1 focus:ring-[#1684c7]"
-                      >
-                        <option value="" disabled>Select your project type</option>
-                        <option value="Solar PV Manufacturing">Solar PV Manufacturing (Ingot to Module)</option>
-                        <option value="BESS Assembly">BESS Assembly (Cell to Container)</option>
-                        <option value="MES Integration">MES Integration</option>
-                        <option value="Material Handling Only">Material Handling Only</option>
-                        <option value="Other">Other</option>
+                  <div className="grid gap-3 sm:grid-cols-2">
+                    <label className="text-xs font-semibold text-[#354b60]">
+                      Work email*
+                      <input className={inputClass} name="email" type="email" autoComplete="email" placeholder="you@company.com" required />
+                    </label>
+                    <label className="text-xs font-semibold text-[#354b60]">
+                      Phone*
+                      <input className={inputClass} name="phone" type="tel" autoComplete="tel" placeholder="+91" required />
+                    </label>
+                  </div>
+                  <div className="grid gap-3 sm:grid-cols-2">
+                    <label className="text-xs font-semibold text-[#354b60]">
+                      Interested in*
+                      <select className={inputClass} name="interest" defaultValue="" required>
+                        <option value="" disabled>Select a line</option>
+                        <option>Solar PV line</option>
+                        <option>BESS line</option>
+                        <option>Both</option>
                       </select>
-                    </div>
-
-                    <div>
-                      <label htmlFor="message" className="mb-1 block text-[13px] font-medium text-gray-700">Message (optional)</label>
-                      <textarea
-                        id="message"
-                        name="message"
-                        rows={2}
-                        placeholder="Tell us about your project"
-                        value={formData.message}
-                        onChange={handleInputChange}
-                        className="w-full resize-none rounded-md border border-gray-300 px-3 py-1.5 text-sm text-gray-900 focus:border-[#1684c7] focus:outline-none focus:ring-1 focus:ring-[#1684c7]"
-                      />
-                    </div>
-
-                    <button
-                      type="submit"
-                      disabled={isSubmitting}
-                      className="mt-1 w-full rounded-md bg-[#1684c7] py-2.5 text-[15px] font-bold text-white transition-colors hover:bg-[#11669c] disabled:opacity-70"
-                    >
-                      {isSubmitting ? "Sending..." : "Send Enquiry"}
-                    </button>
-                  </form>
-                </>
-              )}
-            </motion.div>
+                    </label>
+                    <label className="text-xs font-semibold text-[#354b60]">
+                      Preferred day*
+                      <select className={inputClass} name="preferredDay" defaultValue="" required>
+                        <option value="" disabled>Choose a day</option>
+                        <option>22 Oct</option>
+                        <option>23 Oct</option>
+                        <option>24 Oct</option>
+                        <option>Virtual meeting</option>
+                      </select>
+                    </label>
+                  </div>
+                  <label className="text-xs font-semibold text-[#354b60]">
+                    Message
+                    <textarea
+                      className={`${inputClass} min-h-[68px] resize-y`}
+                      name="message"
+                      placeholder="Target capacity, site status, timeline"
+                      rows={2}
+                    />
+                  </label>
+                  <button
+                    className="mt-1 inline-flex min-h-12 items-center justify-center rounded-lg bg-primary px-5 py-3 text-sm font-bold text-white transition-colors hover:bg-[#1a689e] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+                    type="submit"
+                  >
+                    Book a Meeting
+                  </button>
+                  <p className="text-center text-xs leading-relaxed text-[#657686]">
+                    Can&apos;t make it to Greater Noida? Choose &quot;Virtual
+                    meeting&quot; and we&apos;ll call you.
+                  </p>
+                </form>
+              </>
+            )}
           </div>
         </div>
       </section>
 
-      <section
-        className="border-b border-[#dce7ee] bg-white px-6 py-10 sm:py-14 lg:py-[72px]"
-        aria-label="Novus deployment experience"
-      >
-        <dl className="mx-auto grid max-w-[1120px] grid-cols-1 divide-y divide-[#dce7ee] sm:grid-cols-3 sm:divide-x sm:divide-y-0">
-          {proofPoints.map((point, index) => (
-            <motion.div
-              initial={false}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.4 }}
-              transition={{ duration: 0.45, delay: index * 0.1, ease: "easeOut" }}
-              className="flex min-h-[84px] flex-col items-center justify-center gap-2 px-2 py-4 text-center sm:min-h-0 sm:gap-2.5 sm:py-0"
-              key={point.label}
-            >
-              <dt className="text-[32px] font-bold leading-none tracking-[-0.045em] text-[#081F3A] sm:text-[40px] lg:text-5xl">
+      <section className="border-b border-[#dce7ee] bg-white px-5 py-8 sm:px-6 sm:py-10" aria-label="About Novus Hi-Tech">
+        <p className="mx-auto max-w-[1080px] text-center text-sm leading-[1.8] text-[#526272] sm:text-base">
+          Novus Hi-Tech supplies turnkey solar PV manufacturing lines (ingot to
+          module) and BESS assembly lines (cell to container), integrated with
+          Novus robotics and Novus MES and delivered in 16 to 20 weeks. Meet the
+          team at REI Expo 2026, Hall 16, Booth A01, India Expo Mart, Greater
+          Noida, 22 to 24 October 2026.
+        </p>
+      </section>
+
+      <section className="border-b border-[#dce7ee] bg-white px-5 py-9 sm:px-6 sm:py-12" aria-label="Novus at a glance">
+        <dl className="mx-auto grid max-w-[1240px] grid-cols-2 divide-x divide-y divide-[#dce7ee] sm:grid-cols-4 sm:divide-y-0">
+          {proofPoints.map((point) => (
+            <div className="flex min-h-[100px] flex-col items-center justify-center px-3 py-4 text-center sm:min-h-[120px]" key={point.label}>
+              <dt className="text-[clamp(30px,4vw,44px)] font-bold leading-none tracking-[-0.045em] text-[#081f3a]">
                 {point.value}
               </dt>
-              <dd className="text-[15px] font-semibold uppercase leading-[1.4] tracking-[0.08em] text-[#5b6875]">
+              <dd className="mt-2.5 text-xs font-semibold uppercase tracking-[0.08em] text-[#5b6875] sm:text-sm">
                 {point.label}
               </dd>
-            </motion.div>
+            </div>
           ))}
         </dl>
       </section>
-
-      {brochureModalOpen && (
-        <EnquiryModal
-          onClose={() => setBrochureModalOpen(false)}
-          title="Download the Solar & BESS Brochure"
-          description="Enter your details to download the brochure on Solar PV manufacturing or BESS assembly lines."
-          submitLabel="Download Brochure"
-          subject="Solar PV & BESS brochure request"
-          eventSource="Solar_Hero_Brochure_Gate"
-          brochureUrl={brochureUrl}
-        />
-      )}
     </>
   );
 }

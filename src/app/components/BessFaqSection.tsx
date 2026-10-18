@@ -4,37 +4,19 @@ import { motion } from "framer-motion";
 
 const faqs = [
   {
-    question:
-      "What is included in a turnkey BESS manufacturing line from Novus Hi-Tech?",
+    question: "Where can I meet Novus BESS engineers at REI Expo 2026?",
     answer:
-      "A Novus turnkey BESS line covers six stages across two halls. Hall A: cell receiving and grading, module assembly, pack and rack integration. Hall B: container integration, EOL testing, dispatch. Scope includes battery testing systems (GTC, GTB, GTA), Novus AGV material handling (10,000 kg payload), Novus MES for PLI-compliant traceability, on-site commissioning, 4-day training, and 12 to 15-month warranty. Delivery in 16 to 20 weeks.",
+      "Novus Hi-Tech's BESS team is at Hall 16, Booth A01, REI Expo 2026, India Expo Mart, Greater Noida, from 22 to 24 October 2026. Engineers discuss cell-to-container line design, throughput and PLI documentation. Book a slot through the form on this page to meet a BESS line specialist.",
   },
   {
-    question: "How is a BESS manufacturing line different from an EV battery line?",
+    question: "How is a BESS line different from an EV battery line?",
     answer:
-      "A BESS pack must survive 15 to 20 years and 4,000-6,000+ cycles. An EV line is optimised for shorter-life, higher-rate applications and tolerates weld, BMS, and thermal defects that cause field failures in grid storage after year three. A BESS line must be built for prismatic LFP chemistry, in-line cooling plate and leak testing, and IEC 62619 / MNRE ALMM / UN 38.3 compliance from pack one. These cannot be retrofitted onto an EV-adapted line.",
+      "A BESS pack must last 15 to 20 years and thousands of cycles. EV lines tolerate weld, BMS and thermal variation that can cause grid storage failures after year three. A BESS line needs prismatic LFP setup, in-line cooling and leak testing, and IEC 62619, ALMM and UN 38.3 compliance from pack one.",
   },
   {
-    question: "What is the throughput of a 12 PPM BESS assembly line?",
+    question: "What throughput does a 12 PPM BESS line deliver?",
     answer:
-      "The Novus 12 PPM reference line delivers 4.2 GWh per year (314Ah prismatic LFP cells, three-shift operation, 300 working days). First pass yield ≥98%, final line yield ≥99.5%, machine uptime ≥98%, changeover time ≤5 hours. Line configuration scales from 50 MWh/year (semi-automated) to 500+ MWh/year (fully automated).",
-  },
-  {
-    question: "What cell chemistries and formats does the Novus BESS line support?",
-    answer:
-      "The reference line is optimised for prismatic LFP cells at 200 Ah, 280 Ah, 314 Ah, 587 Ah, and 628 Ah. Cell envelope: 30-80 mm thick, 130-350 mm long, 100-250 mm high, 3-12 kg. Module envelope: 700-1,200 mm long. Pack envelope: 1,000-2,300 mm long. Other cells and chemistries evaluated on request.",
-  },
-  {
-    question:
-      "What is the difference between the pack assembly line and the container assembly line?",
-    answer:
-      "The pack assembly line (Hall A) takes cells and produces tested finished packs. The container assembly line (Hall B) takes those packs and produces a fully deployable containerised storage system with liquid cooling, fire suppression, HVAC, and software loading. One MES thread and one contract connect both halls. Most vendors deliver one hall. Novus delivers both.",
-  },
-  {
-    question:
-      "Can Novus supply a BESS line that qualifies for India's PLI (ACC) scheme?",
-    answer:
-      "Yes. Novus BESS lines are designed for India-based production and can be configured to meet PLI for Advanced Chemistry Cell storage under the ₹18,100 Cr scheme (50 GWh target, running 2025 to 2029). Novus MES generates the compliance trail (batch records, equipment parameters, QC gates, pack-level serialisation) required for MNRE and ALMM audits.",
+      "The Novus 12 PPM reference line delivers 4.2 GWh per year using 314 Ah prismatic LFP cells, three shifts and 300 working days. Targets are first pass yield of 98% or more, final yield of 99.5% or more and uptime of 98% or more. Configurations scale from 50 MWh to 500+ MWh per year.",
   },
 ];
 

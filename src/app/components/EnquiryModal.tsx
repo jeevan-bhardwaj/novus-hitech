@@ -90,7 +90,12 @@ export default function EnquiryModal({
       : body;
 
     if (brochureUrl) {
-      window.open(brochureUrl, "_blank", "noopener,noreferrer");
+      const downloadLink = document.createElement("a");
+      downloadLink.href = brochureUrl;
+      downloadLink.download = brochureUrl.split("/").pop() ?? "brochure.pdf";
+      document.body.appendChild(downloadLink);
+      downloadLink.click();
+      downloadLink.remove();
     }
 
     window.location.href = `mailto:${enquiryEmail}?subject=${encodeURIComponent(

@@ -73,14 +73,14 @@ export default function TrustedByManufacturers() {
           ))}
         </div>
 
-        <motion.p
+        {/* <motion.p
           initial={false}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.4, delay: 0.15, ease: "easeOut" }}
           className="mx-auto mt-[22px] max-w-[900px] px-6 text-center text-[11px] leading-relaxed text-[#5d6b77] sm:mt-7 sm:text-sm">
           100+ industrial customers across automotive, FMCG, pharma, paints & chemicals, e-commerce, 3PL, electronics, semiconductor, and petrochemicals.
-        </motion.p>
+        </motion.p> */}
       </div>
     </section>
   );
