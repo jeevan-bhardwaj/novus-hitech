@@ -45,7 +45,7 @@ export default function BessPage() {
       <BessWhyNow />
       <BessLineCoverage />
       <BessDeliverySupport />
-      <EventStrip />
+      <EventStrip description="Bring your cell format and GWh target to REI Expo 2026, Hall 16, Booth A01, 22 to 24 October. Our BESS engineers will size the line with you." />
       <BessFaqSection />
       <BessClosingCta />
     </>

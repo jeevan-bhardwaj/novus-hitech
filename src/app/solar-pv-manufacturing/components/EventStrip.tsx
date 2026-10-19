@@ -3,7 +3,11 @@
 import { useState } from "react";
 import EnquiryModal from "../../components/EnquiryModal";
 
-export default function EventStrip() {
+type EventStripProps = {
+  description: string;
+};
+
+export default function EventStrip({ description }: EventStripProps) {
   const [modalOpen, setModalOpen] = useState(false);
 
   return (
@@ -21,8 +25,7 @@ export default function EventStrip() {
               Meet Novus at REI Expo 2026
             </h2>
             <p className="mt-3.5 max-w-[800px] text-base leading-[1.6] text-white/85 sm:mt-4">
-              Talk TOPCon, module automation and PLI timelines with our solar
-              engineers at REI Expo 2026, Hall 16, Booth A01, 22 to 24 October.
+              {description}
             </p>
           </div>
           <button
