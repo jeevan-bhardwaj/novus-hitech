@@ -73,7 +73,7 @@ export default function Header() {
         <a className="relative z-[10001] inline-flex flex-[0_0_auto] items-center" href="/#home" aria-label="Novus Hi-Tech home">
           <img
             className="block h-auto w-28 min-[1024px]:w-[130px]"
-            src={`${siteUrl}/wp-content/uploads/2024/10/flogo.png`}
+            src="/images/novus-logo.png"
             alt="Novus Hi-Tech"
             width="186"
             height="75"
