@@ -55,7 +55,7 @@ export default function BessLineCoverage() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.15 }}
           transition={{ duration: 0.45, ease: "easeOut" }}
-          className="grid overflow-hidden rounded-xl border border-[#dce7ee] bg-white shadow-[0_12px_30px_rgba(8,31,58,0.06)] sm:grid-cols-2"
+          className="mx-auto grid w-full max-w-[1000px] overflow-hidden rounded-xl border border-[#dce7ee] bg-white shadow-[0_12px_30px_rgba(8,31,58,0.06)] sm:grid-cols-2"
         >
           {halls.map((hall, index) => (
             <div
@@ -74,7 +74,7 @@ export default function BessLineCoverage() {
           ))}
         </motion.div>
 
-        <p className="mt-5 text-sm leading-[1.7] text-[#526272]">
+        <p className="mx-auto mt-5 w-full max-w-[1000px] text-sm leading-[1.7] text-[#526272]">
           Most vendors deliver one hall. Novus delivers both. Scales from 50
           MWh to 500+ MWh per year.
         </p>
