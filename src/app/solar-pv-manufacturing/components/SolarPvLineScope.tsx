@@ -5,7 +5,7 @@ const stages = [
     number: "01",
     title: "Ingot & Wafer",
     description:
-      "Efficiency is set upstream. Cz pulling, diamond-wire slicing to 160 to 180 microns, AGV movement between stations.",
+      "Cz pulling, diamond-wire slicing and automated material movement between processing stages.",
     icon: Boxes,
     href: "#ingot-wafer",
     linkLabel: "Explore Ingot & Wafer",
@@ -23,7 +23,7 @@ const stages = [
     number: "03",
     title: "Module",
     description:
-      "A 15-machine robotic line. Glass in, tested 25 kg modules out to dispatch, no human contact.",
+      "A 15-machine sequential production flow, from glass input through tested module output",
     icon: PanelsTopLeft,
     href: "#module",
     linkLabel: "Explore Module",

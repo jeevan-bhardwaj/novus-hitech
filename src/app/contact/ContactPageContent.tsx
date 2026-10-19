@@ -9,24 +9,48 @@ const inputClass =
 
 export default function ContactPageContent() {
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    setIsSubmitting(true);
+    setErrorMessage("");
+
     const formData = new FormData(event.currentTarget);
-    const message = [
-      `Full name: ${String(formData.get("name") ?? "")}`,
-      `Company: ${String(formData.get("company") ?? "")}`,
-      `Designation: ${String(formData.get("designation") ?? "")}`,
-      `Work email: ${String(formData.get("email") ?? "")}`,
-      `Phone: ${String(formData.get("phone") ?? "")}`,
-      `Interested in: ${String(formData.get("interest") ?? "")}`,
-      `Meeting type: ${String(formData.get("meeting_type") ?? "")}`,
-      `Message: ${String(formData.get("message") ?? "")}`,
-    ].join("\n");
-    window.location.href = `mailto:solar@novushitech.com?subject=${encodeURIComponent(
-      "Solar & BESS meeting request"
-    )}&body=${encodeURIComponent(message)}`;
-    setSubmitted(true);
+    try {
+      const response = await fetch("/api/enquiry", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.get("name"),
+          company: formData.get("company"),
+          email: formData.get("email"),
+          phone: formData.get("phone"),
+          interest: formData.get("interest"),
+          meeting_type: formData.get("preferredDay"),
+          message: formData.get("message"),
+          eventSource: "Contact_Page_Form",
+          subject: "REI Expo 2026 - Meeting Request (Contact Page)",
+          pageUrl: typeof window !== "undefined" ? window.location.href : "",
+        }),
+      });
+
+      const result = await response.json();
+      if (!response.ok) {
+        throw new Error(result.error ?? "Failed to send meeting request. Please try again.");
+      }
+
+      setSubmitted(true);
+    } catch (error) {
+      setErrorMessage(
+        error instanceof Error
+          ? error.message
+          : "Unable to submit your request. Please try again or reach out to solar@novushitech.com."
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   return (
@@ -36,7 +60,7 @@ export default function ContactPageContent() {
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#9fd4f5]">
             Contact the Solar Team
           </p>
-          <h1 className="mt-3 max-w-3xl text-5xl font-bold leading-[1.08] tracking-[-0.04em]">
+          <h1 className="mt-3 max-w-3xl text-4xl font-bold leading-[1.08] tracking-[-0.04em] sm:text-5xl">
             Book a meeting with Novus Solar and BESS engineers
           </h1>
           <p className="mt-4 max-w-2xl text-base leading-7 text-white/80 sm:text-lg">
@@ -62,14 +86,13 @@ export default function ContactPageContent() {
                 </span>
                 <h2 className="mt-5 text-2xl font-bold">Thank you.</h2>
                 <p className="mt-3 max-w-md text-sm leading-relaxed text-[#526272]">
-                  Your email app should open with your meeting request. Send
-                  that message to complete your request; our solar team will
-                  confirm your slot within one business day. If your email app
-                  did not open, email us at{" "}
-                  <a className="font-semibold text-primary underline" href="mailto:solar@novushitech.com">
-                    solar@novushitech.com
+                  Your meeting request has been submitted to our team. Our solar and BESS engineers will review your requirements and confirm your slot within one business day.
+                </p>
+                <p className="mt-2 text-xs text-[#718292]">
+                  Need immediate assistance? Call us at{" "}
+                  <a className="font-semibold text-primary underline" href="tel:+919311078767">
+                    +91 9311078767
                   </a>
-                  .
                 </p>
               </div>
             ) : (
@@ -88,10 +111,6 @@ export default function ContactPageContent() {
                     <input className={inputClass} name="company" autoComplete="organization" placeholder="Company name" required />
                   </label>
                   <label className="text-sm font-semibold">
-                    Designation
-                    <input className={inputClass} name="designation" autoComplete="organization-title" placeholder="Your role" />
-                  </label>
-                  <label className="text-sm font-semibold">
                     Work email*
                     <input className={inputClass} name="email" type="email" autoComplete="email" placeholder="you@company.com" required />
                   </label>
@@ -102,21 +121,21 @@ export default function ContactPageContent() {
                   <label className="text-sm font-semibold">
                     Interested in*
                     <select className={inputClass} name="interest" defaultValue="" required>
-                      <option value="" disabled>Select an option</option>
+                      <option value="" disabled>Select a line</option>
                       <option>Solar PV line</option>
                       <option>BESS line</option>
                       <option>Both</option>
+                      <option>Other</option>
                     </select>
                   </label>
-                  <label className="text-sm font-semibold sm:col-span-2">
-                    Meeting type*
-                    <select className={inputClass} name="meeting_type" defaultValue="" required>
-                      <option value="" disabled>Select a meeting type</option>
-                      <option>REI Expo 22 Oct</option>
-                      <option>REI Expo 23 Oct</option>
-                      <option>REI Expo 24 Oct</option>
-                      <option>Virtual</option>
-                      <option>Office visit</option>
+                  <label className="text-sm font-semibold">
+                    Preferred day*
+                    <select className={inputClass} name="preferredDay" defaultValue="" required>
+                      <option value="" disabled>Choose a day</option>
+                      <option>22 Oct</option>
+                      <option>23 Oct</option>
+                      <option>24 Oct</option>
+                      <option>Virtual meeting</option>
                     </select>
                   </label>
                   <label className="text-sm font-semibold sm:col-span-2">
@@ -124,15 +143,23 @@ export default function ContactPageContent() {
                     <textarea
                       className={`${inputClass} min-h-24 resize-y`}
                       name="message"
-                      placeholder="Target GW or GWh, location, timeline"
+                      placeholder="Target capacity, site status, timeline"
                       rows={3}
                     />
                   </label>
+
+                  {errorMessage && (
+                    <p className="text-sm text-red-600 sm:col-span-2" role="alert">
+                      {errorMessage}
+                    </p>
+                  )}
+
                   <button
-                    className="inline-flex min-h-12 items-center justify-center rounded-lg bg-primary px-6 text-sm font-bold text-white transition-colors hover:bg-[#1a689e] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary sm:col-span-2"
+                    disabled={isSubmitting}
+                    className="inline-flex min-h-12 items-center justify-center rounded-lg bg-primary px-6 text-sm font-bold text-white transition-colors hover:bg-[#1a689e] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary disabled:cursor-wait disabled:opacity-75 sm:col-span-2"
                     type="submit"
                   >
-                    Book a Meeting
+                    {isSubmitting ? "Submitting Request..." : "Book a Meeting"}
                   </button>
                 </form>
               </>

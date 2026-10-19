@@ -5,6 +5,7 @@ import BessLineCoverage from "../components/BessLineCoverage";
 import BessFaqSection from "../components/BessFaqSection";
 import BessClosingCta from "../components/BessClosingCta";
 import BessDeliverySupport from "../components/BessDeliverySupport";
+import BessTestingTraceability from "../components/BessTestingTraceability";
 import EventStrip from "../solar-pv-manufacturing/components/EventStrip";
 
 const pageTitle =
@@ -44,6 +45,7 @@ export default function BessPage() {
       <BessHero />
       <BessWhyNow />
       <BessLineCoverage />
+      <BessTestingTraceability />
       <BessDeliverySupport />
       <EventStrip description="Bring your cell format and GWh target to REI Expo 2026, Hall 16, Booth A01, 22 to 24 October. Our BESS engineers will size the line with you." />
       <BessFaqSection />

@@ -20,7 +20,7 @@ const companyStats = [
 
 const bullets = [
   "One contract from ingot to module",
-  "Novus Carry AMRs inside the line",
+  "Novus Carry Solar Cell 500 AMR for material movement",
   "PLI and ALMM documentation from Novus MES",
 ];
 
@@ -29,24 +29,48 @@ const inputClass =
 
 export default function SolarPvHero() {
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    setIsSubmitting(true);
+    setErrorMessage("");
+
     const data = new FormData(event.currentTarget);
-    const body = [
-      `Full name: ${String(data.get("name") ?? "")}`,
-      `Company: ${String(data.get("company") ?? "")}`,
-      `Work email: ${String(data.get("email") ?? "")}`,
-      `Phone: ${String(data.get("phone") ?? "")}`,
-      `Interested in: ${String(data.get("interested_in") ?? "")}`,
-      `Preferred day: ${String(data.get("preferred_day") ?? "")}`,
-      `Message: ${String(data.get("message") ?? "")}`,
-      "Event source: Solar_PV_Hero_Meeting_Form",
-    ].join("\n");
-    window.location.href = `mailto:${enquiryEmail}?subject=${encodeURIComponent(
-      "Book a solar PV meeting at REI Expo 2026"
-    )}&body=${encodeURIComponent(body)}`;
-    setSubmitted(true);
+    try {
+      const response = await fetch("/api/enquiry", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: data.get("name"),
+          company: data.get("company"),
+          email: data.get("email"),
+          phone: data.get("phone"),
+          interest: data.get("interested_in"),
+          meeting_type: data.get("preferred_day"),
+          message: data.get("message"),
+          eventSource: "Solar_PV_Hero_Meeting_Form",
+          subject: "REI Expo 2026 - Solar PV Meeting Request",
+          pageUrl: typeof window !== "undefined" ? window.location.href : "",
+        }),
+      });
+
+      const result = await response.json();
+      if (!response.ok) {
+        throw new Error(result.error ?? "Failed to book meeting. Please try again.");
+      }
+
+      setSubmitted(true);
+    } catch (error) {
+      setErrorMessage(
+        error instanceof Error
+          ? error.message
+          : "Unable to submit your request. Please try again or email solar@novushitech.com."
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -72,7 +96,7 @@ export default function SolarPvHero() {
             <p className="text-[11px] font-bold uppercase leading-relaxed tracking-[0.16em] text-[#9fd4f5] sm:text-xs sm:tracking-[0.2em]">
               SOLAR PV MANUFACTURING - REI EXPO 2026, BOOTH A01
             </p>
-            <h1 className="mt-4 text-5xl font-bold leading-[1.1] tracking-[-0.035em] text-white">
+            <h1 className="mt-4 text-4xl font-bold leading-[1.1] tracking-[-0.035em] text-white sm:text-5xl">
               Solar PV Manufacturing Lines, Ingot to Module
             </h1>
             <p className="mt-5 max-w-[610px] text-[16px] leading-[26px] text-white/85">
@@ -116,15 +140,16 @@ export default function SolarPvHero() {
                 </span>
                 <h2 className="mt-5 text-2xl font-bold">Thank you.</h2>
                 <p className="mt-3 max-w-sm text-sm leading-relaxed text-[#5a6875]">
-                  Our solar team will confirm your slot within one business day.
-                  If your email app did not open, contact us at{" "}
+                  Your meeting request has been received. Our solar PV team will confirm your slot within one business day.
+                </p>
+                <p className="mt-2 text-xs text-[#718292]">
+                  Direct contact:{" "}
                   <a
                     className="font-semibold text-primary underline"
                     href={`mailto:${enquiryEmail}`}
                   >
                     {enquiryEmail}
                   </a>
-                  .
                 </p>
               </div>
             ) : (
@@ -192,12 +217,14 @@ export default function SolarPvHero() {
                       <select
                         className={inputClass}
                         name="interested_in"
-                        defaultValue="Solar PV line"
+                        defaultValue=""
                         required
                       >
+                        <option value="" disabled>Select a line</option>
                         <option value="Solar PV line">Solar PV line</option>
                         <option value="BESS line">BESS line</option>
                         <option value="Both">Both</option>
+                        <option value="Other">Other</option>
                       </select>
                     </label>
                     <label className="text-xs font-semibold text-[#354b60]">
@@ -227,11 +254,19 @@ export default function SolarPvHero() {
                       rows={2}
                     />
                   </label>
+
+                  {errorMessage && (
+                    <p className="text-xs text-red-600" role="alert">
+                      {errorMessage}
+                    </p>
+                  )}
+
                   <button
-                    className="mt-1 inline-flex min-h-12 items-center justify-center rounded-lg bg-primary px-5 py-3 text-sm font-bold text-white transition-colors hover:bg-[#1a689e] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+                    disabled={isSubmitting}
+                    className="mt-1 inline-flex min-h-12 items-center justify-center rounded-lg bg-primary px-5 py-3 text-sm font-bold text-white transition-colors hover:bg-[#1a689e] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary disabled:cursor-wait disabled:opacity-75"
                     type="submit"
                   >
-                    Book a Meeting
+                    {isSubmitting ? "Submitting..." : "Book a Meeting"}
                   </button>
                   <p className="text-center text-xs leading-relaxed text-[#657686]">
                     Can&apos;t make it to Greater Noida? Choose &quot;Virtual

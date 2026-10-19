@@ -4,26 +4,25 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import EnquiryModal from "./EnquiryModal";
 
-const videoId = "WqPKJmOmcWM";
-
 const tiles = [
   {
     title: "Walk the solar value chain",
-    description: "Ingot to module, with the engineers who integrate it.",
+    description: "From ingot to module, with the engineering and automation that connect the line.",
   },
   {
     title: "See a BESS line end to end",
-    description: "Cell to container across two connected halls.",
+    description: "From battery pack assembly to energy storage container assembly.",
   },
   {
     title: "Leave with a next step",
     description:
-      "Share your capacity target. We start your 30-day milestone plan.",
+      "Share your target GW or GWh and request a 30-day milestone plan.",
   },
 ];
 
 export default function ReiExpoVideo() {
   const [modalOpen, setModalOpen] = useState(false);
+  const [videoPlaying, setVideoPlaying] = useState(false);
 
   return (
     <>
@@ -50,7 +49,7 @@ export default function ReiExpoVideo() {
               className="text-[clamp(32px,4vw,40px)] font-bold leading-[44px] tracking-[-0.8px] text-[#111]"
               id="rei-expo-video-title"
             >
-              Last year we showed the robots. This year, the full line.
+               Revisit REI Expo 2025. Meet Us Again in 2026
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, y: 8 }}
@@ -73,14 +72,43 @@ export default function ReiExpoVideo() {
               className="overflow-hidden rounded-[20px] bg-secondary shadow-[0_18px_40px_rgba(8,31,58,0.16)]"
             >
               <div className="relative aspect-video w-full">
-                <iframe
-                  className="absolute inset-0 h-full w-full"
-                  src={`https://www.youtube-nocookie.com/embed/${videoId}?rel=0`}
-                  title="REI Expo 2025 highlights — Autonomous Intralogistics in Action | Novus Hi-Tech"
-                  loading="lazy"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowFullScreen
-                />
+                {videoPlaying ? (
+                  <video
+                    className="absolute inset-0 h-full w-full"
+                    autoPlay
+                    controls
+                    playsInline
+                    poster="/videos/REI-2025-showreel-placeholder.webp"
+                    title="REI Expo 2025 highlights — Autonomous Intralogistics in Action | Novus Hi-Tech"
+                    onEnded={() => setVideoPlaying(false)}
+                  >
+                    <source src="/videos/REI-2025-showreel.mp4" type="video/mp4" />
+                    Your browser does not support the video element.
+                  </video>
+                ) : (
+                  <button
+                    className="group absolute inset-0 flex h-full w-full items-center justify-center bg-secondary"
+                    type="button"
+                    onClick={() => setVideoPlaying(true)}
+                    aria-label="Play REI Expo 2025 highlights"
+                  >
+                    <img
+                      className="absolute inset-0 h-full w-full object-cover"
+                      src="/videos/REI-2025-showreel-placeholder.webp"
+                      alt=""
+                    />
+                    <span className="absolute inset-0 bg-black/20 transition-colors group-hover:bg-black/35" />
+                    <span className="relative flex h-16 w-16 items-center justify-center rounded-full bg-primary text-white shadow-lg transition-transform group-hover:scale-110">
+                      <svg
+                        className="ml-1 h-7 w-7 fill-current"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                      >
+                        <path d="M8 5v14l11-7z" />
+                      </svg>
+                    </span>
+                  </button>
+                )}
               </div>
             </motion.div>
 

@@ -14,24 +14,48 @@ const stats = [
 
 export default function BessHero() {
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    setIsSubmitting(true);
+    setErrorMessage("");
+
     const form = new FormData(event.currentTarget);
-    const message = [
-      `Full name: ${String(form.get("name") ?? "")}`,
-      `Company: ${String(form.get("company") ?? "")}`,
-      `Work email: ${String(form.get("email") ?? "")}`,
-      `Phone: ${String(form.get("phone") ?? "")}`,
-      `Interested in: ${String(form.get("interest") ?? "")}`,
-      `Preferred day: ${String(form.get("preferred_day") ?? "")}`,
-      `Message: ${String(form.get("message") ?? "")}`,
-      "Event source: BESS_Hero_Meeting_Form",
-    ].join("\n");
-    window.location.href = `mailto:solar@novushitech.com?subject=${encodeURIComponent(
-      "Book a BESS meeting at REI Expo 2026"
-    )}&body=${encodeURIComponent(message)}`;
-    setSubmitted(true);
+    try {
+      const response = await fetch("/api/enquiry", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: form.get("name"),
+          company: form.get("company"),
+          email: form.get("email"),
+          phone: form.get("phone"),
+          interest: form.get("interest"),
+          meeting_type: form.get("preferred_day"),
+          message: form.get("message"),
+          eventSource: "BESS_Hero_Meeting_Form",
+          subject: "REI Expo 2026 - BESS Meeting Request",
+          pageUrl: typeof window !== "undefined" ? window.location.href : "",
+        }),
+      });
+
+      const result = await response.json();
+      if (!response.ok) {
+        throw new Error(result.error ?? "Failed to book meeting. Please try again.");
+      }
+
+      setSubmitted(true);
+    } catch (error) {
+      setErrorMessage(
+        error instanceof Error
+          ? error.message
+          : "Unable to submit your request. Please try again or email solar@novushitech.com."
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   return (
@@ -49,7 +73,7 @@ export default function BessHero() {
             <p className="text-xs font-bold uppercase leading-relaxed tracking-[0.18em] text-[#9fd4f5]">
               BESS Manufacturing · REI Expo 2026, Booth A01
             </p>
-            <h1 className="mt-4 text-5xl font-bold leading-[1.08] tracking-[-0.035em]">
+            <h1 className="mt-4 text-4xl font-bold leading-[1.08] tracking-[-0.035em] sm:text-5xl">
               BESS Manufacturing Lines Built for 20-Year Grid Storage
             </h1>
             <p className="mt-5 max-w-[620px] text-base leading-7 text-white/85">
@@ -84,9 +108,13 @@ export default function BessHero() {
                 <span className="flex h-14 w-14 items-center justify-center rounded-full bg-green-100 text-green-700" aria-hidden="true">✓</span>
                 <h2 className="mt-5 text-2xl font-bold">Thank you.</h2>
                 <p className="mt-3 max-w-sm text-sm leading-relaxed text-[#526272]">
-                  Your email app should open with your meeting request. Send
-                  that message to complete your request; our solar team will
-                  confirm your slot within one business day.
+                  Your meeting request has been received. Our BESS engineering team will confirm your slot within one business day.
+                </p>
+                <p className="mt-2 text-xs text-[#718292]">
+                  Direct contact:{" "}
+                  <a className="font-semibold text-primary underline" href="mailto:solar@novushitech.com">
+                    solar@novushitech.com
+                  </a>
                 </p>
               </div>
             ) : (
@@ -119,10 +147,12 @@ export default function BessHero() {
                   <div className="grid gap-3 sm:grid-cols-2">
                     <label className="text-xs font-semibold text-[#354b60]">
                       Interested in*
-                      <select className={inputClass} name="interest" defaultValue="BESS line" required>
+                      <select className={inputClass} name="interest" defaultValue="" required>
+                        <option value="" disabled>Select a line</option>
                         <option>Solar PV line</option>
                         <option>BESS line</option>
                         <option>Both</option>
+                        <option>Other</option>
                       </select>
                     </label>
                     <label className="text-xs font-semibold text-[#354b60]">
@@ -140,8 +170,19 @@ export default function BessHero() {
                     Message
                     <textarea className={`${inputClass} min-h-20 resize-y`} name="message" placeholder="Target capacity, site status, timeline" rows={2} />
                   </label>
-                  <button className="mt-1 inline-flex min-h-12 items-center justify-center rounded-lg bg-primary px-6 text-sm font-bold text-white transition-colors hover:bg-[#1a689e]" type="submit">
-                    Book a Meeting
+
+                  {errorMessage && (
+                    <p className="text-xs text-red-600" role="alert">
+                      {errorMessage}
+                    </p>
+                  )}
+
+                  <button
+                    disabled={isSubmitting}
+                    className="mt-1 inline-flex min-h-12 items-center justify-center rounded-lg bg-primary px-6 text-sm font-bold text-white transition-colors hover:bg-[#1a689e] disabled:cursor-wait disabled:opacity-75"
+                    type="submit"
+                  >
+                    {isSubmitting ? "Submitting..." : "Book a Meeting"}
                   </button>
                   <p className="text-center text-xs leading-relaxed text-[#637384]">
                     Can&apos;t make it to Greater Noida? Choose &quot;Virtual

@@ -17,28 +17,48 @@ const inputClass =
 
 export default function SolarHero() {
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
-  const handleFormSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleFormSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const formData = new FormData(event.currentTarget);
-    const fields = [
-      ["Name", "name"],
-      ["Company", "company"],
-      ["Work email", "email"],
-      ["Phone", "phone"],
-      ["Interested in", "interest"],
-      ["Preferred day", "preferredDay"],
-      ["Message", "message"],
-    ] as const;
-    const body = fields
-      .map(([label, name]) => `${label}: ${String(formData.get(name) ?? "")}`)
-      .join("\n");
-    const mailto = `mailto:${enquiryEmail}?subject=${encodeURIComponent(
-      "REI Expo 2026 meeting request",
-    )}&body=${encodeURIComponent(body)}`;
+    setIsSubmitting(true);
+    setErrorMessage("");
 
-    window.location.href = mailto;
-    setSubmitted(true);
+    const formData = new FormData(event.currentTarget);
+    try {
+      const response = await fetch("/api/enquiry", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.get("name"),
+          company: formData.get("company"),
+          email: formData.get("email"),
+          phone: formData.get("phone"),
+          interest: formData.get("interest"),
+          meeting_type: formData.get("preferredDay"),
+          message: formData.get("message"),
+          eventSource: "Homepage_Hero_Meeting_Form",
+          subject: "REI Expo 2026 - Meeting Request (Home Hero)",
+          pageUrl: typeof window !== "undefined" ? window.location.href : "",
+        }),
+      });
+
+      const result = await response.json();
+      if (!response.ok) {
+        throw new Error(result.error ?? "Failed to book meeting. Please try again.");
+      }
+
+      setSubmitted(true);
+    } catch (error) {
+      setErrorMessage(
+        error instanceof Error
+          ? error.message
+          : "Unable to submit your request. Please try again or email solar@novushitech.com."
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -81,7 +101,7 @@ export default function SolarHero() {
             <p className="mb-5 text-xs font-bold uppercase tracking-[0.18em] text-[#9fd4f5] sm:text-sm">
               REI Expo 2026 · Hall 16, Booth A01
             </p>
-            <h1 className="text-5xl font-bold leading-[1.08] tracking-[-0.035em] text-white">
+            <h1 className="text-4xl font-bold leading-[1.08] tracking-[-0.035em] text-white sm:text-5xl">
               Solar PV and BESS Manufacturing Lines, Built by Roboticists
             </h1>
             <p className="mt-6 max-w-[610px] text-base leading-[1.75] text-white/80 sm:text-lg">
@@ -122,12 +142,13 @@ export default function SolarHero() {
                 </span>
                 <h2 className="mt-5 text-2xl font-bold">Thank you.</h2>
                 <p className="mt-3 max-w-sm text-sm leading-relaxed text-[#5a6875]">
-                  Our solar team will confirm your slot within one business day.
-                  If your email app did not open, contact us at{" "}
+                  Your meeting request has been received. Our solar and BESS team will confirm your slot within one business day.
+                </p>
+                <p className="mt-2 text-xs text-[#718292]">
+                  Direct contact:{" "}
                   <a className="font-semibold text-primary underline" href={`mailto:${enquiryEmail}`}>
                     {enquiryEmail}
                   </a>
-                  .
                 </p>
               </div>
             ) : (
@@ -168,6 +189,7 @@ export default function SolarHero() {
                         <option>Solar PV line</option>
                         <option>BESS line</option>
                         <option>Both</option>
+                        <option>Other</option>
                       </select>
                     </label>
                     <label className="text-xs font-semibold text-[#354b60]">
@@ -190,11 +212,19 @@ export default function SolarHero() {
                       rows={2}
                     />
                   </label>
+
+                  {errorMessage && (
+                    <p className="text-xs text-red-600" role="alert">
+                      {errorMessage}
+                    </p>
+                  )}
+
                   <button
-                    className="mt-1 inline-flex min-h-12 items-center justify-center rounded-lg bg-primary px-5 py-3 text-sm font-bold text-white transition-colors hover:bg-[#1a689e] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+                    disabled={isSubmitting}
+                    className="mt-1 inline-flex min-h-12 items-center justify-center rounded-lg bg-primary px-5 py-3 text-sm font-bold text-white transition-colors hover:bg-[#1a689e] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary disabled:cursor-wait disabled:opacity-75"
                     type="submit"
                   >
-                    Book a Meeting
+                    {isSubmitting ? "Submitting..." : "Book a Meeting"}
                   </button>
                   <p className="text-center text-xs leading-relaxed text-[#657686]">
                     Can&apos;t make it to Greater Noida? Choose &quot;Virtual
@@ -208,12 +238,10 @@ export default function SolarHero() {
       </section>
 
       <section className="border-b border-[#dce7ee] bg-white px-5 py-8 sm:px-6 sm:py-10" aria-label="About Novus Hi-Tech">
-        <p className="mx-auto max-w-[1080px] text-center text-sm leading-[1.8] text-[#526272] sm:text-base">
+        <p className="mx-auto max-w-[1000px] text-center text-sm leading-[1.8] text-[#526272] sm:text-base">
           Novus Hi-Tech supplies turnkey solar PV manufacturing lines (ingot to
           module) and BESS assembly lines (cell to container), integrated with
-          Novus robotics and Novus MES and delivered in 16 to 20 weeks. Meet the
-          team at REI Expo 2026, Hall 16, Booth A01, India Expo Mart, Greater
-          Noida, 22 to 24 October 2026.
+          Novus robotics and Novus MES and delivered in 16 to 20 weeks. 
         </p>
       </section>
 

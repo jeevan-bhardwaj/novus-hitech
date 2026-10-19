@@ -8,7 +8,7 @@ const productionLines = [
     title: "Solar PV Manufacturing",
     tagline: "Ingot to module. One line. One partner.",
     description:
-      "TOPCon-ready cell lines, a 15-machine automatic module line, Novus Carry AMRs inside the line.",
+      "Global process equipment, Novus robotics and production software,  integrated into manufacturing-line solutions, engineered and supported by India-based teams.",
     image: "/images/production/solar-pv-manufacturing.webp",
     imageAlt: "Robotic equipment on a solar PV module production line",
     href: "/solar-pv-manufacturing",
@@ -19,7 +19,7 @@ const productionLines = [
     title: "Battery Energy Storage Systems",
     tagline: "Cell to shipped pack. One line. One partner.",
     description:
-      "Six stages across two halls, built for 20-year grid storage, not adapted from EV.",
+      "Battery pack and energy storage container assembly lines, with automation and testing configured to the project requirements.",
     image: "/images/production/battery-energy-storage.jpg",
     imageAlt: "Battery packs assembled along an energy storage production line",
     href: "/bess",

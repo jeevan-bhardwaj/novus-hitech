@@ -4,12 +4,8 @@ import type { FormEvent } from "react";
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 
-const enquiryFields = [
-  { name: "name", label: "Name", type: "text", placeholder: "Your full name" },
-  { name: "email", label: "Email", type: "email", placeholder: "you@company.com" },
-  { name: "phone", label: "Contact Number", type: "tel", placeholder: "+91" },
-  { name: "company", label: "Company", type: "text", placeholder: "Company name" },
-];
+const inputClass =
+  "mt-1 block w-full rounded-lg border border-[#dce5ec] bg-white px-3 py-2.5 text-sm text-[#081f3a] outline-none transition-colors placeholder:text-[#92a0ad] focus:border-[#217ebe] focus:ring-2 focus:ring-[#217ebe]/15";
 
 interface EnquiryModalProps {
   onClose: () => void;
@@ -91,11 +87,15 @@ export default function EnquiryModal({
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           name: data.get("name"),
+          company: data.get("company"),
           email: data.get("email"),
           phone: data.get("phone"),
-          company: data.get("company"),
-          eventSource: data.get("event_source"),
+          interest: data.get("interest"),
+          meeting_type: data.get("preferredDay"),
+          message: data.get("message"),
+          eventSource: data.get("event_source") || "Enquiry_Modal_Popup",
           subject,
+          pageUrl: typeof window !== "undefined" ? window.location.href : "",
         }),
       });
 
@@ -136,7 +136,7 @@ export default function EnquiryModal({
       onClick={onClose}
     >
       <div
-        className="relative my-auto max-h-[calc(100dvh-3rem)] w-full max-w-md overflow-y-auto rounded-2xl bg-white p-6 shadow-2xl sm:p-8"
+        className="relative my-auto max-h-[calc(100dvh-3rem)] w-full max-w-lg overflow-y-auto rounded-2xl bg-white p-6 shadow-2xl sm:p-8"
         onClick={(event) => event.stopPropagation()}
       >
         <div className="flex items-start justify-between gap-4">
@@ -178,21 +178,99 @@ export default function EnquiryModal({
         ) : (
           <form className="mt-5 grid gap-3.5" onSubmit={handleEnquirySubmit}>
             <input type="hidden" name="event_source" value={eventSource} />
-            {enquiryFields.map((field) => (
-              <label
-                key={field.name}
-                className="grid gap-1.5 text-[13px] font-semibold text-[#081F3A]"
-              >
-                {field.label}
+            <div className="grid gap-3 sm:grid-cols-2">
+              <label className="text-xs font-semibold text-[#354b60]">
+                Full name*
                 <input
+                  className={inputClass}
+                  name="name"
+                  type="text"
+                  autoComplete="name"
+                  placeholder="Your full name"
                   required
-                  name={field.name}
-                  type={field.type}
-                  placeholder={field.placeholder}
-                  className="rounded-[4px] border border-[#DCE7EE] px-3 py-2.5 text-[14px] font-normal text-[#081F3A] outline-none transition-colors placeholder:text-[#9aa7b1] focus:border-[#217EBE]"
                 />
               </label>
-            ))}
+              <label className="text-xs font-semibold text-[#354b60]">
+                Company*
+                <input
+                  className={inputClass}
+                  name="company"
+                  type="text"
+                  autoComplete="organization"
+                  placeholder="Company name"
+                  required
+                />
+              </label>
+            </div>
+            <div className="grid gap-3 sm:grid-cols-2">
+              <label className="text-xs font-semibold text-[#354b60]">
+                Work email*
+                <input
+                  className={inputClass}
+                  name="email"
+                  type="email"
+                  autoComplete="email"
+                  placeholder="you@company.com"
+                  required
+                />
+              </label>
+              <label className="text-xs font-semibold text-[#354b60]">
+                Phone*
+                <input
+                  className={inputClass}
+                  name="phone"
+                  type="tel"
+                  autoComplete="tel"
+                  placeholder="+91"
+                  required
+                />
+              </label>
+            </div>
+            <div className="grid gap-3 sm:grid-cols-2">
+              <label className="text-xs font-semibold text-[#354b60]">
+                Interested in*
+                <select
+                  className={inputClass}
+                  name="interest"
+                  defaultValue=""
+                  required
+                >
+                  <option value="" disabled>
+                    Select a line
+                  </option>
+                  <option>Solar PV line</option>
+                  <option>BESS line</option>
+                  <option>Both</option>
+                  <option>Other</option>
+                </select>
+              </label>
+              <label className="text-xs font-semibold text-[#354b60]">
+                Preferred day*
+                <select
+                  className={inputClass}
+                  name="preferredDay"
+                  defaultValue=""
+                  required
+                >
+                  <option value="" disabled>
+                    Choose a day
+                  </option>
+                  <option>22 Oct</option>
+                  <option>23 Oct</option>
+                  <option>24 Oct</option>
+                  <option>Virtual meeting</option>
+                </select>
+              </label>
+            </div>
+            <label className="text-xs font-semibold text-[#354b60]">
+              Message
+              <textarea
+                className={`${inputClass} min-h-[68px] resize-y`}
+                name="message"
+                placeholder="Target capacity, site status, timeline"
+                rows={2}
+              />
+            </label>
 
             {submissionError && (
               <p className="text-sm text-red-700" role="alert">
