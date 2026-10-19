@@ -28,7 +28,7 @@ export default function ReiExpoVideo() {
   return (
     <>
       <section
-        className="bg-white px-5 py-16 sm:px-6 sm:py-[clamp(64px,8vw,104px)]"
+        className="bg-white px-5 pt-12 pb-16 sm:px-6 sm:pt-16 sm:pb-[clamp(64px,8vw,104px)]"
         aria-labelledby="rei-expo-video-title"
       >
         <div className="mx-auto w-full max-w-[1240px]">

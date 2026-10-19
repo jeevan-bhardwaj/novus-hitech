@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
-import FaqSection from "./components/FaqSection";
-import EventBanner from "./components/EventBanner";
-// import BottomCta from "./components/BottomCta";
+import FaqSection from "./components/FaqSection";;
 import ClosingCta from "./components/ClosingCta";
 import ProductionLines from "./components/ProductionLines";
 import ReiExpoVideo from "./components/ReiExpoVideo";
@@ -25,9 +23,6 @@ export default function Home() {
       </ScrollReveal>
       <ScrollReveal>
         <ProductionLines />
-      </ScrollReveal>
-      <ScrollReveal>
-        <EventBanner />
       </ScrollReveal>
       <ScrollReveal>
         <ReiExpoVideo />

@@ -1,5 +1,6 @@
 "use client";
 
+import { Mail, Phone } from "lucide-react";
 import type { FormEvent } from "react";
 import { useState } from "react";
 
@@ -155,9 +156,15 @@ export default function ContactPageContent() {
                 <div>
                   <h3 className="font-bold">Solar &amp; BESS team</h3>
                   <p className="mt-1 flex flex-wrap gap-x-2 text-[#526272]">
-                    <a className="text-primary hover:underline" href="mailto:solar@novushitech.com">solar@novushitech.com</a>
+                    <a className="inline-flex items-center gap-1.5 text-primary hover:underline" href="mailto:solar@novushitech.com">
+                      <Mail className="h-4 w-4" aria-hidden="true" />
+                      solar@novushitech.com
+                    </a>
                     <span aria-hidden="true">·</span>
-                    <a className="text-primary hover:underline" href="tel:+919311078767">+91 9311078767</a>
+                    <a className="inline-flex items-center gap-1.5 text-primary hover:underline" href="tel:+919311078767">
+                      <Phone className="h-4 w-4" aria-hidden="true" />
+                      +91 9311078767
+                    </a>
                   </p>
                 </div>
                 <div>

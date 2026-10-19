@@ -29,7 +29,7 @@ const productionLines = [
 
 export default function ProductionLines() {
   return (
-    <section className="bg-white px-5 py-16 sm:px-6 sm:py-[clamp(64px,8vw,112px)]" aria-labelledby="production-lines-title">
+    <section className="bg-white px-5 pt-16 pb-12 sm:px-6 sm:pt-[clamp(64px,8vw,112px)] sm:pb-16" aria-labelledby="production-lines-title">
       <div className="mx-auto w-full max-w-[1240px]">
         <header className="mx-auto mb-10 max-w-[820px] text-center sm:mb-12">
           <motion.p

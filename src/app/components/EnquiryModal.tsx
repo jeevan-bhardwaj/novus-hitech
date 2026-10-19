@@ -4,8 +4,6 @@ import type { FormEvent } from "react";
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 
-const enquiryEmail = "solar@novushitech.com";
-
 const enquiryFields = [
   { name: "name", label: "Name", type: "text", placeholder: "Your full name" },
   { name: "email", label: "Email", type: "email", placeholder: "you@company.com" },
@@ -33,6 +31,9 @@ export default function EnquiryModal({
   brochureUrl,
 }: EnquiryModalProps) {
   const [mounted, setMounted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [submissionError, setSubmissionError] = useState("");
   const scrollPositionRef = useRef<{ x: number; y: number } | null>(null);
   const restoreFrameRef = useRef<number | null>(null);
 
@@ -78,30 +79,50 @@ export default function EnquiryModal({
     };
   }, []);
 
-  const handleEnquirySubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleEnquirySubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    setIsSubmitting(true);
+    setSubmissionError("");
+
     const data = new FormData(event.currentTarget);
-    const body = enquiryFields
-      .map(({ name, label }) => `${label}: ${String(data.get(name) ?? "")}`)
-      .join("\n");
-    const eventSourceValue = String(data.get("event_source") ?? "");
-    const enquiryBody = eventSourceValue
-      ? `${body}\nEvent source: ${eventSourceValue}`
-      : body;
+    try {
+      const response = await fetch("/api/enquiry", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: data.get("name"),
+          email: data.get("email"),
+          phone: data.get("phone"),
+          company: data.get("company"),
+          eventSource: data.get("event_source"),
+          subject,
+        }),
+      });
 
-    if (brochureUrl) {
-      const downloadLink = document.createElement("a");
-      downloadLink.href = brochureUrl;
-      downloadLink.download = brochureUrl.split("/").pop() ?? "brochure.pdf";
-      document.body.appendChild(downloadLink);
-      downloadLink.click();
-      downloadLink.remove();
+      const result: { error?: string } = await response.json();
+      if (!response.ok) {
+        throw new Error(result.error ?? "We could not send your enquiry. Please try again.");
+      }
+
+      if (brochureUrl) {
+        const downloadLink = document.createElement("a");
+        downloadLink.href = brochureUrl;
+        downloadLink.download = brochureUrl.split("/").pop() ?? "brochure.pdf";
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+        downloadLink.remove();
+      }
+
+      setSubmitted(true);
+    } catch (error) {
+      setSubmissionError(
+        error instanceof Error
+          ? error.message
+          : "We could not send your enquiry. Please try again."
+      );
+    } finally {
+      setIsSubmitting(false);
     }
-
-    window.location.href = `mailto:${enquiryEmail}?subject=${encodeURIComponent(
-      subject
-    )}&body=${encodeURIComponent(enquiryBody)}`;
-    onClose();
   };
 
   if (!mounted) return null;
@@ -140,31 +161,54 @@ export default function EnquiryModal({
           </button>
         </div>
 
-        <form className="mt-5 grid gap-3.5" onSubmit={handleEnquirySubmit}>
-          <input type="hidden" name="event_source" value={eventSource} />
-          {enquiryFields.map((field) => (
-            <label
-              key={field.name}
-              className="grid gap-1.5 text-[13px] font-semibold text-[#081F3A]"
+        {submitted ? (
+          <div className="mt-5 grid gap-4" role="status" aria-live="polite">
+            <p className="text-sm leading-relaxed text-[#35634a]">
+              Thank you. Your enquiry has been sent to our team.
+              {brochureUrl ? " Your brochure download should begin shortly." : ""}
+            </p>
+            <button
+              type="button"
+              onClick={onClose}
+              className="inline-flex items-center justify-center rounded-[4px] bg-[#217EBE] px-6 py-3 text-[14px] font-semibold text-white transition-all hover:bg-[#1a689e]"
             >
-              {field.label}
-              <input
-                required
-                name={field.name}
-                type={field.type}
-                placeholder={field.placeholder}
-                className="rounded-[4px] border border-[#DCE7EE] px-3 py-2.5 text-[14px] font-normal text-[#081F3A] outline-none transition-colors placeholder:text-[#9aa7b1] focus:border-[#217EBE]"
-              />
-            </label>
-          ))}
+              Close
+            </button>
+          </div>
+        ) : (
+          <form className="mt-5 grid gap-3.5" onSubmit={handleEnquirySubmit}>
+            <input type="hidden" name="event_source" value={eventSource} />
+            {enquiryFields.map((field) => (
+              <label
+                key={field.name}
+                className="grid gap-1.5 text-[13px] font-semibold text-[#081F3A]"
+              >
+                {field.label}
+                <input
+                  required
+                  name={field.name}
+                  type={field.type}
+                  placeholder={field.placeholder}
+                  className="rounded-[4px] border border-[#DCE7EE] px-3 py-2.5 text-[14px] font-normal text-[#081F3A] outline-none transition-colors placeholder:text-[#9aa7b1] focus:border-[#217EBE]"
+                />
+              </label>
+            ))}
 
-          <button
-            type="submit"
-            className="mt-1 inline-flex items-center justify-center gap-2 rounded-[4px] bg-[#217EBE] px-6 py-3 text-[14px] font-semibold text-white transition-all hover:bg-[#1a689e]"
-          >
-            {submitLabel}
-          </button>
-        </form>
+            {submissionError && (
+              <p className="text-sm text-red-700" role="alert">
+                {submissionError}
+              </p>
+            )}
+
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="mt-1 inline-flex items-center justify-center gap-2 rounded-[4px] bg-[#217EBE] px-6 py-3 text-[14px] font-semibold text-white transition-all hover:bg-[#1a689e] disabled:cursor-wait disabled:opacity-70"
+            >
+              {isSubmitting ? "Sending..." : submitLabel}
+            </button>
+          </form>
+        )}
       </div>
     </div>,
     document.body,
