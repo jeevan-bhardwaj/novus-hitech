@@ -7,6 +7,8 @@ const stages = [
     description:
       "Cz pulling, diamond-wire slicing and automated material movement between processing stages.",
     icon: Boxes,
+    image: "/images/Ingot-Wafer.png",
+    imageAlt: "Ingot and wafer manufacturing equipment",
     href: "#ingot-wafer",
     linkLabel: "Explore Ingot & Wafer",
   },
@@ -16,6 +18,8 @@ const stages = [
     description:
       "A 14-step TOPCon-ready line. 500 kg AMRs move cassettes between stations with no human handling.",
     icon: BatteryCharging,
+    image: "/images/cell.png",
+    imageAlt: "TOPCon solar cell production equipment",
     href: "#cell",
     linkLabel: "Explore TOPCon Cell",
   },
@@ -25,6 +29,8 @@ const stages = [
     description:
       "A 15-machine sequential production flow, from glass input through tested module output",
     icon: PanelsTopLeft,
+    image: "/images/Cell-Solar-PV.png",
+    imageAlt: "Solar PV module production line",
     href: "#module",
     linkLabel: "Explore Module",
   },
@@ -50,37 +56,41 @@ export default function SolarPvLineScope() {
           </h2>
         </header>
 
-        <div className="grid gap-4 lg:grid-cols-3">
-          {stages.map(({ number, title, description, icon: Icon, href, linkLabel }) => (
-            <article
-              className="flex flex-col rounded-2xl border border-[#dce7ee] bg-white p-6 shadow-[0_10px_26px_rgba(8,31,58,0.05)] sm:p-7"
-              key={number}
-            >
-              <div className="flex items-center justify-between">
-                <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#eaf4fb] text-primary">
-                  <Icon className="h-6 w-6" strokeWidth={1.7} aria-hidden="true" />
-                </span>
-                <span className="text-xs font-bold tracking-[0.14em] text-[#92a2af]">
-                  {number}
-                </span>
-              </div>
-              <h3 className="mt-7 text-xl font-bold tracking-[-0.02em] text-secondary">
-                {title}
-              </h3>
-              <p className="mt-3 text-sm leading-[1.75] text-[#526272]">
-                {description}
-              </p>
-              {/* <a
-                className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-primary hover:text-[#1a689e]"
-                href={href}
+        <div className="grid gap-8">
+          {stages.map(({ number, title, description, image, imageAlt }) => {
+            return (
+              <article
+                className="grid overflow-hidden rounded-2xl border border-[#dce7ee] bg-white shadow-[0_10px_26px_rgba(8,31,58,0.05)]"
+                key={number}
               >
-                {linkLabel}
-                <span aria-hidden="true">→</span>
-              </a> */}
-            </article>
-          ))}
+                {/* Text Content Block (Top & Center Aligned with reduced bottom padding) */}
+                <div className="flex flex-col items-center text-center px-6 pt-6 pb-2 sm:px-10 sm:pt-8 sm:pb-2">
+                  {/* <span className="text-sm font-bold tracking-wider text-primary">
+                    {number}
+                  </span> */}
+                  <h3 className="mt-2 text-2xl font-bold tracking-[-0.02em] text-secondary sm:text-3xl">
+                    {title}
+                  </h3>
+                  <p className="mt-3 max-w-[750px] text-sm leading-[1.75] text-[#526272] sm:text-base">
+                    {description}
+                  </p>
+                </div>
+
+                {/* Full Width Image Block with reduced top padding */}
+                <div className="w-full bg-white px-4 pb-4 pt-0 sm:px-6 sm:pb-6 lg:px-8">
+                  <img
+                    className="block h-auto max-h-[520px] w-full rounded-xl object-contain mx-auto"
+                    src={image}
+                    alt={imageAlt}
+                    loading="lazy"
+                  />
+                </div>
+              </article>
+            );
+          })}
         </div>
-        <p className="mt-6 rounded-xl border border-[#cfe2ef] bg-white px-5 py-4 text-center text-sm leading-[1.7] text-[#526272]">
+
+        <p className="mt-8 rounded-xl border border-[#cfe2ef] bg-white px-5 py-4 text-center text-sm leading-[1.7] text-[#526272]">
           <span className="font-bold text-secondary">Novus MES</span> connects
           every stage. One data spine from ingot to finished module.
         </p>

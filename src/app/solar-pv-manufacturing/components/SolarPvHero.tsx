@@ -111,7 +111,7 @@ export default function SolarPvHero() {
                   key={bullet}
                 >
                   <span
-                    className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#2b93cf]/25 text-[#9fd4f5]"
+                    className="mt-0 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#2b93cf]/25 text-[#9fd4f5] sm:mt-0"
                     aria-hidden="true"
                   >
                     <svg viewBox="0 0 20 20" className="h-3.5 w-3.5 fill-none stroke-current">

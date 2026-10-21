@@ -24,9 +24,9 @@ export default function Home() {
       <ScrollReveal>
         <ProductionLines />
       </ScrollReveal>
-      <ScrollReveal>
+      {/* <ScrollReveal>
         <ReiExpoVideo />
-      </ScrollReveal>
+      </ScrollReveal> */}
       <ScrollReveal>
         <WhyNow />
       </ScrollReveal>

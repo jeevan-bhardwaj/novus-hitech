@@ -74,7 +74,13 @@ export default function BessLineCoverage() {
           ))}
         </motion.div>
 
-        <p className="mx-auto mt-5 w-full max-w-[1000px] text-sm leading-[1.7] text-[#526272]">
+        <img
+          className="mx-auto mt-6 block h-auto w-full rounded-xl"
+          src="/images/bess-module-pack-assembly-line.png"
+          alt="BESS module and pack assembly line"
+          loading="lazy"
+        />
+        <p className="mx-auto mt-5 w-full max-w-[1000px] text-center text-sm leading-[1.7] text-[#526272]">
           Most vendors deliver one hall. Novus delivers both. Scales from 50
           MWh to 500+ MWh per year.
         </p>

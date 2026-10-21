@@ -19,6 +19,7 @@ export default function SolarHero() {
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [isPlaying, setIsPlaying] = useState(false);
 
   const handleFormSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -116,7 +117,7 @@ export default function SolarHero() {
               ].map((point) => (
                 <li className="flex items-start gap-3" key={point}>
                   <span
-                    className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#2b93cf]/25 text-[#9fd4f5]"
+                    className="mt-0 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#2b93cf]/25 text-[#9fd4f5] sm:mt-0"
                     aria-hidden="true"
                   >
                     <svg viewBox="0 0 20 20" className="h-3.5 w-3.5 fill-none stroke-current">
@@ -237,12 +238,59 @@ export default function SolarHero() {
         </div>
       </section>
 
-      <section className="border-b border-[#dce7ee] bg-white px-5 py-8 sm:px-6 sm:py-10" aria-label="About Novus Hi-Tech">
-        <p className="mx-auto max-w-[1000px] text-center text-sm leading-[1.8] text-[#526272] sm:text-base">
-          Novus Hi-Tech supplies turnkey solar PV manufacturing lines (ingot to
-          module) and BESS assembly lines (cell to container), integrated with
-          Novus robotics and Novus MES and delivered in 16 to 20 weeks. 
-        </p>
+      <section className="border-b border-[#dce7ee] bg-white px-5 py-12 sm:px-6 sm:py-16" aria-label="Novus in Action">
+        <div className="mx-auto max-w-[760px]">
+          <header className="mb-8 text-center sm:mb-10">
+            <h2 className="text-3xl font-bold tracking-[-0.03em] text-[#081f3a] sm:text-4xl">
+              See Novus Hi-Tech in Action
+            </h2>
+            <p className="mt-3 text-base text-[#526272] sm:text-lg">
+              A look back at REI Expo 2025, showcasing our approach to solar PV manufacturing, battery energy storage and industrial automation.
+            </p>
+          </header>
+
+          <div className="overflow-hidden rounded-2xl border border-[#dce7ee] bg-black shadow-[0_10px_26px_rgba(8,31,58,0.05)]">
+            <div className="relative aspect-video w-full">
+              {isPlaying ? (
+                <iframe
+                  className="absolute inset-0 h-full w-full"
+                  src="https://www.youtube-nocookie.com/embed/-_0QfYUjQW4?autoplay=1&rel=0&modestbranding=1"
+                  title="Novus Hi-Tech at REI Expo"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                />
+              ) : (
+                <button
+                  type="button"
+                  onClick={() => setIsPlaying(true)}
+                  className="group relative inset-0 flex h-full w-full items-center justify-center overflow-hidden focus:outline-none"
+                  aria-label="Play Video"
+                >
+                  <img
+                    src="/images/video-placeholder.webp"
+                    alt="Novus Hi-Tech Video Cover"
+                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-[#081f3a]/30 transition-opacity group-hover:bg-[#081f3a]/20" />
+                  <div className="relative z-10 flex h-16 w-16 items-center justify-center rounded-full bg-primary text-white shadow-xl transition-transform duration-300 group-hover:scale-110 sm:h-20 sm:w-20">
+                    <svg className="ml-1 h-8 w-8 fill-current sm:h-10 sm:w-10" viewBox="0 0 24 24">
+                      <path d="M8 5v14l11-7z" />
+                    </svg>
+                  </div>
+                </button>
+              )}
+            </div>
+          </div>
+
+          <div className="mt-8 flex justify-center">
+            <a
+              href="#meeting-form"
+              className="inline-flex min-h-12 items-center justify-center rounded-lg bg-primary px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-[#1a689e] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+            >
+              Book a Meeting at REI Expo 2026
+            </a>
+          </div>
+        </div>
       </section>
 
       <section className="border-b border-[#dce7ee] bg-white px-5 py-9 sm:px-6 sm:py-12" aria-label="Novus at a glance">

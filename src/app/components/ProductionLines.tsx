@@ -9,7 +9,7 @@ const productionLines = [
     tagline: "Ingot to module. One line. One partner.",
     description:
       "Global process equipment, Novus robotics and production software,  integrated into manufacturing-line solutions, engineered and supported by India-based teams.",
-    image: "/images/production/solar-pv-manufacturing.webp",
+    image: "/images/production/solar-pv-manufacturing.png",
     imageAlt: "Robotic equipment on a solar PV module production line",
     href: "/solar-pv-manufacturing",
     linkText: "Explore Solar PV Manufacturing",
@@ -20,7 +20,7 @@ const productionLines = [
     tagline: "Cell to shipped pack. One line. One partner.",
     description:
       "Battery pack and energy storage container assembly lines, with automation and testing configured to the project requirements.",
-    image: "/images/production/battery-energy-storage.jpg",
+    image: "/images/production/battery-energy-storage.png",
     imageAlt: "Battery packs assembled along an energy storage production line",
     href: "/bess",
     linkText: "Explore BESS Manufacturing",
