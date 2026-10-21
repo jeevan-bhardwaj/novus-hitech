@@ -79,7 +79,7 @@ export default function BessFaqSection() {
                 delay: index * 0.06,
                 ease: "easeOut",
               }}
-              className="group overflow-hidden rounded-2xl border border-[#d9e4ef] bg-white transition-colors open:border-[#91c5f5] open:bg-[#f7fbff] open:shadow-[0_8px_22px_rgba(8,31,58,0.045)]"
+              className="group mx-1 overflow-hidden rounded-2xl border-2 border-[#cbd9e6] bg-white transition-colors open:border-primary open:bg-[#f7fbff] open:shadow-[0_8px_22px_rgba(8,31,58,0.045)] sm:mx-0 sm:border sm:border-[#d9e4ef] sm:open:border-[#91c5f5]"
               key={question}
               open={index === 0}
             >
@@ -100,7 +100,7 @@ export default function BessFaqSection() {
                   </svg>
                 </span>
               </summary>
-              <p className="ml-10 px-0 pb-6 text-[15px] leading-[1.65] text-[#52677c] sm:ml-14 sm:pr-14">
+              <p className="ml-10 px-0 pb-6 pr-4 text-[15px] leading-[1.65] text-[#52677c] sm:ml-14 sm:pr-14">
                 {answer}
               </p>
             </motion.details>

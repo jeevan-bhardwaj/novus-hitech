@@ -283,16 +283,16 @@ export default function SolarPvHero() {
         className="border-b border-[#dce7ee] bg-white px-5 py-9 sm:px-6 sm:py-12"
         aria-label="Novus at a glance"
       >
-        <dl className="mx-auto grid max-w-[1240px] grid-cols-2 divide-x divide-y divide-[#dce7ee] sm:grid-cols-4 sm:divide-y-0">
+        <dl className="mx-auto grid max-w-[1240px] grid-cols-1 divide-y divide-[#dce7ee] sm:grid-cols-4 sm:divide-x sm:divide-y-0">
           {companyStats.map((point) => (
             <div
-              className="flex min-h-[100px] flex-col items-center justify-center px-3 py-4 text-center sm:min-h-[120px]"
+              className="flex min-h-[134px] flex-col items-center justify-center px-3 py-5 text-center sm:min-h-[120px] sm:py-4"
               key={point.label}
             >
-              <dt className="text-[clamp(30px,4vw,44px)] font-bold leading-none tracking-[-0.045em] text-[#081f3a]">
+              <dt className="text-[40px] font-bold leading-none tracking-[-0.045em] text-[#081f3a] sm:text-[clamp(30px,4vw,44px)]">
                 {point.value}
               </dt>
-              <dd className="mt-2.5 text-xs font-semibold uppercase leading-[1.4] tracking-[0.08em] text-[#5b6875] sm:text-sm">
+              <dd className="mt-5 text-xs font-semibold uppercase leading-[1.4] tracking-[0.08em] text-[#5b6875] sm:mt-2.5 sm:text-sm">
                 {point.label}
               </dd>
             </div>

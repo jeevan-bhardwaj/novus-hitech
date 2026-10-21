@@ -79,7 +79,7 @@ export default function SolarHero() {
         </div>
 
         <div className="absolute inset-x-0 top-16 z-10 border-y border-white/15 bg-[#081f3a]/75 px-4 py-2.5 backdrop-blur-sm lg:top-[82px]">
-          <div className="mx-auto flex max-w-[1240px] flex-wrap items-center justify-center gap-x-2 gap-y-1 text-center text-[11px] font-semibold text-white/90 sm:text-sm">
+          <div className="mx-auto flex max-w-[1240px] flex-wrap items-center justify-center gap-x-2 gap-y-1 text-center text-[11px] font-semibold leading-[1.25] text-white/90 sm:text-sm">
             <span>Meet Novus at REI Expo 2026</span>
             <span aria-hidden="true">·</span>
             <span>22 to 24 October</span>
@@ -246,13 +246,13 @@ export default function SolarHero() {
       </section>
 
       <section className="border-b border-[#dce7ee] bg-white px-5 py-9 sm:px-6 sm:py-12" aria-label="Novus at a glance">
-        <dl className="mx-auto grid max-w-[1240px] grid-cols-2 divide-x divide-y divide-[#dce7ee] sm:grid-cols-4 sm:divide-y-0">
+        <dl className="mx-auto grid max-w-[1240px] grid-cols-1 divide-y divide-[#dce7ee] sm:grid-cols-4 sm:divide-x sm:divide-y-0">
           {proofPoints.map((point) => (
-            <div className="flex min-h-[100px] flex-col items-center justify-center px-3 py-4 text-center sm:min-h-[120px]" key={point.label}>
-              <dt className="text-[clamp(30px,4vw,44px)] font-bold leading-none tracking-[-0.045em] text-[#081f3a]">
+            <div className="flex min-h-[134px] flex-col items-center justify-center px-3 py-5 text-center sm:min-h-[120px] sm:py-4" key={point.label}>
+              <dt className="text-[40px] font-bold leading-none tracking-[-0.045em] text-[#081f3a] sm:text-[clamp(30px,4vw,44px)]">
                 {point.value}
               </dt>
-              <dd className="mt-2.5 text-xs font-semibold uppercase tracking-[0.08em] text-[#5b6875] sm:text-sm">
+              <dd className="mt-5 text-xs font-semibold uppercase tracking-[0.08em] text-[#5b6875] sm:mt-2.5 sm:text-sm">
                 {point.label}
               </dd>
             </div>

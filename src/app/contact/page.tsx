@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import ClosingCta from "../components/ClosingCta";
 import ContactPageContent from "./ContactPageContent";
 
 export const metadata: Metadata = {
@@ -8,5 +9,10 @@ export const metadata: Metadata = {
 };
 
 export default function ContactPage() {
-  return <ContactPageContent />;
+  return (
+    <>
+      <ContactPageContent />
+      <ClosingCta />
+    </>
+  );
 }

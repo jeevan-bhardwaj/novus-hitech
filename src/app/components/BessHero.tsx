@@ -196,11 +196,11 @@ export default function BessHero() {
       </section>
 
       <section className="border-b border-[#dce7ee] bg-white px-5 py-7 sm:px-6 sm:py-9" aria-label="BESS manufacturing line metrics">
-        <dl className="mx-auto grid max-w-[1120px] gap-5 divide-y divide-[#dce7ee] sm:grid-cols-3 sm:divide-x sm:divide-y-0">
+        <dl className="mx-auto grid max-w-[1120px] divide-y divide-[#dce7ee] sm:grid-cols-3 sm:divide-x sm:divide-y-0">
           {stats.map(({ value, label }) => (
-            <div className="flex flex-col items-center justify-center gap-2 px-3 py-3 text-center" key={value}>
-              <dt className="text-3xl font-bold leading-none tracking-[-0.04em] text-secondary sm:text-4xl">{value}</dt>
-              <dd className="text-sm leading-relaxed text-[#526272]">{label}</dd>
+            <div className="flex min-h-[134px] flex-col items-center justify-center px-3 py-5 text-center sm:min-h-[120px] sm:py-4" key={value}>
+              <dt className="text-[40px] font-bold leading-none tracking-[-0.045em] text-secondary sm:text-4xl">{value}</dt>
+              <dd className="mt-5 text-xs font-semibold uppercase tracking-[0.08em] text-[#5b6875] sm:mt-2.5 sm:text-sm">{label}</dd>
             </div>
           ))}
         </dl>

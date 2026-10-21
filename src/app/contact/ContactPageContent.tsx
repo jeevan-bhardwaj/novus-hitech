@@ -60,8 +60,8 @@ export default function ContactPageContent() {
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#9fd4f5]">
             Contact the Solar Team
           </p>
-          <h1 className="mt-3 max-w-3xl text-4xl font-bold leading-[1.08] tracking-[-0.04em] sm:text-5xl">
-            Book a meeting with Novus Solar and BESS engineers
+          <h1 className="mt-3 max-w-2xl text-4xl font-bold leading-[1.08] tracking-[-0.04em] sm:text-5xl">
+            Talk to our Novus Solar and BESS engineers
           </h1>
           <p className="mt-4 max-w-2xl text-base leading-7 text-white/80 sm:text-lg">
             Meet us at REI Expo 2026 or on a video call. The right engineer
@@ -168,7 +168,7 @@ export default function ContactPageContent() {
 
           <aside className="grid content-start gap-5">
             <section className="rounded-2xl bg-[#f1f7fb] p-6 sm:p-7" aria-labelledby="expo-card-title">
-              <p className="text-xs font-bold uppercase tracking-[0.16em] text-primary">Meet us in person</p>
+              {/* <p className="text-xs font-bold uppercase tracking-[0.16em] text-primary">Meet us in person</p> */}
               <h2 className="mt-2 text-2xl font-bold" id="expo-card-title">Meet us at REI Expo 2026</h2>
               <p className="mt-4 text-base font-bold">Hall 16, Booth A01</p>
               <p className="mt-2 text-sm leading-relaxed text-[#526272]">
@@ -209,7 +209,7 @@ export default function ContactPageContent() {
         </div>
       </section>
 
-      <section className="bg-[#f5f9fc] px-5 py-12 sm:px-6 sm:py-16">
+      {/* <section className="bg-[#f5f9fc] px-5 py-12 sm:px-6 sm:py-16">
         <div className="mx-auto max-w-[1100px]">
           <h2 className="text-center text-[clamp(28px,4vw,36px)] font-bold tracking-[-0.03em]">
             What Happens Next
@@ -229,7 +229,7 @@ export default function ContactPageContent() {
             ))}
           </ol>
         </div>
-      </section>
+      </section> */}
     </main>
   );
 }

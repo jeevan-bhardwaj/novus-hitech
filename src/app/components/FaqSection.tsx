@@ -79,7 +79,7 @@ export default function FaqSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.4, delay: index * 0.06, ease: "easeOut" }}
-              className="group overflow-hidden rounded-2xl border border-[#d9e4ef] bg-white transition-colors open:border-[#91c5f5] open:bg-[#f7fbff] open:shadow-[0_8px_22px_rgba(8,31,58,0.045)]" key={question} open={index === 0}>
+              className="group mx-1 overflow-hidden rounded-2xl border-2 border-[#cbd9e6] bg-white transition-colors open:border-primary open:bg-[#f7fbff] open:shadow-[0_8px_22px_rgba(8,31,58,0.045)] sm:mx-0 sm:border sm:border-[#d9e4ef] sm:open:border-[#91c5f5]" key={question} open={index === 0}>
               <summary className="flex min-h-[84px] cursor-pointer list-none items-center gap-4 px-4 py-5 text-base font-bold leading-[1.5] text-secondary focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-[-3px] sm:px-6 [&::-webkit-details-marker]:hidden">
                 <span className="w-6 flex-[0_0_24px] text-sm font-bold tracking-[0.02em] text-[#8c9caf]">
                   {String(index + 1).padStart(2, "0")}.
@@ -91,7 +91,7 @@ export default function FaqSection() {
                   </svg>
                 </span>
               </summary>
-              <p className="ml-10 px-0 pb-6 text-[15px] leading-[1.65] text-[#52677c] sm:ml-14 sm:pr-14">{answer}</p>
+              <p className="ml-10 px-0 pb-6 pr-4 text-[15px] leading-[1.65] text-[#52677c] sm:ml-14 sm:pr-14">{answer}</p>
             </motion.details>
           ))}
         </div>

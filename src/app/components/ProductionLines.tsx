@@ -80,7 +80,7 @@ export default function ProductionLines() {
                 <p className="mt-3.5 text-sm leading-[1.75] text-[#5a6875]">
                   {line.description}
                 </p>
-                <a className="mt-6 inline-flex min-h-11 items-center justify-center gap-2.5 whitespace-nowrap rounded-[4px] bg-primary px-5 py-3 text-xs font-semibold uppercase tracking-[0.04em] text-white transition-all duration-200 hover:bg-[#1a689e] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary" href={line.href}>
+                <a className="mt-6 inline-flex min-h-11 max-w-full items-center justify-center gap-2 whitespace-normal rounded-[4px] bg-primary px-3 py-3 text-[10px] font-semibold uppercase tracking-[0.04em] text-white transition-all duration-200 hover:bg-[#1a689e] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary sm:gap-2.5 sm:whitespace-nowrap sm:px-5 sm:text-xs" href={line.href}>
                   {line.linkText}
                   <svg className="h-[18px] w-[18px] fill-none stroke-current" viewBox="0 0 20 20" aria-hidden="true">
                     <path d="M4 10h11m-4-4 4 4-4 4" />
