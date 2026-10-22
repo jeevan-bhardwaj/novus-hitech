@@ -111,6 +111,8 @@ export default function EnquiryModal({
         document.body.appendChild(downloadLink);
         downloadLink.click();
         downloadLink.remove();
+        window.location.href = "/exclusive-thank-you";
+        return;
       }
 
       setSubmitted(true);
