@@ -54,7 +54,7 @@ export default function ClosingCta() {
             className="mt-8 flex flex-wrap items-center justify-center gap-4 max-[600px]:flex-col max-[600px]:items-stretch"
           >
             <button
-              className="inline-flex min-h-12 items-center justify-center gap-2.5 rounded-[5px] border border-transparent bg-primary px-[18px] text-center text-[11px] font-bold leading-[1.3] text-white transition-all hover:-translate-y-0.5 hover:bg-[#1a689e] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-[#55b4ed]/70 focus-visible:outline-offset-[3px] sm:text-xs"
+              className="inline-flex min-h-12 items-center justify-center gap-2.5 rounded-[5px] border border-transparent bg-[#a3cd3a] px-[18px] text-center text-[11px] font-bold leading-[1.3] text-[#221f20] transition-all hover:-translate-y-0.5 hover:bg-[#8db52e] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-[#55b4ed]/70 focus-visible:outline-offset-[3px] sm:text-xs"
               type="button"
               onClick={() => setModalMode("meeting")}
             >

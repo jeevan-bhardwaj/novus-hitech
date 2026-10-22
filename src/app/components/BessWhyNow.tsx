@@ -28,17 +28,13 @@ export default function BessWhyNow() {
             A storage pack must last 20 years. An EV line was not built for that.
           </h2>
         </header>
-        <div className="relative mb-5 h-[220px] overflow-hidden rounded-2xl sm:h-[300px]">
+        <div className="relative mb-5 h-[250px] overflow-hidden rounded-2xl sm:h-[420px]">
           <img
             className="h-full w-full object-cover"
             src="/images/production/battery-energy-storage.jpg"
             alt="Prismatic battery packs on an automated energy storage assembly line"
             loading="lazy"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#06172b]/70 to-transparent" aria-hidden="true" />
-          <p className="absolute bottom-5 left-5 max-w-lg text-xl font-bold text-white sm:bottom-8 sm:left-8 sm:text-2xl">
-            Built for grid storage from cell to container.
-          </p>
         </div>
         <div className="grid gap-4 sm:grid-cols-3">
           {reasons.map(({ title, description }) => (

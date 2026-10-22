@@ -13,7 +13,7 @@ export default function Header() {
         </a>
 
         <div className="flex-[0_0_auto] items-center gap-5">
-          <a className="inline-flex items-center justify-center whitespace-nowrap rounded-[6px] bg-primary px-3 py-2 text-[10px] font-bold uppercase tracking-wider text-white shadow-md transition-all duration-200 hover:bg-[#1a689e] hover:shadow-lg active:scale-95 min-[1024px]:px-5 min-[1024px]:py-2.5 min-[1024px]:text-[12px]" href="/contact">
+          <a className="inline-flex items-center justify-center whitespace-nowrap rounded-[6px] bg-[#a3cd3a] px-3 py-2 text-[10px] font-bold uppercase tracking-wider text-[#221f20] shadow-md transition-all duration-200 hover:bg-[#8db52e] hover:shadow-lg active:scale-95 min-[1024px]:px-5 min-[1024px]:py-2.5 min-[1024px]:text-[12px]" href="/contact">
             TALK TO AN EXPERT
           </a>
         </div>

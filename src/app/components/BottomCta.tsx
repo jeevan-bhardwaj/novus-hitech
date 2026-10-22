@@ -28,7 +28,7 @@ export default function BottomCta() {
             </p>
             <div className="mt-7 flex flex-wrap gap-3 max-[600px]:flex-col max-[600px]:items-stretch">
               <button
-                className="inline-flex min-h-12 items-center justify-center gap-2.5 rounded-[5px] border border-transparent bg-primary px-[18px] text-center text-[13px] font-bold leading-[1.3] text-white transition-all hover:-translate-y-0.5 hover:bg-[#1a689e] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-primary/35 focus-visible:outline-offset-[3px] sm:text-sm"
+                className="inline-flex min-h-12 items-center justify-center gap-2.5 rounded-[5px] border border-transparent bg-[#a3cd3a] px-[18px] text-center text-[13px] font-bold leading-[1.3] text-[#221f20] transition-all hover:-translate-y-0.5 hover:bg-[#8db52e] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-primary/35 focus-visible:outline-offset-[3px] sm:text-sm"
                 type="button"
                 onClick={() => setModalMode("milestone-plan")}
               >

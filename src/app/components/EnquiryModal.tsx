@@ -147,9 +147,11 @@ export default function EnquiryModal({
             >
               {title}
             </h2>
-            <p className="mt-1 text-[13px] leading-relaxed text-[#55636E]">
-              {description}
-            </p>
+            {!submitted && (
+              <p className="mt-1 text-[13px] leading-relaxed text-[#55636E]">
+                {description}
+              </p>
+            )}
           </div>
           <button
             type="button"
@@ -163,14 +165,14 @@ export default function EnquiryModal({
 
         {submitted ? (
           <div className="mt-5 grid gap-4" role="status" aria-live="polite">
-            <p className="text-sm leading-relaxed text-[#35634a]">
+            <p className="text-base font-medium leading-relaxed text-[#334155]">
               Thank you. Your enquiry has been sent to our team.
               {brochureUrl ? " Your brochure download should begin shortly." : ""}
             </p>
             <button
               type="button"
               onClick={onClose}
-              className="inline-flex items-center justify-center rounded-[4px] bg-[#217EBE] px-6 py-3 text-[14px] font-semibold text-white transition-all hover:bg-[#1a689e]"
+              className="inline-flex items-center justify-center rounded-[4px] bg-[#a3cd3a] px-6 py-3 text-[14px] font-semibold text-[#221f20] transition-all hover:bg-[#8db52e]"
             >
               Close
             </button>
@@ -281,7 +283,7 @@ export default function EnquiryModal({
             <button
               type="submit"
               disabled={isSubmitting}
-              className="mt-1 inline-flex items-center justify-center gap-2 rounded-[4px] bg-[#217EBE] px-6 py-3 text-[14px] font-semibold text-white transition-all hover:bg-[#1a689e] disabled:cursor-wait disabled:opacity-70"
+              className="mt-1 inline-flex items-center justify-center gap-2 rounded-[4px] bg-[#a3cd3a] px-6 py-3 text-[14px] font-semibold text-[#221f20] transition-all hover:bg-[#8db52e] disabled:cursor-wait disabled:opacity-70"
             >
               {isSubmitting ? "Sending..." : submitLabel}
             </button>

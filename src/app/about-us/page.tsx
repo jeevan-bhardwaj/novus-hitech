@@ -117,7 +117,7 @@ export default function AboutUsPage() {
             </p>
             <div className="mt-8 flex flex-wrap gap-3 max-[600px]:flex-col max-[600px]:items-stretch">
               <a
-                className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-[6px] bg-primary px-6 py-0 text-[13px] font-bold text-white transition-all hover:bg-[#1a689e] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-[6px] bg-[#a3cd3a] px-6 py-0 text-[13px] font-bold text-[#221f20] transition-all hover:bg-[#8db52e] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                 href="#our-story"
               >
                 Discover our story

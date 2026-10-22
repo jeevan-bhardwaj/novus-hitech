@@ -156,7 +156,7 @@ export default function ContactPageContent() {
 
                   <button
                     disabled={isSubmitting}
-                    className="inline-flex min-h-12 items-center justify-center rounded-lg bg-primary px-6 text-sm font-bold text-white transition-colors hover:bg-[#1a689e] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary disabled:cursor-wait disabled:opacity-75 sm:col-span-2"
+                    className="inline-flex min-h-12 items-center justify-center rounded-lg bg-[#a3cd3a] px-6 text-sm font-bold text-[#221f20] transition-colors hover:bg-[#8db52e] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary disabled:cursor-wait disabled:opacity-75 sm:col-span-2"
                     type="submit"
                   >
                     {isSubmitting ? "Submitting Request..." : "Book a Meeting"}

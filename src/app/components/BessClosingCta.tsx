@@ -20,7 +20,7 @@ export default function BessClosingCta() {
             line and map your first 30 days.
           </p>
           <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <a className="inline-flex min-h-12 items-center justify-center rounded-lg bg-primary px-6 text-sm font-bold text-white transition-colors hover:bg-[#1a689e]" href="#bess-meeting-form">
+            <a className="inline-flex min-h-12 items-center justify-center rounded-lg bg-[#a3cd3a] px-6 text-sm font-bold text-[#221f20] transition-colors hover:bg-[#8db52e]" href="#bess-meeting-form">
               Book a Meeting
             </a>
             <button className="inline-flex min-h-12 items-center justify-center rounded-lg border border-white/60 px-6 text-sm font-bold text-white transition-colors hover:border-white hover:bg-white/10" type="button" onClick={() => setBrochureModalOpen(true)}>

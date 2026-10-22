@@ -142,7 +142,7 @@ export default function SolarHero() {
                   </svg>
                 </span>
                 <h2 className="mt-5 text-2xl font-bold">Thank you.</h2>
-                <p className="mt-3 max-w-sm text-sm leading-relaxed text-[#5a6875]">
+                <p className="mt-3 max-w-sm text-base font-medium leading-relaxed text-[#334155]">
                   Your meeting request has been received. Our solar and BESS team will confirm your slot within one business day.
                 </p>
                 <p className="mt-2 text-xs text-[#718292]">
@@ -222,7 +222,7 @@ export default function SolarHero() {
 
                   <button
                     disabled={isSubmitting}
-                    className="mt-1 inline-flex min-h-12 items-center justify-center rounded-lg bg-primary px-5 py-3 text-sm font-bold text-white transition-colors hover:bg-[#1a689e] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary disabled:cursor-wait disabled:opacity-75"
+                    className="mt-1 inline-flex min-h-12 items-center justify-center rounded-lg bg-[#a3cd3a] px-5 py-3 text-sm font-bold text-[#221f20] transition-colors hover:bg-[#8db52e] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary disabled:cursor-wait disabled:opacity-75"
                     type="submit"
                   >
                     {isSubmitting ? "Submitting..." : "Book a Meeting"}
@@ -285,7 +285,7 @@ export default function SolarHero() {
           <div className="mt-8 flex justify-center">
             <a
               href="#meeting-form"
-              className="inline-flex min-h-12 items-center justify-center rounded-lg bg-primary px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-[#1a689e] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+              className="inline-flex min-h-12 items-center justify-center rounded-lg bg-[#a3cd3a] px-6 py-3 text-sm font-bold text-[#221f20] transition-colors hover:bg-[#8db52e] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
             >
               Book a Meeting at REI Expo 2026
             </a>

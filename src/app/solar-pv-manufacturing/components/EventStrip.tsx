@@ -29,7 +29,7 @@ export default function EventStrip({ description }: EventStripProps) {
             </p>
           </div>
           <button
-            className="inline-flex min-h-[46px] flex-[0_0_auto] items-center justify-center gap-2.5 rounded-full border-0 bg-primary px-5 text-[13px] font-bold text-white transition-all hover:-translate-y-px hover:bg-[#1a689e] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-primary/35 focus-visible:outline-offset-[3px] sm:min-h-[50px] sm:px-6 sm:text-sm"
+            className="inline-flex min-h-[46px] flex-[0_0_auto] items-center justify-center gap-2.5 rounded-full border-0 bg-[#a3cd3a] px-5 text-[13px] font-bold text-[#221f20] transition-all hover:-translate-y-px hover:bg-[#8db52e] focus-visible:outline focus-visible:outline-[3px] focus-visible:outline-primary/35 focus-visible:outline-offset-[3px] sm:min-h-[50px] sm:px-6 sm:text-sm"
             type="button"
             onClick={() => setModalOpen(true)}
           >

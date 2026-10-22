@@ -22,7 +22,7 @@ export default function SolarClosingCTA() {
           <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <a
               href="#meeting-form"
-              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-md bg-[#2585c9] px-6 text-sm font-bold text-white transition-colors hover:bg-[#1a689e]"
+              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-md bg-[#a3cd3a] px-6 text-sm font-bold text-[#221f20] transition-colors hover:bg-[#8db52e]"
             >
               Book a Meeting
               <span aria-hidden="true">→</span>
