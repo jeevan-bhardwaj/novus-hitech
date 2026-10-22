@@ -7,6 +7,7 @@ import SolarPvStageDetails from "./components/SolarPvStageDetails";
 import SolarClosingCTA from "./components/SolarClosingCTA";
 import EventStrip from "./components/EventStrip";
 
+
 const pageTitle =
   "Turnkey Solar PV Manufacturing Line India | REI 2026";
 const pageDescription =

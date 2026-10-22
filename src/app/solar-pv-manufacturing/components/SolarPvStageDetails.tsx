@@ -1,26 +1,31 @@
+import { Activity, PackageCheck, ShieldCheck } from "lucide-react";
+
 const whyItMatters = [
   {
     title: "Fewer micro-cracks",
     description: "Vibration-free transfers protect fragile 160-micron wafers.",
+    icon: ShieldCheck,
   },
   {
     title: "Steady cadence",
     description: "AMRs hold inter-station timing across every shift.",
+    icon: Activity,
   },
   {
     title: "Zero corner chips",
     description: "AGVs replace manual forklifts for finished modules.",
+    icon: PackageCheck,
   },
 ];
 
 export default function SolarPvWhyItMatters() {
   return (
     <section
-      className="bg-white px-5 pt-16 pb-10 text-secondary sm:px-6 sm:pt-[clamp(64px,8vw,104px)] sm:pb-12"
+      className="relative overflow-hidden bg-white px-5 py-16 text-secondary sm:px-6 sm:py-[clamp(64px,8vw,96px)]"
       id="why-it-matters"
       aria-labelledby="why-it-matters-title"
     >
-      <div className="mx-auto w-full max-w-[1240px]">
+      <div className="relative mx-auto w-full max-w-[1240px]">
         <header className="mx-auto mb-10 max-w-[850px] text-center sm:mb-12">
           <p className="mb-3.5 inline-flex items-center justify-center gap-[9px] text-[11px] font-bold uppercase tracking-[0.2em] text-primary before:h-px before:w-3 before:bg-current before:content-[''] after:h-px after:w-3 after:bg-current after:content-['']">
             STOP YIELD LEAKS
@@ -33,16 +38,22 @@ export default function SolarPvWhyItMatters() {
           </h2>
         </header>
 
-        <div className="grid gap-4 sm:grid-cols-3">
-          {whyItMatters.map(({ title, description }) => (
+        <div className="grid gap-6 sm:grid-cols-3">
+          {whyItMatters.map(({ title, description, icon: Icon }) => (
             <article
-              className="flex flex-col rounded-2xl border border-[#dce7ee] bg-[#f5f9fc] p-6 sm:p-7"
+              className="group relative flex flex-col rounded-2xl border border-[#dce7ee] bg-white p-7 shadow-[0_8px_24px_rgba(8,31,58,0.035)] transition duration-200 hover:-translate-y-1 hover:border-[#b9d8eb] hover:shadow-[0_16px_34px_rgba(8,31,58,0.08)]"
               key={title}
             >
-              <h3 className="text-lg font-bold tracking-[-0.02em] text-secondary">
+              {/* Icon Container */}
+              <div className="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-[#eaf4fb] text-primary transition-colors duration-200 group-hover:bg-primary group-hover:text-white">
+                <Icon className="h-7 w-7" strokeWidth={1.8} aria-hidden="true" />
+              </div>
+
+              {/* Text Details */}
+              <h3 className="text-[22px] font-bold tracking-[-0.02em] text-secondary">
                 {title}
               </h3>
-              <p className="mt-3 text-sm leading-[1.75] text-[#526272]">
+              <p className="mt-2.5 text-[16px] leading-[1.5] text-[#526272]">
                 {description}
               </p>
             </article>
