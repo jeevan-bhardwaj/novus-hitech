@@ -3,7 +3,7 @@
 import { useState, type FormEvent } from "react";
 
 const enquiryEmail = "solar@novushitech.com";
-const brochureUrl = "/files/New-Solar-Brochure-Final-V4-for-Web.pdf";
+const brochureUrl = "/files/novus-solar-brochure.pdf";
 
 const proofPoints = [
   { value: "1,400+", label: "Robots deployed" },

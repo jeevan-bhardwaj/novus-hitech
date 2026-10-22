@@ -3,7 +3,7 @@
 import { useState } from "react";
 import EnquiryModal from "./EnquiryModal";
 
-const brochureUrl = "/files/New-Solar-Brochure-Final-V4-for-Web.pdf";
+const brochureUrl = "/files/novus-solar-brochure.pdf";
 
 type ModalMode = "milestone-plan" | "brochure" | null;
 

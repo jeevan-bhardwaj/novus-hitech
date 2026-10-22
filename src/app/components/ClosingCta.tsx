@@ -4,7 +4,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import EnquiryModal from "./EnquiryModal";
 
-const brochureUrl = "/files/New-Solar-Brochure-Final-V4-for-Web.pdf";
+const brochureUrl = "/files/novus-solar-brochure.pdf";
 
 type ModalMode = "meeting" | "brochure" | null;
 
