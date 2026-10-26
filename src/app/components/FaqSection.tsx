@@ -2,17 +2,11 @@
 
 import { motion } from "framer-motion";
 
-const faqs = [
-  {
-    question: " Where is Novus Hi-Tech at REI Expo 2026?",
+const faqs = [  {
+  question:
+      "How do I book a meeting with Novus?",
     answer:
-      "Novus Hi-Tech is at Hall 16, Booth A01 at Renewable Energy India Expo 2026, India Expo Mart, Greater Noida, from 22 to 24 October 2026. Our solar and BESS engineers walk visitors through turnkey ingot-to-module and cell-to-container lines. Book a slot in advance to meet a line specialist.",
-  },
-  {
-    question:
-      "How do I book a meeting with Novus at REI Expo 2026?",
-    answer:
-      "Use the Book a Meeting form at the top of this page. Choose 22, 23 or 24 October, add your project details in the message field, and our solar team confirms your slot within one business day. Visitors who cannot attend can choose a virtual meeting instead.",
+      "Use the Book a Meeting form at the top of this page. Choose a virtual meeting, an office visit in Gurugram or a site assessment, add your project details, and our solar team confirms your slot within one business day.",
   },
   {
     question: "Who supplies turnkey solar PV and BESS manufacturing lines in India?",

@@ -94,7 +94,7 @@ export default function SolarPvHero() {
         <div className="mx-auto grid w-full max-w-[1440px] gap-10 px-6 pb-16 pt-28 sm:px-8 sm:pt-32 lg:grid-cols-[minmax(0,1.05fr)_minmax(370px,0.75fr)] lg:items-center lg:gap-16 lg:px-12 lg:pb-20 lg:pt-36">
           <div className="max-w-[720px]">
             <p className="text-[11px] font-bold uppercase leading-relaxed tracking-[0.16em] text-[#9fd4f5] sm:text-xs sm:tracking-[0.2em]">
-              SOLAR PV MANUFACTURING - REI EXPO 2026, BOOTH A01
+              SEEN US AT REI EXPO 2026?
             </p>
             <h1 className="mt-4 text-4xl font-bold leading-[1.1] tracking-[-0.035em] text-white sm:text-5xl">
               Solar PV Manufacturing Lines, Ingot to Module
@@ -155,7 +155,7 @@ export default function SolarPvHero() {
             ) : (
               <>
                 <h2 className="text-xl font-bold tracking-[-0.02em] sm:text-2xl">
-                  Book a solar PV meeting at REI Expo 2026
+                  Book a meeting with our solar team
                 </h2>
                 <p className="mt-1.5 text-sm leading-relaxed text-[#637384]">
                   Pick a day. Our solar team confirms your slot within one
@@ -235,13 +235,10 @@ export default function SolarPvHero() {
                         defaultValue=""
                         required
                       >
-                        <option value="" disabled>
-                          Choose a day
-                        </option>
-                        <option value="22 Oct">22 Oct</option>
-                        <option value="23 Oct">23 Oct</option>
-                        <option value="24 Oct">24 Oct</option>
-                        <option value="Virtual meeting">Virtual meeting</option>
+                        <option value="" disabled>Choose a day</option>
+                        <option>Virtual meeting</option>
+                        <option>Office visit</option>
+                        <option>Site assessment</option>
                       </select>
                     </label>
                   </div>
@@ -268,10 +265,10 @@ export default function SolarPvHero() {
                   >
                     {isSubmitting ? "Submitting..." : "Book a Meeting"}
                   </button>
-                  <p className="text-center text-xs leading-relaxed text-[#657686]">
+                  {/* <p className="text-center text-xs leading-relaxed text-[#657686]">
                     Can&apos;t make it to Greater Noida? Choose &quot;Virtual
                     meeting&quot; and we&apos;ll call you.
-                  </p>
+                  </p> */}
                 </form>
               </>
             )}

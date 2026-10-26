@@ -173,7 +173,7 @@ export default function ReiExpoVideo() {
       {modalOpen && (
         <EnquiryModal
           onClose={() => setModalOpen(false)}
-          title="Book a Meeting at Booth A01"
+          title="Book a meeting with our solar team"
           description="Share your details and our team will set up a meeting at REI Expo 2026, Hall 16, Booth A01."
           submitLabel="Book a Meeting"
           subject="REI Expo 2026 meeting request"

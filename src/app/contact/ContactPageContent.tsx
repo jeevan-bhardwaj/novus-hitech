@@ -63,9 +63,8 @@ export default function ContactPageContent() {
           <h1 className="mt-3 max-w-2xl text-4xl font-bold leading-[1.08] tracking-[-0.04em] sm:text-5xl">
             Talk to our Novus Solar and BESS engineers
           </h1>
-          <p className="mt-4 max-w-2xl text-base leading-7 text-white/80 sm:text-lg">
-            Meet us at REI Expo 2026 or on a video call. The right engineer
-            will reply within one business day.
+          <p className="mt-4 max-w-3xl text-base leading-7 text-white/80 sm:text-lg">
+            Talk to our Novus Solar and BESS engineers on a video call or book an office visit.
           </p>
         </div>
       </section>
@@ -132,10 +131,9 @@ export default function ContactPageContent() {
                     Preferred day*
                     <select className={inputClass} name="preferredDay" defaultValue="" required>
                       <option value="" disabled>Choose a day</option>
-                      <option>22 Oct</option>
-                      <option>23 Oct</option>
-                      <option>24 Oct</option>
                       <option>Virtual meeting</option>
+                      <option>Office visit</option>
+                      <option>Site assessment</option>
                     </select>
                   </label>
                   <label className="text-sm font-semibold sm:col-span-2">
@@ -169,19 +167,17 @@ export default function ContactPageContent() {
           <aside className="grid content-start gap-5">
             <section className="rounded-2xl bg-[#f1f7fb] p-6 sm:p-7" aria-labelledby="expo-card-title">
               {/* <p className="text-xs font-bold uppercase tracking-[0.16em] text-primary">Meet us in person</p> */}
-              <h2 className="mt-2 text-2xl font-bold" id="expo-card-title">Meet us at REI Expo 2026</h2>
-              <p className="mt-4 text-base font-bold">Hall 16, Booth A01</p>
+              <h2 className="mt-2 text-2xl font-bold" id="expo-card-title">Thank you for visiting us at REI Expo 2026</h2>
               <p className="mt-2 text-sm leading-relaxed text-[#526272]">
-                India Expo Mart, Knowledge Park II, Greater Noida, Uttar Pradesh
+                If we missed you, you can still book a follow-up video call or office visit using the form.
               </p>
-              <p className="mt-3 text-sm font-semibold text-[#354b60]">22 to 24 October 2026</p>
             </section>
 
             <section className="rounded-2xl border border-[#dce7ee] p-6 sm:p-7" aria-labelledby="direct-contact-title">
               <h2 className="text-xl font-bold" id="direct-contact-title">Reach Us Directly</h2>
               <div className="mt-4 grid gap-5 text-sm leading-relaxed">
                 <div>
-                  <h3 className="font-bold">Solar &amp; BESS team</h3>
+                  <h3 className="font-bold">Solar &amp; BESS Team</h3>
                   <p className="mt-1 flex flex-wrap gap-x-2 text-[#526272]">
                     <a className="inline-flex items-center gap-1.5 text-primary hover:underline" href="mailto:solar@novushitech.com">
                       <Mail className="h-4 w-4" aria-hidden="true" />
@@ -195,7 +191,7 @@ export default function ContactPageContent() {
                   </p>
                 </div>
                 <div>
-                  <h3 className="font-bold">Head office</h3>
+                  <h3 className="font-bold">Head Office</h3>
                   <p className="mt-1 text-[#526272]">
                     A-18, Infocity-1, Sector 34, Gurugram 122001, Haryana
                   </p>

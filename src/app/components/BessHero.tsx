@@ -71,7 +71,7 @@ export default function BessHero() {
         <div className="mx-auto grid w-full max-w-[1440px] gap-9 px-5 pb-14 pt-28 sm:px-8 sm:pt-32 lg:grid-cols-[minmax(0,1fr)_minmax(360px,0.78fr)] lg:items-center lg:gap-14 lg:px-12 lg:pb-16 lg:pt-36">
           <div className="max-w-[690px]">
             <p className="text-xs font-bold uppercase leading-relaxed tracking-[0.18em] text-[#9fd4f5]">
-              BESS Manufacturing · REI Expo 2026, Booth A01
+              SEEN US AT REI EXPO 2026?
             </p>
             <h1 className="mt-4 text-4xl font-bold leading-[1.08] tracking-[-0.035em] sm:text-5xl">
               BESS Manufacturing Lines Built for 20-Year Grid Storage
@@ -119,7 +119,7 @@ export default function BessHero() {
               </div>
             ) : (
               <>
-                <h2 className="text-xl font-bold sm:text-2xl">Book a BESS meeting at REI Expo 2026</h2>
+                <h2 className="text-xl font-bold sm:text-2xl">Book a meeting with our solar team</h2>
                 <p className="mt-1.5 text-sm leading-relaxed text-[#637384]">
                   Pick a day. Our solar team confirms your slot within one business day.
                 </p>
@@ -159,10 +159,9 @@ export default function BessHero() {
                       Preferred day*
                       <select className={inputClass} name="preferred_day" defaultValue="" required>
                         <option value="" disabled>Choose a day</option>
-                        <option>22 Oct</option>
-                        <option>23 Oct</option>
-                        <option>24 Oct</option>
                         <option>Virtual meeting</option>
+                        <option>Office visit</option>
+                        <option>Site assessment</option>
                       </select>
                     </label>
                   </div>
@@ -184,10 +183,10 @@ export default function BessHero() {
                   >
                     {isSubmitting ? "Submitting..." : "Book a Meeting"}
                   </button>
-                  <p className="text-center text-xs leading-relaxed text-[#637384]">
+                  {/* <p className="text-center text-xs leading-relaxed text-[#637384]">
                     Can&apos;t make it to Greater Noida? Choose &quot;Virtual
                     meeting&quot; and we&apos;ll call you.
-                  </p>
+                  </p> */}
                 </form>
               </>
             )}

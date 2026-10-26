@@ -34,7 +34,7 @@ export default function ClosingCta() {
             className="text-[clamp(32px,4vw,40px)] font-bold leading-[1.15] tracking-[-0.8px] text-white"
             id="closing-cta-title"
           >
-            Bring your capacity plan to Booth A01.
+            Bring us your capacity plan.
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 8 }}
@@ -103,8 +103,8 @@ export default function ClosingCta() {
       {modalMode === "meeting" && (
         <EnquiryModal
           onClose={() => setModalMode(null)}
-          title="Book a Meeting at Booth A01"
-          description="Share your details and our team will set up a meeting at REI Expo 2026, Hall 16, Booth A01."
+          title="Book a meeting with our solar team"
+          description="Pick a day. Our solar team confirms your slot within one business day."
           submitLabel="Book a Meeting"
           subject="REI Expo 2026 meeting request"
           eventSource="Solar_Closing_CTA_Meeting"

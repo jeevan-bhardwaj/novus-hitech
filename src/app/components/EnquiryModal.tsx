@@ -256,13 +256,10 @@ export default function EnquiryModal({
                   defaultValue=""
                   required
                 >
-                  <option value="" disabled>
-                    Choose a day
-                  </option>
-                  <option>22 Oct</option>
-                  <option>23 Oct</option>
-                  <option>24 Oct</option>
+                  <option value="" disabled>Choose a day</option>
                   <option>Virtual meeting</option>
+                  <option>Office visit</option>
+                  <option>Site assessment</option>
                 </select>
               </label>
             </div>

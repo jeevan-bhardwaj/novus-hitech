@@ -46,7 +46,7 @@ export default function SolarPvManufacturingPage() {
       <SolarPvLineScope />
       <SolarPvStageDetails />
       <SolarPvIntegration />
-      <EventStrip description="Talk TOPCon, module automation and PLI timelines with our solar engineers at REI Expo 2026, Hall 16, Booth A01, 22 to 24 October." />
+      <EventStrip description="Talk to our Novus Solar and BESS engineers on a video call or book an office visit." />
       <SolarPvFaq />
       <SolarClosingCTA />
     </main>

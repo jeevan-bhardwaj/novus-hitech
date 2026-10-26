@@ -81,26 +81,20 @@ export default function SolarHero() {
 
         <div className="absolute inset-x-0 top-16 z-10 border-y border-white/15 bg-[#081f3a]/75 px-4 py-2.5 backdrop-blur-sm lg:top-[82px]">
           <div className="mx-auto flex max-w-[1240px] flex-wrap items-center justify-center gap-x-2 gap-y-1 text-center text-[11px] font-semibold leading-[1.25] text-white/90 sm:text-sm">
-            <span>Meet Novus at REI Expo 2026</span>
-            <span aria-hidden="true">·</span>
-            <span>22 to 24 October</span>
-            <span aria-hidden="true">·</span>
-            <span>Hall 16, Booth A01</span>
-            <span aria-hidden="true">·</span>
-            <span>India Expo Mart, Greater Noida</span>
-            <a
+            <span>Thank you for attending REI Expo 2026!</span>
+            {/* <a
               className="ml-1 font-bold text-[#9fd4f5] underline underline-offset-4 transition-colors hover:text-white"
               href="#meeting-form"
             >
               Book a Meeting
-            </a>
+            </a> */}
           </div>
         </div>
 
         <div className="mx-auto grid min-h-[780px] w-full max-w-[1440px] items-center gap-10 px-5 pb-14 pt-36 sm:px-8 sm:pt-40 lg:min-h-[790px] lg:grid-cols-[minmax(0,1.05fr)_minmax(370px,0.75fr)] lg:gap-16 lg:px-12 lg:pb-20 lg:pt-44">
           <div className="max-w-[680px] py-4">
             <p className="mb-5 text-xs font-bold uppercase tracking-[0.18em] text-[#9fd4f5] sm:text-sm">
-              REI Expo 2026 · Hall 16, Booth A01
+              SEEN US AT REI EXPO 2026?
             </p>
             <h1 className="text-4xl font-bold leading-[1.08] tracking-[-0.035em] text-white sm:text-5xl">
               Solar PV and BESS Manufacturing Lines, Built by Roboticists
@@ -155,7 +149,7 @@ export default function SolarHero() {
             ) : (
               <>
                 <h2 className="text-xl font-bold tracking-[-0.02em] sm:text-2xl">
-                  Book a meeting at REI Expo 2026
+                  Book a meeting with our solar team
                 </h2>
                 <p className="mt-1.5 text-sm leading-relaxed text-[#637384]">
                   Pick a day. Our solar team confirms your slot within one
@@ -197,10 +191,9 @@ export default function SolarHero() {
                       Preferred day*
                       <select className={inputClass} name="preferredDay" defaultValue="" required>
                         <option value="" disabled>Choose a day</option>
-                        <option>22 Oct</option>
-                        <option>23 Oct</option>
-                        <option>24 Oct</option>
                         <option>Virtual meeting</option>
+                        <option>Office visit</option>
+                        <option>Site assessment</option>
                       </select>
                     </label>
                   </div>
@@ -227,10 +220,10 @@ export default function SolarHero() {
                   >
                     {isSubmitting ? "Submitting..." : "Book a Meeting"}
                   </button>
-                  <p className="text-center text-xs leading-relaxed text-[#657686]">
+                  {/* <p className="text-center text-xs leading-relaxed text-[#657686]">
                     Can&apos;t make it to Greater Noida? Choose &quot;Virtual
                     meeting&quot; and we&apos;ll call you.
-                  </p>
+                  </p> */}
                 </form>
               </>
             )}
@@ -242,7 +235,7 @@ export default function SolarHero() {
         <div className="mx-auto max-w-[760px]">
           <header className="mb-8 text-center sm:mb-10">
             <h2 className="text-3xl font-bold tracking-[-0.03em] text-[#081f3a] sm:text-4xl">
-              See Novus Hi-Tech in Action
+              See Novus at REI Expo
             </h2>
             <p className="mt-3 text-base text-[#526272] sm:text-lg">
               A look back at REI Expo 2025, showcasing our approach to solar PV manufacturing, battery energy storage and industrial automation.
@@ -287,7 +280,7 @@ export default function SolarHero() {
               href="#meeting-form"
               className="inline-flex min-h-12 items-center justify-center rounded-lg bg-[#a3cd3a] px-6 py-3 text-sm font-bold text-[#221f20] transition-colors hover:bg-[#8db52e] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
             >
-              Book a Meeting at REI Expo 2026
+              Book a Meeting
             </a>
           </div>
         </div>

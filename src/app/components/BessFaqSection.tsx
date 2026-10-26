@@ -4,9 +4,9 @@ import { motion } from "framer-motion";
 
 const faqs = [
   {
-    question: "Where can I meet Novus BESS engineers at REI Expo 2026?",
+    question: "How do I book a meeting with Novus?",
     answer:
-      "Novus Hi-Tech's BESS team is at Hall 16, Booth A01, REI Expo 2026, India Expo Mart, Greater Noida, from 22 to 24 October 2026. Engineers discuss cell-to-container line design, throughput and PLI documentation. Book a slot through the form on this page to meet a BESS line specialist.",
+      "Use the Book a Meeting form at the top of this page. Choose a virtual meeting, an office visit in Gurugram or a site assessment, add your project details, and our solar team confirms your slot within one business day.",
   },
   {
     question: "How is a BESS line different from an EV battery line?",
